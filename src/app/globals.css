@@ -2,32 +2,118 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  scroll-behavior: smooth;
+}
+
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
 }
 
-@media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: light) {
   :root {
     --foreground-rgb: 255, 255, 255;
     --background-start-rgb: 0, 0, 0;
     --background-end-rgb: 0, 0, 0;
   }
 }
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+.section-heading {
+  text-align: center;
 }
-
+h2 {
+  font-size: 32px;
+  font-weight: 500;
+}
+h1 {
+  font-size: 42px;
+  font-weight: 700;
+}
+.shadow1 {
+  background-color: #ffffff;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5); /* Horizontal offset, vertical offset, blur radius, color */
+}
+.active {
+  color: green;
+}
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+/* theme toggle */
+
+.toggle {
+  position: absolute;
+  width: 80px;
+  height: 32px;
+  margin: 0;
+  filter: opacity(0);
+  cursor: pointer;
+  z-index: 2;
+}
+
+.toggle ~ .switch {
+  position: absolute;
+  width: 50px;
+  height: 20px;
+  background: linear-gradient(silver, whitesmoke);
+  border-radius: 2.5em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.toggle ~ .switch .inner {
+  width: 70px;
+  height: 22px;
+  background: linear-gradient(dimgray, silver);
+  border-radius: 32px;
+  box-shadow: inset 0 0 1.5em rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+}
+
+.toggle ~ .switch .inner .disc {
+  width: 22px;
+  height: 22px;
+  background: linear-gradient(to top, silver, whitesmoke);
+  border-radius: 50%;
+  box-shadow: 0 0.4em 0.6em rgba(0, 0, 0, 0.2);
+  position: relative;
+  left: -27%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.4s;
+}
+
+.toggle ~ .switch .inner .disc::before {
+  content: "L";
+  font-size: 8px;
+  font-weight: 700;
+  position: absolute;
+  width: 80%;
+  height: 80%;
+  background: linear-gradient(silver, whitesmoke);
+  border-radius: 50%;
+  text-align: center;
+  line-height: calc(3.5em * 0.8);
+  font-family: sans-serif;
+  color: gray;
+}
+
+.toggle:checked ~ .switch .inner {
+  background: linear-gradient(green, limegreen);
+}
+
+.toggle:checked ~ .switch .inner .disc {
+  left: 27%;
+}
+
+.toggle:checked ~ .switch .inner .disc::before {
+  content: "N";
+  color: black;
 }
