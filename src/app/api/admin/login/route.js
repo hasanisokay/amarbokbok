@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 import bcrypt from "bcrypt";
 import { cookies } from "next/headers";
 import { SignJWT } from "jose";
-import { COOKIE_NAME } from "@/constants/constants.mjs";
+import { COOKIE_NAME, dbErrorResponse } from "@/constants/constants.mjs";
 
 export const POST = async (req) => {
   const body = await req.json();
@@ -17,10 +17,7 @@ export const POST = async (req) => {
   try {
     const db = await dbConnect();
     if (!db)
-      return NextResponse.json({
-        status: 404,
-        message: "Database connection error",
-      });
+      return NextResponse.json(dbErrorResponse);
 
     const userCollection = db.collection("users");
     const user = await userCollection.findOne({ email: email });

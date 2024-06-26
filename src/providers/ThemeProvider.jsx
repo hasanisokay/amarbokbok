@@ -5,7 +5,6 @@ const ThemeProvider = ({ children }) => {
     const [theme, setTheme] = useState('light');
     useEffect(() => {
         let storedTheme = localStorage.getItem("theme");
-        console.log({storedTheme})
         if (!storedTheme || !(storedTheme === "dark" || storedTheme === "light")) {
             storedTheme = window.matchMedia("(prefers-color-scheme: light)").matches
                 ? "light"

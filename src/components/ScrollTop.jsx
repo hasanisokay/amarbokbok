@@ -11,7 +11,6 @@ const ScrollTop = () => {
     }
     useEffect(()=>{
         window.addEventListener('scroll', (e)=>{
-console.log(e)
         })
         return ()=>{
             window.removeEventListener('scroll', (e)=>console.log(e,"removed"))

@@ -7,6 +7,10 @@ module.exports = {
   ],
   theme: {
     extend: {
+      colors: {
+        gray: 'var(--text-gray)',
+        // secondary: 'var(--secondary-color)',
+      },
     },
   },
   plugins: [],
