@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 'use client'
 import React, { forwardRef, useEffect, useLayoutEffect, useRef } from 'react';
 import Quill from 'quill';
@@ -5,6 +6,7 @@ import 'quill/dist/quill.snow.css';
 import uploadImage from '@/utils/uploadImage.mjs';
 import resizeImage from '@/utils/resizeImage.mjs';
 import toast from 'react-hot-toast';
+
 
 // Register CustomImageBlot
 const BlockEmbed = Quill.import('blots/block/embed');
@@ -38,19 +40,25 @@ Quill.register(CustomImageBlot);
 const Editor = forwardRef(
   ({ readOnly, defaultValue, onTextChange, onSelectionChange, setUploadPercentage }, ref) => {
     const containerRef = useRef(null);
-    console.log(defaultValue)
     const defaultValueRef = useRef(defaultValue);
     const onTextChangeRef = useRef(onTextChange);
     const onSelectionChangeRef = useRef(onSelectionChange);
-
     useLayoutEffect(() => {
       onTextChangeRef.current = onTextChange;
       onSelectionChangeRef.current = onSelectionChange;
     });
 
     useEffect(() => {
-      ref.current?.enable(!readOnly);
+      if (ref.current) {
+        ref.current.enable(!readOnly);
+      }
     }, [ref, readOnly]);
+
+    useEffect(() => {
+      if (defaultValue !== undefined) {
+        defaultValueRef.current = defaultValue;
+      }
+    }, [defaultValue]);
 
     useEffect(() => {
       const container = containerRef.current;
@@ -90,12 +98,12 @@ const Editor = forwardRef(
                     const aspectRatio = image.width / image.height;
                     if (aspectRatio > 1) {
                       // Landscape orientation
-                      maxWidth = 1200;
-                      maxHeight = 630;
+                      maxWidth = 300;
+                      maxHeight = 240;
                     } else {
                       // Portrait or square orientation
-                      maxWidth = 630;
-                      maxHeight = 1200;
+                      maxWidth = 240;
+                      maxHeight = 300;
                     }
 
                     const loading = toast.loading('Uploading...');
@@ -136,7 +144,7 @@ const Editor = forwardRef(
         ref.current = null;
         container.innerHTML = '';
       };
-    }, [ref]);
+    }, [ref, defaultValue]);
 
     return <div ref={containerRef}></div>;
   },

@@ -12,7 +12,12 @@ html {
   --background-end-rgb: 255, 255, 255;
   --text-gray:#836b83;
 }
-
+[data-theme="dark"] {
+  @apply bg-[#4c4c4c] text-[#e3ebdb];
+}
+[data-theme="light"] {
+  @apply bg-[#f5f4f069] text-black;
+}
 @media (prefers-color-scheme: light) {
   :root {
     --foreground-rgb: 255, 255, 255;
@@ -20,16 +25,33 @@ html {
     --background-end-rgb: 0, 0, 0;
   }
 }
+
+@media (prefers-reduced-motion: no-preference) {
+  .ql-editor img{
+    scale: .8; opacity: 0;
+    animation: fade-in linear forwards;
+    animation-timeline: view();
+    animation-range: entry;
+  }
+  @keyframes fade-in {
+    to{scale: 1; opacity: 1;}
+  }
+}
 .section-heading {
   text-align: center;
+}
+
+h1 {
+  font-size: 42px;
+  font-weight: 700;
 }
 h2 {
   font-size: 32px;
   font-weight: 500;
 }
-h1 {
-  font-size: 42px;
-  font-weight: 700;
+h3{ 
+  font-size: 24px;
+  font-weight: 500;
 }
 .shadow1 {
   background-color: #ffffff;
@@ -50,8 +72,24 @@ h1 {
   border-radius: 5px;
   font-size: 10px;
   font-weight: 600;
+  color: white;
 }
-
+.btn-red{
+  padding: 5px;
+  background-image: linear-gradient(160deg, #ff0f10 0%, #e5adad 100%);
+  border-radius: 5px;
+  font-size: 10px;
+  color: white;
+  font-weight: 600;
+}
+.btn-green{
+  padding: 5px;
+  background-image: linear-gradient(160deg, #04f738 0%, #8db496 100%);
+  border-radius: 5px;
+  font-size: 10px;
+  color: white;
+  font-weight: 600;
+}
 .ql-align-center img {
   display: block;
   margin: 0 auto;

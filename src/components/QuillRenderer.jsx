@@ -13,14 +13,14 @@ const QuillRenderer = ({ content }) => {
   const renderCustomImage = (value) => {
     const { url, alt, width, height } = value;
     return (
-      <div style={{ textAlign: 'center', margin: '10px 10px' }}>
+      <div style={{ textAlign: 'center', margin: '10px 10px', }}>
         <Image
           src={url}
           alt={alt || 'Blog_Image'}
           width={100} // Default width if 'auto'
           height={100} // Default height if 'auto'
           layout="responsive"
-          style={{ maxWidth: '100%', height: 'auto' }}
+          style={{ maxWidth: '100%', height: 'auto', }}
         />
       </div>
     );

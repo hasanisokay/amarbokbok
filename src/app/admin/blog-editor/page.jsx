@@ -6,7 +6,6 @@ const BlogEditor = dynamic(()=>import("@/components/BlogEditor"), {ssr:false})
 const BlogEditPage = () => {
     const search = useSearchParams();
     const id = search.get('id');
-    console.log(id)
     return (
         <>
             <BlogEditor postId={id}/>
