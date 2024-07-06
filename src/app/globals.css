@@ -16,7 +16,7 @@ html {
   @apply bg-[#4c4c4c] text-[#e3ebdb];
 }
 [data-theme="light"] {
-  @apply bg-[#f5f4f069] text-black;
+  @apply bg-white text-black;
 }
 @media (prefers-color-scheme: light) {
   :root {

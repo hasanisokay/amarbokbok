@@ -6,6 +6,7 @@ import { Progress } from '@/loaders/Progress';
 import checkLinkAvailability from '@/utils/checkLinkAvailability.mjs';
 import { useRouter } from 'next/navigation';
 import Select from 'react-select';
+import getCategories from '@/utils/getCategories.mjs';
 
 const BlogEditor = ({ postId }) => {
   const [range, setRange] = useState();
@@ -22,7 +23,7 @@ const BlogEditor = ({ postId }) => {
   const [loadingCategory, setLoadingCategory] = useState(false);
   const router = useRouter();
   const [uploadPercentage, setUploadPercentage] = useState(0);
-  const [date, setDate] = useState(new Date()); // Initialize date with today's date in ISO format
+  const [date, setDate] = useState(new Date());
   const [updatedOn, setUpdatedOn] = useState(new Date())
   useEffect(() => {
     const isAvailable = async () => {
@@ -44,7 +45,6 @@ const BlogEditor = ({ postId }) => {
         try {
           const response = await fetch(`/api/get-single-blog?blog_id=${postId}`);
           const data = await response.json();
-          console.log(data)
           setContent(data?.blog);
           setBlogId(data?.blog?.blog_id);
           setTitle(data?.blog?.title);
@@ -61,8 +61,7 @@ const BlogEditor = ({ postId }) => {
   const fetchCategories = async () => {
     try {
       setLoadingCategory(true)
-      const response = await fetch('/api/get-categories');
-      const data = await response.json();
+      const data = await getCategories()
       setAvailableCategories(data);
       setLoadingCategory(false);
     } catch (error) {
@@ -94,14 +93,14 @@ const BlogEditor = ({ postId }) => {
             content: contentToSave,
             addedOn: date,
             blog_id: blogId,
-            comments:[],
+            comments: [],
             readCount: 0,
             title: title,
             categories: selectedCategories
           }),
         });
       const data = await response.json();
-      console.log(data)
+
       if (data?.status === 200) {
         toast.success(data?.message || "Success");
         router.push(`/blogs/${blogId}`)
@@ -130,7 +129,7 @@ const BlogEditor = ({ postId }) => {
             onChange={option => setSelectedCategories((prev) => [...prev, option.value])}
             // onChange={option => console.log(option)}
             onMenuOpen={fetchCategories}
-            placeholder="Select or add a category"
+            placeholder="Select from previous category"
           />
           {
             selectedCategories?.length > 0 &&
@@ -143,7 +142,7 @@ const BlogEditor = ({ postId }) => {
           <input
             type="text"
             value={newCategory}
-            className='focus:outline-none'
+            className='focus:outline-none bg-white border rounded border-gray-400 p-1'
             onChange={(e) => setNewCategory(e.target.value)}
             placeholder="Or add a new category"
           />
@@ -178,13 +177,14 @@ const BlogEditor = ({ postId }) => {
           blogId.length > 0 && !postId && (isIdAvailable ? <p className='text-sm text-green-500'>Available</p> : <p className='text-sm text-red-500'>Not available</p>)
         }
         <div className="relative">
-          <label className="block text-sm font-medium text-gray-700">Added On: (Leave unchanged to use the {content?.timestamp ? "previous" : "current"} date.)</label>
+          <label className="block text-sm font-medium text-gray-700">Added On</label>
           <input
             type="date"
             value={date.toISOString().split('T')[0]}
-            onChange={(e) => setDate(e.target.value)}
-            className="block w-full px-4 py-2 mt-2 text-base text-gray-700 placeholder-gray-400 bg-white border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+            onChange={(e) => setDate(new Date(e.target.value))}
+            className="w-fit border mt-2 text-gray-700 bg-white  text-black rounded-lg shadow-sm focus:outline-none"
           />
+          <small>Leave unchanged to use the {content?.timestamp ? "previous" : "current"} date.</small>
         </div>
       </div>
 

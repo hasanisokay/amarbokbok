@@ -1,14 +1,19 @@
 import Blogs from "@/components/Blogs";
+import Pagination from "@/components/Pagination";
+import ResetPage from "@/components/ResetPage";
+import SelectInBlogs from "@/components/SelectInBlogs";
 import getBlogs from "@/utils/getBlogs.mjs";
 import { Suspense } from "react";
 
-export default async function categoryPage({ params }) {
+export default async function categoryPage({ params, searchParams }) {
   const category = params?.category;
-  const page = params?.page;
+  const page = parseInt(searchParams?.page) || 1;
+  const limit = parseInt(searchParams?.limit) || 10;
+  const sort = searchParams?.sort || "newest";
   let blogs;
   try {
     if (category) {
-      blogs = await getBlogs(category, page || 1);
+      blogs = await getBlogs(category, page, limit, sort);
     }
   } catch (error) {
     blogs = null;
@@ -26,12 +31,32 @@ export default async function categoryPage({ params }) {
         <p>Oho! Not Found.</p>
       </div>
     );
-  else
+  if (blogs?.blogs?.length < 1) {
+    return (
+      <>
+        <ResetPage currentPage={page}/>
+      </>
+    );
+  } else {
+    const start = (page - 1) * limit + 1;
+    const end = Math.min(page * limit, blogs?.totalCount);
     return (
       <>
         <Suspense fallback={<p>Please wait</p>}>
-          <Blogs blogs={blogs}/>
+          <p className="my-1">
+            Showing {start} - {end} of {blogs?.totalCount}
+          </p>
+          <SelectInBlogs sort={sort} limit={limit} page={page} />
+          <Blogs blogs={blogs} start={start} end={end} />
+          {blogs?.totalCount > limit && (
+            <Pagination
+              currentPage={page}
+              total={blogs?.totalCount}
+              limit={limit}
+            />
+          )}
         </Suspense>
       </>
     );
+  }
 }

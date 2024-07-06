@@ -9,12 +9,13 @@ export const GET = async (req) => {
   try {
     const searchParams = req.nextUrl.searchParams;
     const category = searchParams.get("category");
+    const sort = searchParams.get("sort");
+    const sortOrder = sort ==="newest" ? -1 : 1;
     const page = parseInt(searchParams.get("page"));
-    const limit = 10;
+    const limit = parseInt(searchParams.get("limit")) || 10;
     const skip = (page - 1) * limit;
     const db = await dbConnect();
     if (!db) return NextResponse.json(dbErrorResponse);
-
     const query = category ? { categories: { $in: [category] } } : {};
     const blogCollection = await db.collection("blogs");
 
@@ -22,6 +23,7 @@ export const GET = async (req) => {
     
     const result = await blogCollection
       .find(query)
+      .sort({ addedOn: sortOrder })
       .skip(skip)
       .limit(limit)
       .toArray();

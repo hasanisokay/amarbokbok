@@ -10,7 +10,6 @@ export const GET = async () => {
     const db = await dbConnect();
     if (!db) return NextResponse.json(dbErrorResponse);
     const blogCollection = await db.collection("blogs");
-    // const result = await blogCollection.distinct("category")
     const result = await blogCollection.distinct('categories')
     return NextResponse.json(result);
   } catch(err) {

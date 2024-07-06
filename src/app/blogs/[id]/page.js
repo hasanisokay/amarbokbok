@@ -1,37 +1,82 @@
 import SingleBlogPage from "@/components/SingleBlogPage";
+import { hostname } from "@/constants/hostname.mjs";
+import deltaToPlainText from "@/utils/deltaToPlainText.mjs";
 import getBlog from "@/utils/getBlog.mjs";
+import getImageLinkFromDelta from "@/utils/getImageLinkFromDelta.mjs";
 import { Suspense } from "react";
+export async function generateMetadata({ params }) {
+  const host = await hostname();
+  const blogId = params?.id;
+  let metadata = {
+    title: "Bonjui Blog",
+    description: "Blog description",
+    keywords: ["Blog", "Bonjui Blog", "Ahmmad Robins Blog"],
+    url: params?.id ? `${host}/blogs/${params?.id}` : `${host}/blogs`,
+  };
+
+  try {
+    if (blogId) {
+      const blog = await getBlog(blogId);
+      const imageUrl = getImageLinkFromDelta(blog?.blog?.content);
+
+      if (blog) {
+        metadata.title = blog.blog.title || "Blog";
+        metadata.description =
+          deltaToPlainText(blog?.blog?.content) || "Blog post description";
+        metadata.keywords.push(blog?.blog?.title);
+        metadata.other = {
+          // change the image links
+          "twitter:image": imageUrl
+            ? imageUrl
+            : "https://i.ibb.co/YDMvcNN/Untitled-1-Copy.jpg",
+          "twitter:card": "summary_large_image",
+          "og-title": metadata.title = blog.blog.title || "Blog",
+          "og-description": deltaToPlainText(blog?.blog?.content) || "Blog post description",
+          "og-url": params?.id
+            ? `${host}/blogs/${params?.id}`
+            : `${host}/blogs`,
+          "og:image": imageUrl
+            ? imageUrl
+            : "https://i.ibb.co/YDMvcNN/Untitled-1-Copy.jpg",
+        };
+      }
+    }
+  } catch (error) {
+    console.error("Error fetching blog metadata:", error);
+  }
+
+  return metadata;
+}
 
 export default async function page({ params }) {
-    const blogId = params?.id;
-    let blog;
-    try {
-      if (blogId) {
-        blog = await getBlog(blogId);
-      }
-    } catch (error) {
-      blog = null;
+  const blogId = params?.id;
+  let blog;
+  try {
+    if (blogId) {
+      blog = await getBlog(blogId);
     }
-    if (
-      blog?.status === 500 ||
-      blog?.status === 400 ||
-      blog?.status === 404 ||
-      !blog ||
-      blog?.error
-    )
-      return (
-        <div className="text-center text-xl">
-          <h1 className="text-2xl">404</h1>
-          <p>Oho! Not Found.</p>
-        </div>
-      );
-    else
-      return (
-        <>
-          <Suspense fallback={ <p>Please wait</p> }>
-<SingleBlogPage blog={blog} />
-          </Suspense>
-        </>
-      );
+  } catch (error) {
+    blog = null;
   }
-  
+  if (
+    blog?.status === 500 ||
+    blog?.status === 400 ||
+    blog?.status === 404 ||
+    !blog ||
+    blog?.error
+  )
+    return (
+      <div className="text-center text-xl">
+        <h1 className="text-2xl">404</h1>
+        <p>Oho! Not Found.</p>
+      </div>
+    );
+  else
+    return (
+      <>
+        <Suspense fallback={<p>Please wait</p>}>
+          <SingleBlogPage blog={blog} />
+        </Suspense>
+      </>
+    );
+}
