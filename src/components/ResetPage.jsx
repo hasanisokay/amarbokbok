@@ -6,7 +6,7 @@ const ResetPage = ({ currentPage }) => {
     const router = useRouter();
 
     const handleReset = () => {
-        if (page === 1) return router.push('/')
+        if (currentPage === 1) return router.push('/')
         const query = new URLSearchParams(window.location.search);
         query.set('page', 1);
         router.push(`${window.location.pathname}?${query.toString()}`, undefined);
@@ -19,7 +19,7 @@ const ResetPage = ({ currentPage }) => {
                 onClick={handleReset}
                 className="btn-green"
             >
-                {page === 1 ? "Go Home" : "Reset"}
+                {currentPage === 1 ? "Go Home" : "Reset"}
             </button>
         </div>
     );

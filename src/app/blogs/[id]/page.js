@@ -1,4 +1,5 @@
 import SingleBlogPage from "@/components/SingleBlogPage";
+import SuspenseFallback from "@/components/SuspenseFallback";
 import { hostname } from "@/constants/hostname.mjs";
 import deltaToPlainText from "@/utils/deltaToPlainText.mjs";
 import getBlog from "@/utils/getBlog.mjs";
@@ -74,7 +75,7 @@ export default async function page({ params }) {
   else
     return (
       <>
-        <Suspense fallback={<p>Please wait</p>}>
+        <Suspense fallback={<SuspenseFallback />}>
           <SingleBlogPage blog={blog} />
         </Suspense>
       </>

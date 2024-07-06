@@ -2,7 +2,9 @@ import Blogs from "@/components/Blogs";
 import Pagination from "@/components/Pagination";
 import ResetPage from "@/components/ResetPage";
 import SelectInBlogs from "@/components/SelectInBlogs";
+import { hostname } from "@/constants/hostname.mjs";
 import getBlogs from "@/utils/getBlogs.mjs";
+import { capitalize } from "lodash";
 import { Suspense } from "react";
 
 export default async function categoryPage({ params, searchParams }) {
@@ -60,3 +62,32 @@ export default async function categoryPage({ params, searchParams }) {
     );
   }
 }
+
+
+export async function generateMetadata({ params }) {
+  const category = params?.category;
+  const host = await hostname();
+  let metadata = {
+    title: `${capitalize(category)} | Bonjui`,
+    description: "Category Page",
+    keywords: ["Blog", "Bonjui Blog", "Ahmmad Robins Blog"],
+    url: `${host}/blogs/categories`,
+  };
+
+  try {
+    metadata.other = {
+      // change the image links
+      "twitter:image": "https://i.ibb.co/YDMvcNN/Untitled-1-Copy.jpg",
+      "twitter:card": "summary_large_image",
+      "og-title": "Categories | Blog",
+      "og-description": "Blog categories",
+      "og-url": `${host}/blogs/categories`,
+      "og:image": "https://i.ibb.co/YDMvcNN/Untitled-1-Copy.jpg",
+    };
+  } catch (error) {
+    console.error("Error fetching blog metadata:", error);
+  }
+
+  return metadata;
+}
+

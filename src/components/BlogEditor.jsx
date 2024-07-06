@@ -45,6 +45,7 @@ const BlogEditor = ({ postId }) => {
         try {
           const response = await fetch(`/api/get-single-blog?blog_id=${postId}`);
           const data = await response.json();
+          if(data.status===404) return router.push("/admin/blog-editor");
           setContent(data?.blog);
           setBlogId(data?.blog?.blog_id);
           setTitle(data?.blog?.title);

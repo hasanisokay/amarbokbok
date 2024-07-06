@@ -19,7 +19,7 @@ export async function generateMetadata({ params }) {
   let metadata = {
     title: "Categories | Bonjui",
     description: "Category Page",
-    keywords: ["Blog", "Bonjui Blog", "Ahmmad Robins Blog"],
+    keywords: ["Blog","Categories", "Bonjui Blog", "Ahmmad Robins Blog"],
     url: `${host}/blogs/categories`,
   };
 
