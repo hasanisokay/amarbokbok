@@ -26,7 +26,7 @@ const SelectInBlogs = ({ sort, limit, page }) => {
         query.set('limit', selectedLimit.value);
 
         // Shallow routing for limit changes
-        router.push(`${window.location.pathname}?${query.toString()}`, undefined, { shallow: selectedSort.value === sort });
+        router.replace(`${window.location.pathname}?${query.toString()}`, undefined, { shallow: selectedSort.value === sort });
         // if (selectedSort.value !== sort) {
         //     // Full page reload for sort changes
         //     window.location.reload();

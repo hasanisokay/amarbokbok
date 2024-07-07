@@ -1,9 +1,12 @@
 "use server";
 
 import Blogs from "@/components/Blogs";
+import CategoryPage from "@/components/CategoryPage";
+import MostRead from "@/components/MostRead";
 import Pagination from "@/components/Pagination";
 import ResetPage from "@/components/ResetPage";
 import SelectInBlogs from "@/components/SelectInBlogs";
+import SuspenseFallback from "@/components/SuspenseFallback";
 import { hostname } from "@/constants/hostname.mjs";
 import getBlogs from "@/utils/getBlogs.mjs";
 import { Suspense } from "react";
@@ -43,19 +46,27 @@ const blogsPage = async ({ searchParams }) => {
     const end = Math.min(page * limit, blogs?.totalCount);
     return (
       <>
-        <Suspense fallback={<p>Please wait</p>}>
-          <p className="my-1">
-            Showing {start} - {end} of {blogs?.totalCount}
-          </p>
-          <SelectInBlogs sort={sort} limit={limit} page={page} />
-          <Blogs blogs={blogs} start={start} end={end} />
-          {blogs?.totalCount > limit && (
-            <Pagination
-              currentPage={page}
-              total={blogs?.totalCount}
-              limit={limit}
-            />
-          )}
+        <Suspense fallback={<SuspenseFallback />}>
+          <div className="flex lg:flex-row flex-col my-1">
+            <section>
+              <p className="my-1">
+                Showing {start} - {end} of {blogs?.totalCount}
+              </p>
+              <SelectInBlogs sort={sort} limit={limit} page={page} />
+              <Blogs blogs={blogs} start={start} end={end} />
+              {blogs?.totalCount > limit && (
+                <Pagination
+                  currentPage={page}
+                  total={blogs?.totalCount}
+                  limit={limit}
+                />
+              )}
+            </section>
+            <section className="min-w-[200px]">
+              <CategoryPage />
+              <MostRead />
+            </section>
+          </div>
         </Suspense>
       </>
     );
@@ -64,30 +75,28 @@ const blogsPage = async ({ searchParams }) => {
 
 export default blogsPage;
 
-
 export async function generateMetadata() {
-    const host = await hostname();
-    let metadata = {
-      title: "Blogs | Bonjui",
-      description: "Blogs Page",
-      keywords: ["Blogs", "Bonjui Blog", "Ahmmad Robins Blog"],
-      url: `${host}/blogs`,
+  const host = await hostname();
+  let metadata = {
+    title: "Blogs | Bonjui",
+    description: "Blogs Page",
+    keywords: ["Blogs", "Bonjui Blog", "Ahmmad Robins Blog"],
+    url: `${host}/blogs`,
+  };
+
+  try {
+    metadata.other = {
+      // change the image links
+      "twitter:image": "https://i.ibb.co/YDMvcNN/Untitled-1-Copy.jpg",
+      "twitter:card": "summary_large_image",
+      "og-title": "Categories | Blog",
+      "og-description": "Blog categories",
+      "og-url": `${host}/blogs`,
+      "og:image": "https://i.ibb.co/YDMvcNN/Untitled-1-Copy.jpg",
     };
-  
-    try {
-      metadata.other = {
-        // change the image links
-        "twitter:image": "https://i.ibb.co/YDMvcNN/Untitled-1-Copy.jpg",
-        "twitter:card": "summary_large_image",
-        "og-title": "Categories | Blog",
-        "og-description": "Blog categories",
-        "og-url": `${host}/blogs`,
-        "og:image": "https://i.ibb.co/YDMvcNN/Untitled-1-Copy.jpg",
-      };
-    } catch (error) {
-      console.error("Error fetching blog metadata:", error);
-    }
-  
-    return metadata;
+  } catch (error) {
+    console.error("Error fetching blog metadata:", error);
   }
-  
+
+  return metadata;
+}

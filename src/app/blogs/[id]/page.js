@@ -24,7 +24,7 @@ export async function generateMetadata({ params }) {
         metadata.title = blog.blog.title || "Blog";
         metadata.description =
           deltaToPlainText(blog?.blog?.content) || "Blog post description";
-        metadata.keywords.push(blog?.blog?.title);
+        metadata.keywords.push(...blog?.blog?.title.split(" "));
         metadata.other = {
           // change the image links
           "twitter:image": imageUrl

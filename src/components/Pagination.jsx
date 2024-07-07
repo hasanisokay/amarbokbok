@@ -36,7 +36,7 @@ const Pagination = ({ total, currentPage, limit }) => {
     <div className="flex justify-center space-x-2 my-4">
       <button
         onClick={() => handlePageChange(currentPage - 1)}
-        className={`px-3 py-1 lg:hover:text-blue-500 duration-300 lg:hover:scale-105 active:scale-105 scale-100 active:text-blue-500 border ${currentPage === 1 ? 'invisible' : 'visible'}`}
+        className={`rounded-btn lg:hover:text-blue-500 duration-300 lg:hover:scale-105 active:scale-105 scale-100 active:text-blue-500 border ${currentPage === 1 ? 'invisible' : 'visible'}`}
       >
         Previous
       </button>
@@ -45,8 +45,8 @@ const Pagination = ({ total, currentPage, limit }) => {
           <button
             key={index}
             onClick={() => handlePageChange(page)}
-            className={`px-3 duration-300 py-1 border-[1px] lg:hover:text-white active:text-white lg:hover:bg-blue-500 lg:hover:scale-105 active:scale-105 scale-100 ${
-              currentPage === page ? 'bg-blue-500 text-white' : ''
+            className={`rounded-btn duration-300 lg:hover:text-white active:text-white lg:hover:bg-blue-500 lg:hover:scale-105 active:scale-105 scale-100 ${
+              currentPage === page ? 'rounded-btn-active' : 'rounded-btn-inactive'
             }`}
           >
             {page}
@@ -59,7 +59,7 @@ const Pagination = ({ total, currentPage, limit }) => {
       )}
       <button
         onClick={() => handlePageChange(currentPage + 1)}
-        className={`px-3 py-1 border duration-300 lg:hover:scale-105 active:scale-105 scale-100 lg:hover:text-blue-500 active:text-blue-500 ${currentPage === totalPages ? 'invisible' : 'visible'}`}
+        className={`rounded-btn border duration-300 lg:hover:scale-105 active:scale-105 scale-100 lg:hover:text-blue-500 active:text-blue-500 ${currentPage === totalPages ? 'invisible' : 'visible'}`}
       >
         Next
       </button>
