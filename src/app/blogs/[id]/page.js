@@ -1,3 +1,5 @@
+import NotFound from "@/components/NotFound";
+import Sidebar from "@/components/Sidebar";
 import SingleBlogPage from "@/components/SingleBlogPage";
 import SuspenseFallback from "@/components/SuspenseFallback";
 import { hostname } from "@/constants/hostname.mjs";
@@ -31,8 +33,9 @@ export async function generateMetadata({ params }) {
             ? imageUrl
             : "https://i.ibb.co/YDMvcNN/Untitled-1-Copy.jpg",
           "twitter:card": "summary_large_image",
-          "og-title": metadata.title = blog.blog.title || "Blog",
-          "og-description": deltaToPlainText(blog?.blog?.content) || "Blog post description",
+          "og-title": (metadata.title = blog.blog.title || "Blog"),
+          "og-description":
+            deltaToPlainText(blog?.blog?.content) || "Blog post description",
           "og-url": params?.id
             ? `${host}/blogs/${params?.id}`
             : `${host}/blogs`,
@@ -66,17 +69,17 @@ export default async function page({ params }) {
     !blog ||
     blog?.error
   )
-    return (
-      <div className="text-center text-xl">
-        <h1 className="text-2xl">404</h1>
-        <p>Oho! Not Found.</p>
-      </div>
-    );
+    return <NotFound />
   else
     return (
       <>
         <Suspense fallback={<SuspenseFallback />}>
-          <SingleBlogPage blog={blog} />
+          <div className="blog-layout">
+            <section className="lg:mx-2 mx-1">
+              <SingleBlogPage blog={blog} />
+            </section>
+            <Sidebar />
+          </div>
         </Suspense>
       </>
     );

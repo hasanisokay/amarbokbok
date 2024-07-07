@@ -1,5 +1,6 @@
 "use server";
 import CategoryPage from "@/components/CategoryPage";
+import Sidebar from "@/components/Sidebar";
 import SuspenseFallback from "@/components/SuspenseFallback";
 import { hostname } from "@/constants/hostname.mjs";
 import { Suspense } from "react";
@@ -7,7 +8,9 @@ import { Suspense } from "react";
 const page = () => {
   return (
     <Suspense fallback={<SuspenseFallback />}>
-      <CategoryPage />
+      <div className="flex items-center justify-center">
+        <CategoryPage />
+      </div>
     </Suspense>
   );
 };
@@ -19,7 +22,7 @@ export async function generateMetadata({ params }) {
   let metadata = {
     title: "Categories | Bonjui",
     description: "Category Page",
-    keywords: ["Blog","Categories", "Bonjui Blog", "Ahmmad Robins Blog"],
+    keywords: ["Blog", "Categories", "Bonjui Blog", "Ahmmad Robins Blog"],
     url: `${host}/blogs/categories`,
   };
 

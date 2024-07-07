@@ -11,6 +11,7 @@ html {
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
   --text-gray: #836b83;
+  --secondary-color: #836b83
 }
 [data-theme="dark"] {
   @apply bg-[#4c4c4c] text-[#e3ebdb];
@@ -66,6 +67,12 @@ h4 {
   font-size: 18px;
   font-weight: 600;
 }
+.hover-blue{
+  @apply lg:hover:text-blue-500 active:text-blue-500
+}
+.blog-layout{
+  @apply flex lg:flex-row flex-col lg:mx-12 md:mx-4 mx-1  my-1 gap-4
+}
 .shadow1 {
   background-color: #ffffff;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.5); /* Horizontal offset, vertical offset, blur radius, color */
@@ -117,12 +124,12 @@ h4 {
   }
 }
 .btn-green {
-  padding: 5px;
+  padding: 6px 12px;
   background-image: linear-gradient(160deg, #04f738 0%, #8db496 100%);
   border-radius: 5px;
-  font-size: 10px;
+  font-size: 12px;
   color: white;
-  font-weight: 600;
+  font-weight: 500;
 }
 .ql-align-center img {
   display: block;

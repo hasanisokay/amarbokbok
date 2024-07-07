@@ -40,12 +40,12 @@ const SingleBlogPage = ({ blog }) => {
         }
     }, [showDeleteOption])
     return (
-        <div>
+        <section className="lg:mx-12 md:mx-4 mx-2 p-1">
             <div>
                 <BlogHead blog={blog?.blog} clickable={false} />
             </div>
 
-            {currentUser && <div className="flex gap-2">
+            {currentUser && <div className="flex gap-2 my-4">
                 <button className="btn-green" onClick={() => router.push(`/admin/blog-editor?id=${blog.blog.blog_id}`)}>Edit</button>
                 <button className="btn-red" onClick={() => setShowDeleteOption(!showDeleteOption)} >Delete</button>
             </div>}
@@ -59,7 +59,7 @@ const SingleBlogPage = ({ blog }) => {
                 </div>
             }
             <QuillRenderer content={blog?.blog?.content} />
-        </div>
+        </section>
     );
 };
 

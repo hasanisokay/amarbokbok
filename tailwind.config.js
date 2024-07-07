@@ -9,7 +9,7 @@ module.exports = {
     extend: {
       colors: {
         gray: 'var(--text-gray)',
-        // secondary: 'var(--secondary-color)',
+        secondary: 'var(--secondary-color)',
       },
     },
   },

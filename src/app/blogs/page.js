@@ -1,15 +1,8 @@
-"use server";
-
-import Blogs from "@/components/Blogs";
-import CategoryPage from "@/components/CategoryPage";
-import MostRead from "@/components/MostRead";
-import Pagination from "@/components/Pagination";
-import ResetPage from "@/components/ResetPage";
-import SelectInBlogs from "@/components/SelectInBlogs";
-import SuspenseFallback from "@/components/SuspenseFallback";
+"use server"
+import BlogsPage from "@/components/BlogsPage";
+import NotFound from "@/components/NotFound";
 import { hostname } from "@/constants/hostname.mjs";
 import getBlogs from "@/utils/getBlogs.mjs";
-import { Suspense } from "react";
 
 const blogsPage = async ({ searchParams }) => {
   const page = parseInt(searchParams?.page) || 1;
@@ -29,48 +22,8 @@ const blogsPage = async ({ searchParams }) => {
     !blogs ||
     blogs?.error
   )
-    return (
-      <div className="text-center text-xl">
-        <h1 className="text-2xl">404</h1>
-        <p>Oho! Not Found.</p>
-      </div>
-    );
-  if (blogs?.blogs?.length < 1) {
-    return (
-      <>
-        <ResetPage currentPage={page} />
-      </>
-    );
-  } else {
-    const start = (page - 1) * limit + 1;
-    const end = Math.min(page * limit, blogs?.totalCount);
-    return (
-      <>
-        <Suspense fallback={<SuspenseFallback />}>
-          <div className="flex lg:flex-row flex-col my-1">
-            <section>
-              <p className="my-1">
-                Showing {start} - {end} of {blogs?.totalCount}
-              </p>
-              <SelectInBlogs sort={sort} limit={limit} page={page} />
-              <Blogs blogs={blogs} start={start} end={end} />
-              {blogs?.totalCount > limit && (
-                <Pagination
-                  currentPage={page}
-                  total={blogs?.totalCount}
-                  limit={limit}
-                />
-              )}
-            </section>
-            <section className="min-w-[200px]">
-              <CategoryPage />
-              <MostRead />
-            </section>
-          </div>
-        </Suspense>
-      </>
-    );
-  }
+    return <NotFound />;
+  return <BlogsPage blogs={blogs} page={page} limit={limit} sort={sort} />;
 };
 
 export default blogsPage;

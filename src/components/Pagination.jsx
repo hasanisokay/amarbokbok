@@ -59,7 +59,7 @@ const Pagination = ({ total, currentPage, limit }) => {
       )}
       <button
         onClick={() => handlePageChange(currentPage + 1)}
-        className={`rounded-btn border duration-300 lg:hover:scale-105 active:scale-105 scale-100 lg:hover:text-blue-500 active:text-blue-500 ${currentPage === totalPages ? 'invisible' : 'visible'}`}
+        className={`rounded-btn border duration-300 lg:hover:scale-105 active:scale-105 scale-100 hover-blue ${currentPage === totalPages ? 'invisible' : 'visible'}`}
       >
         Next
       </button>

@@ -9,6 +9,8 @@ export const GET = async (req) => {
   try {
     const searchParams = req.nextUrl.searchParams;
     const category = searchParams.get("category");
+    const keyword = searchParams.get("keyword");
+    console.log(keyword);
     const sort = searchParams.get("sort");
     const sortOrder = sort ==="newest" ? -1 : 1;
     const page = parseInt(searchParams.get("page"));
@@ -18,7 +20,6 @@ export const GET = async (req) => {
     if (!db) return NextResponse.json(dbErrorResponse);
     const query = category ? { categories: { $in: [category] } } : {};
     const blogCollection = await db.collection("blogs");
-
     const totalCount = await blogCollection.countDocuments(query);
     
     const result = await blogCollection
