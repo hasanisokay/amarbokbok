@@ -1,8 +1,7 @@
 'use client'
 import BlogCard from "./BlogCard";
 
-const Blogs = ({blogs, page , limit}) => {
-    
+const Blogs = ({blogs}) => {
     return (
         <div>
             {

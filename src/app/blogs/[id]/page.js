@@ -23,7 +23,7 @@ export async function generateMetadata({ params }) {
       const imageUrl = getImageLinkFromDelta(blog?.blog?.content);
 
       if (blog) {
-        metadata.title = blog.blog.title || "Blog";
+        metadata.title = (blog?.blog?.title + " - " + "Bonjui") || "Blog";
         metadata.description =
           deltaToPlainText(blog?.blog?.content) || "Blog post description";
         metadata.keywords.push(...blog?.blog?.title.split(" "));
@@ -33,7 +33,7 @@ export async function generateMetadata({ params }) {
             ? imageUrl
             : "https://i.ibb.co/YDMvcNN/Untitled-1-Copy.jpg",
           "twitter:card": "summary_large_image",
-          "og-title": (metadata.title = blog.blog.title || "Blog"),
+          "og-title": (metadata.title || "Blog"),
           "og-description":
             deltaToPlainText(blog?.blog?.content) || "Blog post description",
           "og-url": params?.id
@@ -48,7 +48,7 @@ export async function generateMetadata({ params }) {
   } catch (error) {
     console.error("Error fetching blog metadata:", error);
   }
-
+console.log(metadata)
   return metadata;
 }
 

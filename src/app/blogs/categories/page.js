@@ -20,7 +20,7 @@ export default page;
 export async function generateMetadata({ params }) {
   const host = await hostname();
   let metadata = {
-    title: "Categories | Bonjui",
+    title: "Categories - Bonjui",
     description: "Category Page",
     keywords: ["Blog", "Categories", "Bonjui Blog", "Ahmmad Robins Blog"],
     url: `${host}/blogs/categories`,

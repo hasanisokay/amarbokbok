@@ -3,12 +3,11 @@
 import RightIndicator from '@/svg/RightIndicator.mjs';
 import getCategories from '@/utils/getCategories.mjs';
 import { capitalize } from 'lodash';
-import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 
 const CategoryPage = () => {
     const [categories, setCategories] = useState([])
-    const router = useRouter();
     useEffect(() => {
         (async () => {
             const data = await getCategories(true)
@@ -21,12 +20,15 @@ const CategoryPage = () => {
                 <h4 className='section-heading'>ক্যাটাগরি</h4>
                 {categories?.map((c, index) =>
                     <div
-                        className="py-1 my-2 flex w-max gap-2 group cursor-pointer"
+                        className="py-1 my-2"
                         key={index}
-                        onClick={() => router.push(`/blogs/categories/${c?.category}`)}>
-                        <RightIndicator />
-                        <button className='lg:group-hover:text-blue-500 active:text-blue-500'
-                        > {capitalize(c?.category)} {`(${c?.count})`} </button>
+                    >
+                        <Link className='w-max flex gap-2 group' href={`/blogs/categories/${c?.category}`}>
+                            <RightIndicator />
+                            <button className='lg:group-hover:text-blue-500 active:text-blue-500'
+                            > {capitalize(c?.category)} {`(${c?.count})`} </button>
+                        </Link>
+
                     </div>)}
             </div>}
         </>

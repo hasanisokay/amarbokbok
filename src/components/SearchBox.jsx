@@ -1,18 +1,28 @@
 'use client'
 
+import getCategories from "@/utils/getCategories.mjs";
+import { capitalize } from "lodash";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Select from "react-select";
 
-const SearchBox = ({searchedText}) => {
+const SearchBox = ({ searchedText }) => {
     const [text, setText] = useState(searchedText || "");
     const [type, setType] = useState({ value: 'blog', label: 'Blog' });
+    const [category, setCategory] = useState({value:"any", label:"All"})
+    const [categories, setCategories] = useState([]);
     const router = useRouter();
-
+    useEffect(() => {
+        (async () => {
+            const fetchedCategories = await getCategories(); // Fetch the categories
+            const categoryOptions = fetchedCategories.map(cat => ({ value: cat, label: capitalize(cat) }));
+            setCategories([category , ...categoryOptions]);
+        })();
+    }, []);
     const handleSubmit = (e) => {
         e.preventDefault();
         if (type && text) {
-            router.push(`/search?${type?.value}=${text}`);
+        return  router.push(`/search?${type?.value}=${text}&category=${category.value}`);
         }
     };
 
@@ -31,6 +41,13 @@ const SearchBox = ({searchedText}) => {
                 options={options}
                 className="w-32"
                 placeholder="Type"
+            />
+            <Select
+                value={category}
+                onChange={setCategory}
+                options={categories}
+                className="w-32"
+                placeholder="Category"
             />
             <div className="relative">
                 <input

@@ -1,8 +1,5 @@
 'use client'
 import AuthContext from "@/contexts/AuthContext.mjs";
-import dot from "@/svg/dot.mjs";
-import calculateReadingTime from "@/utils/calculateReadingTime.mjs";
-import getTime from "@/utils/getTime.mjs";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/navigation";
 import { useContext, useEffect, useState } from "react";

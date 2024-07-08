@@ -1,11 +1,10 @@
 'use client'
 import getRecentBlogs from "@/utils/getRecentBlogs.mjs";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 const RecentBlogs = () => {
     const [recentBlogs, setRecentBlogs] = useState([]);
-    const router = useRouter();
     useEffect(() => {
         (async () => {
             const data = await getRecentBlogs()
@@ -20,9 +19,11 @@ const RecentBlogs = () => {
                     {recentBlogs?.map((blog) => <div
                         className="cursor-pointer hover-blue my-2 py-1"
                         key={blog?._id}
-                        onClick={()=>router.push(`/blogs/${blog?.blog_id}`)}
                         >
+                            <Link href={`/blogs/${blog?.blog_id}`}>
+                            
                         <p>{blog.title}</p>
+                            </Link>
                     </div>)}
                 </div>
             }

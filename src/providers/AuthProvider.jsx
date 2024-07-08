@@ -11,6 +11,7 @@ const AuthProvider = ({ children }) => {
         const getUser = async () => {
             const userData = await verifyToken();
             if (userData) setCurrentUser(userData);
+        else setCurrentUser({})
         }
         getUser()
     }, [])

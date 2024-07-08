@@ -1,4 +1,3 @@
-import { Inter } from "next/font/google";
 import "./globals.css";
 import Providers from "@/providers/Providers";
 import ScrollTop from "@/components/ScrollTop";
@@ -6,11 +5,11 @@ import Navbar from "@/components/Navbar";
 import Toaster from "@/components/Toaster";
 import { hostname } from "@/constants/hostname.mjs";
 
-const inter = Inter({ subsets: ["latin"] });
+// const inter = Inter({ subsets: ["latin"] });
 
 export async function generateMetadata() {
   return {
-    title: "Bonjui | Home",
+    title: "Bonjui - Home",
     description: "A personal website.",
     publisher: "Ahmmad Robin",
     authors: [
@@ -46,7 +45,7 @@ export const viewport = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body>
         <Providers>
           <Navbar />
           {children}

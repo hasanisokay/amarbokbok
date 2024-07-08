@@ -31,7 +31,7 @@ export default blogsPage;
 export async function generateMetadata() {
   const host = await hostname();
   let metadata = {
-    title: "Blogs | Bonjui",
+    title: "Blogs - Bonjui",
     description: "Blogs Page",
     keywords: ["Blogs", "Bonjui Blog", "Ahmmad Robins Blog"],
     url: `${host}/blogs`,
@@ -42,7 +42,7 @@ export async function generateMetadata() {
       // change the image links
       "twitter:image": "https://i.ibb.co/YDMvcNN/Untitled-1-Copy.jpg",
       "twitter:card": "summary_large_image",
-      "og-title": "Categories | Blog",
+      "og-title": "Categories - Blog",
       "og-description": "Blog categories",
       "og-url": `${host}/blogs`,
       "og:image": "https://i.ibb.co/YDMvcNN/Untitled-1-Copy.jpg",

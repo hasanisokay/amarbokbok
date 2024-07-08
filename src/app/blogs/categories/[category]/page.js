@@ -33,7 +33,7 @@ export async function generateMetadata({ params }) {
   const category = params?.category;
   const host = await hostname();
   let metadata = {
-    title: `${capitalize(category)} | Bonjui`,
+    title: `${capitalize(category)} - Bonjui`,
     description: "Category Page",
     keywords: ["Blog", "Bonjui Blog", "Ahmmad Robins Blog"],
     url: `${host}/blogs/categories`,
