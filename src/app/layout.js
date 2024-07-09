@@ -4,12 +4,13 @@ import ScrollTop from "@/components/ScrollTop";
 import Navbar from "@/components/Navbar";
 import Toaster from "@/components/Toaster";
 import { hostname } from "@/constants/hostname.mjs";
+import { websiteName } from "@/constants/constants.mjs";
 
 // const inter = Inter({ subsets: ["latin"] });
 
 export async function generateMetadata() {
   return {
-    title: "Bonjui - Home",
+    title: `${websiteName} - Home`,
     description: "A personal website.",
     publisher: "Ahmmad Robin",
     authors: [

@@ -15,7 +15,6 @@ export const GET = async () => {
       .sort({ addedOn: -1 })
       .limit(5)
       .toArray();
-      console.log(recentBlogs)
     return NextResponse.json({ recentBlogs, status: 200 });
   } catch {
     return NextResponse.json(serverErrorResponse);

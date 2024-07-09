@@ -6,17 +6,17 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import Select from "react-select";
 
-const SearchBox = ({ searchedText }) => {
+const SearchBox = ({ searchedText, searchedType, searchedCategory }) => {
     const [text, setText] = useState(searchedText || "");
-    const [type, setType] = useState({ value: 'blog', label: 'Blog' });
-    const [category, setCategory] = useState({value:"any", label:"All"})
-    const [categories, setCategories] = useState([]);
+    const [type, setType] = useState( searchedType ? {value: searchedType, label: capitalize(searchedType) } : { value: 'blog', label: 'Blog' });
+    const [category, setCategory] = useState(searchedCategory ? {value:searchedCategory, label:capitalize(searchedCategory)} : {value:"any", label:"All"})
+    const [categories, setCategories] = useState([{value:"any", label:"All"}]);
     const router = useRouter();
     useEffect(() => {
         (async () => {
             const fetchedCategories = await getCategories(); // Fetch the categories
             const categoryOptions = fetchedCategories.map(cat => ({ value: cat, label: capitalize(cat) }));
-            setCategories([category , ...categoryOptions]);
+            setCategories([...categories , ...categoryOptions]);
         })();
     }, []);
     const handleSubmit = (e) => {
@@ -34,7 +34,7 @@ const SearchBox = ({ searchedText }) => {
     ];
 
     return (
-        <form onSubmit={handleSubmit} className="my-4 relative flex items-center justify-center gap-2">
+        <form onSubmit={handleSubmit} className="my-4 relative flex text-black items-center justify-center gap-2">
             <Select
                 value={type}
                 onChange={setType}

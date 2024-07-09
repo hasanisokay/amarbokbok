@@ -2,6 +2,7 @@ import NotFound from "@/components/NotFound";
 import Sidebar from "@/components/Sidebar";
 import SingleBlogPage from "@/components/SingleBlogPage";
 import SuspenseFallback from "@/components/SuspenseFallback";
+import { websiteName } from "@/constants/constants.mjs";
 import { hostname } from "@/constants/hostname.mjs";
 import deltaToPlainText from "@/utils/deltaToPlainText.mjs";
 import getBlog from "@/utils/getBlog.mjs";
@@ -11,7 +12,7 @@ export async function generateMetadata({ params }) {
   const host = await hostname();
   const blogId = params?.id;
   let metadata = {
-    title: "Bonjui Blog",
+    title: `Blogs - ${websiteName}`,
     description: "Blog description",
     keywords: ["Blog", "Bonjui Blog", "Ahmmad Robins Blog"],
     url: params?.id ? `${host}/blogs/${params?.id}` : `${host}/blogs`,
@@ -23,7 +24,7 @@ export async function generateMetadata({ params }) {
       const imageUrl = getImageLinkFromDelta(blog?.blog?.content);
 
       if (blog) {
-        metadata.title = (blog?.blog?.title + " - " + "Bonjui") || "Blog";
+        metadata.title = (blog?.blog?.title + " - " + `${websiteName}` ) || "Blog";
         metadata.description =
           deltaToPlainText(blog?.blog?.content) || "Blog post description";
         metadata.keywords.push(...blog?.blog?.title.split(" "));
@@ -48,7 +49,6 @@ export async function generateMetadata({ params }) {
   } catch (error) {
     console.error("Error fetching blog metadata:", error);
   }
-console.log(metadata)
   return metadata;
 }
 
@@ -78,7 +78,9 @@ export default async function page({ params }) {
             <section className="lg:mx-2 mx-1">
               <SingleBlogPage blog={blog} />
             </section>
-            <Sidebar />
+           <section className="max-w-fit">
+           <Sidebar />
+           </section>
           </div>
         </Suspense>
       </>

@@ -3,12 +3,17 @@ import BlogsPage from "@/components/BlogsPage";
 import SearchBox from "@/components/SearchBox";
 import SearchPage from "@/components/SearchPage";
 import SuspenseFallback from "@/components/SuspenseFallback";
+import { websiteName } from "@/constants/constants.mjs";
+import { hostname } from "@/constants/hostname.mjs";
 import getBlogs from "@/utils/getBlogs.mjs";
+import { capitalize } from "lodash";
 import { Suspense } from "react";
 
 const page = async ({ searchParams }) => {
   let items;
   let keyword;
+  let type;
+
   const blog = searchParams?.blog;
   const audio = searchParams?.audio;
   const video = searchParams?.video;
@@ -19,10 +24,19 @@ const page = async ({ searchParams }) => {
   const category =
     searchParams?.category === "any" ? "" : searchParams.category;
 
-  if (blog) keyword = blog;
-  else if (audio) keyword = audio;
-  else if (video) keyword = video;
-  else if (book) keyword = book;
+  if (blog) {
+    keyword = blog;
+    type = "blog";
+  } else if (audio) {
+    keyword = audio;
+    type = "audio";
+  } else if (video) {
+    keyword = video;
+    type = "video";
+  } else if (book) {
+    keyword = book;
+    type = "book";
+  }
   try {
     if (blog && keyword) {
       items = await getBlogs(category, page, limit, sort, keyword);
@@ -33,14 +47,18 @@ const page = async ({ searchParams }) => {
 
   return (
     <Suspense fallback={<SuspenseFallback />}>
-      <SearchBox />
+      <SearchBox searchedText={keyword}  searchedType={type} searchedCategory={category}/>
 
-      {blog && items && (
+      {blog && items?.blogs?.length > 0 && (
         <BlogsPage blogs={items} limit={limit} sort={sort} page={page} />
       )}
-      {Object.keys(searchParams).length > 0 && keyword && !items && (
-        <p>Nothing found with {keyword}</p>
-      )}
+      {Object.keys(searchParams).length > 0 &&
+        keyword &&
+        items?.blogs?.length === 0 && (
+          <h4 className="text-center">
+            Nothing found with <span className="italic">{keyword}</span>
+          </h4>
+        )}
       {Object.keys(searchParams).length > 0 && (
         <SearchPage searchParams={searchParams} />
       )}
@@ -50,20 +68,49 @@ const page = async ({ searchParams }) => {
 
 export default page;
 
-export async function generateMetadata() {
+export async function generateMetadata({searchParams}) {
+  let keyword;
+  let type;
+
+  const blog = searchParams?.blog;
+  const audio = searchParams?.audio;
+  const video = searchParams?.video;
+  const book = searchParams?.book;
+
+  if (blog) {
+    keyword = blog;
+    type = "blog";
+  } else if (audio) {
+    keyword = audio;
+    type = "audio";
+  } else if (video) {
+    keyword = video;
+    type = "video";
+  } else if (book) {
+    keyword = book;
+    type = "book";
+  }
+  const host = await hostname();
   return {
-    title: "Search - Bonjui",
+    title: `${keyword + " in " + capitalize(type)  || "Search"} - ${websiteName}`,
     description: "Search in this website.",
-    keywords: ["Personal Website", "Search", "Search Bojui", "Blogs", "Jharfuk", "Ahmmad Robins Blogs"],
+    keywords: [
+      "Personal Website",
+      "Search",
+      "Search Bojui",
+      "Blogs",
+      "Jharfuk",
+      "Ahmmad Robins Blogs",
+    ],
     other: {
       "twitter:image": "https://i.ibb.co/89yqcW8/home-page.jpg",
       "twitter:card": "summary_large_image",
-      "og-url": `${hostname}/search`,
+      "og-url": `${host}/search`,
       "og:image": "https://i.ibb.co/89yqcW8/home-page.jpg",
       "og:type": "website",
       locale: "en_US",
     },
     image: "https://i.ibb.co/89yqcW8/home-page.jpg",
-    url: `${hostname}/search`,
+    url: `${host}/search`,
   };
 }

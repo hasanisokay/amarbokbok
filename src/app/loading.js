@@ -1,7 +1,7 @@
 import Spinner from "@/loaders/Spinner";
 
-const loading = () => {
+const rootLoading = () => {
   return <Spinner />;
 };
 
-export default loading;
+export default rootLoading;

@@ -1,3 +1,5 @@
+import { websiteName } from "@/constants/constants.mjs";
+
 const resizeImage = (file, maxWidth, maxHeight) => {
   return new Promise((resolve) => {
     const img = document.createElement('img');
@@ -25,7 +27,7 @@ const resizeImage = (file, maxWidth, maxHeight) => {
       ctx.drawImage(img, 0, 0, width, height);
       // canvas.toBlob(resolve, file.type, 1);
       canvas.toBlob((blob) => {
-        const resizedFile = new File([blob], 'bonjui_blogs', { type: file.type });
+        const resizedFile = new File([blob], `${websiteName}_blogs`, { type: file.type });
         resolve(resizedFile);
       }, file.type || 'image/png', 1);
     };

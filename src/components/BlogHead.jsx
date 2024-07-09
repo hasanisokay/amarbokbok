@@ -13,7 +13,7 @@ const BlogHead = ({ blog, clickable }) => {
             </h3> 
             : 
             <h2>{blog?.title}</h2> }
-            <div className='text-gray dark:text-slate-300 flex items-center text-sm py-1 gap-1'>
+            <div className='text-gray flex items-center text-sm py-1 gap-1'>
                 <p className='flex gap-1 items-center'> <span>{calculateReadingTime(blog?.content)} min read</span> <Dot /> <span>{getTime(blog?.addedOn)}</span></p>
             </div>
             <p className='text-sm'>Categories: {blog?.categories?.map((c, i) => <Link href={`/blogs/categories/${c}`} className="mr-1 text-blue-500 cursor-pointer" key={i}>{c}</Link>)}</p>

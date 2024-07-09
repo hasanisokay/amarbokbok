@@ -1,6 +1,7 @@
 "use server"
 import BlogsPage from "@/components/BlogsPage";
 import NotFound from "@/components/NotFound";
+import { websiteName } from "@/constants/constants.mjs";
 import { hostname } from "@/constants/hostname.mjs";
 import getBlogs from "@/utils/getBlogs.mjs";
 
@@ -31,7 +32,7 @@ export default blogsPage;
 export async function generateMetadata() {
   const host = await hostname();
   let metadata = {
-    title: "Blogs - Bonjui",
+    title: `Blogs - ${websiteName}`,
     description: "Blogs Page",
     keywords: ["Blogs", "Bonjui Blog", "Ahmmad Robins Blog"],
     url: `${host}/blogs`,

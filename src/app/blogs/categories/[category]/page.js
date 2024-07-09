@@ -1,6 +1,7 @@
 'use server'
 import BlogsPage from "@/components/BlogsPage";
 import NotFound from "@/components/NotFound";
+import { websiteName } from "@/constants/constants.mjs";
 import { hostname } from "@/constants/hostname.mjs";
 import getBlogs from "@/utils/getBlogs.mjs";
 import { capitalize } from "lodash";
@@ -33,7 +34,7 @@ export async function generateMetadata({ params }) {
   const category = params?.category;
   const host = await hostname();
   let metadata = {
-    title: `${capitalize(category)} - Bonjui`,
+    title: `${capitalize(category)} - ${websiteName}`,
     description: "Category Page",
     keywords: ["Blog", "Bonjui Blog", "Ahmmad Robins Blog"],
     url: `${host}/blogs/categories`,

@@ -2,6 +2,7 @@
 import CategoryPage from "@/components/CategoryPage";
 import Sidebar from "@/components/Sidebar";
 import SuspenseFallback from "@/components/SuspenseFallback";
+import { websiteName } from "@/constants/constants.mjs";
 import { hostname } from "@/constants/hostname.mjs";
 import { Suspense } from "react";
 
@@ -20,7 +21,7 @@ export default page;
 export async function generateMetadata({ params }) {
   const host = await hostname();
   let metadata = {
-    title: "Categories - Bonjui",
+    title: `Categories - ${websiteName}`,
     description: "Category Page",
     keywords: ["Blog", "Categories", "Bonjui Blog", "Ahmmad Robins Blog"],
     url: `${host}/blogs/categories`,

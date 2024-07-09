@@ -24,30 +24,25 @@ const SelectInBlogs = ({ sort, limit, page }) => {
         query.set('page', page);
         query.set('sort', selectedSort.value);
         query.set('limit', selectedLimit.value);
-
-        // Shallow routing for limit changes
         router.replace(`${window.location.pathname}?${query.toString()}`, undefined, { shallow: selectedSort.value === sort });
-        // if (selectedSort.value !== sort) {
-        //     // Full page reload for sort changes
-        //     window.location.reload();
-        // }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [selectedSort, selectedLimit]);
 
 
 
     return (
-        <div className='flex gap-2'>
+        <div className='flex mb-4 text-black gap-2'>
             <Select
                 defaultValue={selectedSort}
                 options={sortOptions}
                 onChange={(e) => setSelectedSort(e)}
-                className="mb-4 w-fit"
+                className=" w-fit"
             />
             <Select
                 defaultValue={selectedLimit}
                 options={limitOptions}
                 onChange={setSelectedLimit}
-                className="mb-4 w-fit"
+                className=" w-fit"
             />
         </div>
     );
