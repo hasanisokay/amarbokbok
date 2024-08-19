@@ -9,7 +9,7 @@ import getBlogs from "@/utils/getBlogs.mjs";
 import { capitalize } from "lodash";
 import { Suspense } from "react";
 
-const page = async ({ searchParams }) => {
+const searchPage = async ({ searchParams }) => {
   let items;
   let keyword;
   let type;
@@ -66,7 +66,7 @@ const page = async ({ searchParams }) => {
   );
 };
 
-export default page;
+export default searchPage;
 
 export async function generateMetadata({searchParams}) {
   let keyword;
@@ -92,7 +92,7 @@ export async function generateMetadata({searchParams}) {
   }
   const host = await hostname();
   return {
-    title: `${keyword + " in " + capitalize(type)  || "Search"} - ${websiteName}`,
+    title: `${keyword ? keyword + " in " + capitalize(type)  : "Search"} - ${websiteName}`,
     description: "Search in this website.",
     keywords: [
       "Personal Website",

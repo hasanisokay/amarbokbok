@@ -10,6 +10,7 @@ export const GET = async (req) => {
     const searchParams = req.nextUrl.searchParams;
     const category = searchParams.get("category");
     const keyword = searchParams.get("keyword");
+    const titleOnly = searchParams.get("titleOnly");
     const sort = searchParams.get("sort");
     const sortOrder = sort === "newest" ? -1 : 1;
     const page = parseInt(searchParams.get("page"));
@@ -36,19 +37,24 @@ export const GET = async (req) => {
       matchStage.$or = [
         { "content.ops.insert": { $regex: keyword, $options: "i" } },
         { title: { $regex: keyword, $options: "i" } },
-        { blog_id: { $regex: keyword, $options: "i" } }
+        { blog_id: { $regex: keyword, $options: "i" } },
       ];
     }
-
     const blogCollection = await db.collection("blogs");
     const result = await blogCollection
-      .find(matchStage)
+      .find(
+        matchStage,
+        titleOnly && {
+          projection: { title: 1, blog_id: 1, readCount: 1, addedOn: 1 , categories: 1},
+        }
+      )
       .sort({ addedOn: sortOrder })
       .skip(skip)
       .limit(limit)
       .toArray();
+    if (titleOnly) return NextResponse.json(result);
     let totalCount;
-    if (result?.length === limit ) {
+    if (result?.length === limit) {
       totalCount = await blogCollection.countDocuments(matchStage);
     } else {
       totalCount = result?.length;

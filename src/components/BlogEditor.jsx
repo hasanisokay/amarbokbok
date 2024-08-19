@@ -119,7 +119,7 @@ const BlogEditor = ({ postId }) => {
       {uploadPercentage !== 0 && <Progress number={uploadPercentage} />}
       <div className="relative w-max rounded-lg my-1 mx-2">
         <input value={title} onChange={(e) => setTitle(e.target.value)} className="peer rounded-lg border  bg-transparent px-4 py-2  focus:outline-none" type="text" placeholder="" id="title" />
-        <label className="absolute -top-2 left-[10px] rounded-md px-2 text-xs text-slate-400 duration-300 peer-placeholder-shown:left-[14px] peer-placeholder-shown:top-3  peer-placeholder-shown:bg-transparent peer-placeholder-shown:text-sm peer-focus:-top-2 peer-focus:left-[10px] peer-focus:bg-sky-300 peer-focus:text-xs peer-focus:text-sky-800 dark:peer-focus:text-sky-400 dark:peer-focus:bg-[#0F172A]" htmlFor="title">
+        <label className="absolute -top-2 left-[10px] rounded-md px-2 text-xs bg-slate-400 duration-300 peer-placeholder-shown:left-[14px] peer-placeholder-shown:top-3  peer-placeholder-shown:bg-transparent peer-placeholder-shown:text-sm peer-focus:-top-2 peer-focus:left-[10px] peer-focus:text-xs  dark:peer-focus:bg-[#0F172A] text-black" htmlFor="title">
           Title
         </label>
       </div>
@@ -129,6 +129,7 @@ const BlogEditor = ({ postId }) => {
             options={loadingCategory ? [{ value: '', label: 'Loading...' }] : availableCategories?.map(category => ({ value: category, label: category }))}
             onChange={option => setSelectedCategories((prev) => [...prev, option.value])}
             // onChange={option => console.log(option)}
+           className='text-black'
             onMenuOpen={fetchCategories}
             placeholder="Select from previous category"
           />

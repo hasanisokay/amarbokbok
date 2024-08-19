@@ -1,3 +1,4 @@
+"use server";
 import NotFound from "@/components/NotFound";
 import Sidebar from "@/components/Sidebar";
 import SingleBlogPage from "@/components/SingleBlogPage";
@@ -11,6 +12,7 @@ import { Suspense } from "react";
 export async function generateMetadata({ params }) {
   const host = await hostname();
   const blogId = params?.id;
+
   let metadata = {
     title: `Blogs - ${websiteName}`,
     description: "Blog description",
@@ -24,7 +26,7 @@ export async function generateMetadata({ params }) {
       const imageUrl = getImageLinkFromDelta(blog?.blog?.content);
 
       if (blog) {
-        metadata.title = (blog?.blog?.title + " - " + `${websiteName}` ) || "Blog";
+        metadata.title = (blog?.blog?.title || "Not Found") + " - " + `${websiteName}`;
         metadata.description =
           deltaToPlainText(blog?.blog?.content) || "Blog post description";
         metadata.keywords.push(...blog?.blog?.title.split(" "));
@@ -34,7 +36,7 @@ export async function generateMetadata({ params }) {
             ? imageUrl
             : "https://i.ibb.co/YDMvcNN/Untitled-1-Copy.jpg",
           "twitter:card": "summary_large_image",
-          "og-title": (metadata.title || "Blog"),
+          "og-title": metadata.title || "Blog",
           "og-description":
             deltaToPlainText(blog?.blog?.content) || "Blog post description",
           "og-url": params?.id
@@ -69,20 +71,18 @@ export default async function page({ params }) {
     !blog ||
     blog?.error
   )
-    return <NotFound />
+    return <NotFound />;
   else
     return (
-      <>
-        <Suspense fallback={<SuspenseFallback />}>
-          <div className="blog-layout">
-            <section className="lg:mx-2 mx-1">
-              <SingleBlogPage blog={blog} />
-            </section>
-           <section className="max-w-fit">
-           <Sidebar />
-           </section>
-          </div>
-        </Suspense>
-      </>
+      <Suspense fallback={<SuspenseFallback />}>
+        <div className="blog-layout">
+          <section className="lg:mx-2 mx-1">
+            <SingleBlogPage blog={blog} />
+          </section>
+          <section className="max-w-fit">
+            <Sidebar />
+          </section>
+        </div>
+      </Suspense>
     );
 }

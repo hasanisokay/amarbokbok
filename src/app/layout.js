@@ -1,10 +1,10 @@
 import "./globals.css";
 import Providers from "@/providers/Providers";
-import ScrollTop from "@/components/ScrollTop";
 import Navbar from "@/components/Navbar";
 import Toaster from "@/components/Toaster";
 import { hostname } from "@/constants/hostname.mjs";
 import { websiteName } from "@/constants/constants.mjs";
+import Footer from "@/components/Footer";
 
 // const inter = Inter({ subsets: ["latin"] });
 
@@ -45,12 +45,14 @@ export const viewport = {
 };
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body>
+    <html lang="en" className="" >
+      <body className="transition-colors">
         <Providers>
-          <Navbar />
-          {children}
-          <ScrollTop />
+          <header className="min-h-[60px]">
+            <Navbar />
+          </header>
+          <main className="min-h-[calc(100vh-100px)]">{children}</main>
+          <Footer />
         </Providers>
         <Toaster />
       </body>

@@ -1,14 +1,35 @@
-// QuillRenderer.js
 'use client'
-import React from 'react';
-// import Image from 'next/image';
+import { useEffect, useRef, useState } from 'react';
 import Quill from 'quill';
 import CustomImageBlot from './CustomImageBlot';
 import Image from 'next/image';
 
-
 const QuillRenderer = ({ content }) => {
-  if (!content) return null;
+  const containerRef = useRef(null);
+  const [quill, setQuill] = useState(null);
+
+  useEffect(() => {
+    if (!content || !containerRef.current) return;
+    const quillInstance = new Quill(containerRef.current, {
+      readOnly: true,
+      theme: null,
+    });
+    setQuill(quillInstance);
+  }, []);
+
+  useEffect(() => {
+    if (!quill || !content) return;
+
+    quill.setContents(content);
+
+    Array.from(containerRef.current.children).forEach((child) => {
+      const blot = Quill.find(child);
+      if (blot instanceof CustomImageBlot) {
+        const imageElement = renderCustomImage(CustomImageBlot.value(child));
+        child.replaceWith(imageElement);
+      }
+    });
+  }, [quill, content]);
 
   const renderCustomImage = (value) => {
     const { url, alt, width, height } = value;
@@ -17,8 +38,8 @@ const QuillRenderer = ({ content }) => {
         <Image
           src={url}
           alt={alt || 'Blog_Image'}
-          width={100} // Default width if 'auto'
-          height={100} // Default height if 'auto'
+          width={width || 100}
+          height={height || 100}
           layout="responsive"
           style={{ maxWidth: '100%', height: 'auto', }}
         />
@@ -26,25 +47,7 @@ const QuillRenderer = ({ content }) => {
     );
   };
 
-  const delta = content;
-  const container = document.createElement('div');
-  const quill = new Quill(container, {
-    readOnly: true, 
-    theme: null,
-  });
-  quill.setContents(delta);
-
-  return (
-    <div>
-      {Array.from(container.children).map((child, index) => {
-        const blot = Quill.find(child);
-        if (blot instanceof CustomImageBlot) {
-          return <div key={index}>{renderCustomImage(CustomImageBlot.value(child))}</div>;
-        }
-        return <div key={index} dangerouslySetInnerHTML={{ __html: child.outerHTML }} />;
-      })}
-    </div>
-  );
+  return <div ref={containerRef}></div>;
 };
 
 export default QuillRenderer;

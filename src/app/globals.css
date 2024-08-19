@@ -85,6 +85,10 @@ h4 {
   gap: 1rem;
   margin: 0.25rem; 
 }
+.nav-menu li{
+  margin-top: 0.5rem; 
+  margin-bottom: 0.5rem; 
+}
 
 @media (min-width: 768px) {
   .blog-layout {
@@ -98,7 +102,9 @@ h4 {
     margin: 3rem; 
   }
 }
-
+.container{
+@apply lg:mx-10 md:mx-6 mx-4 
+}
 .shadow1 {
   background-color: #ffffff;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.5); /* Horizontal offset, vertical offset, blur radius, color */
@@ -121,10 +127,10 @@ h4 {
   color: white;
 }
 .btn-red {
-  padding: 5px;
+  padding: 6px 12px;
   background-image: linear-gradient(160deg, #ff0f10 0%, #e5adad 100%);
   border-radius: 5px;
-  font-size: 10px;
+  font-size: 12px;
   color: white;
   font-weight: 600;
 }
