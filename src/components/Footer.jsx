@@ -8,7 +8,7 @@ import Phone from "@/svg/Phone.mjs";
 const Footer = () => {
     const currentYear = new Date().getFullYear()
     return (
-        <footer className="flex flex-col dark:bg-[#333] bg-[#a79292] ">
+        <footer className="flex flex-col dark:bg-[#333] bg-[#f8ffff] ">
             <div className="flex flex-col items-center justify-around gap-5 bg-gray-300 py-8 dark:bg-gray-500 md:flex-row md:gap-0">
                 <section>
                     <h5 className="text-2xl font-bold">{websiteName}</h5>

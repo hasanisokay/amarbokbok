@@ -42,12 +42,41 @@ export const GET = async (req) => {
     if (!db) return NextResponse.json(dbErrorResponse);
     const commentCollection = await db.collection("comments");
 
-    const result = await commentCollection
-      .find(matchStage)
-      .sort({ submittedOn: sortOrder })
-      .skip(skip)
-      .limit(limit)
-      .toArray();
+    const result = await commentCollection.aggregate([
+      { $match: matchStage },
+      { $sort: { submittedOn: sortOrder } },
+      { $skip: skip },
+      { $limit: limit },
+      {
+        $addFields: {
+          filteredReplies: {
+            $filter: {
+              input: "$replies",
+              as: "reply",
+              cond: { $eq: ["$$reply.status", matchStage.status] }, // Dynamic filtering
+            },
+          },
+        },
+      },
+      // {
+      //   $addFields: {
+      //     filteredReplies: { $reverseArray: "$filteredReplies" }, // Sort replies
+      //   },
+      // },
+      {
+        $project: {
+          _id: 1,
+          ip: 1,
+          status: 1,
+          replies: "$filteredReplies",
+          submittedOn: 1,
+          name: 1,
+          comment: 1,
+          blog_id: 1,
+        },
+      },
+    ]).toArray();
+
     let totalCount;
     if (result?.length === limit) {
       totalCount = await blogCollection.countDocuments(matchStage);

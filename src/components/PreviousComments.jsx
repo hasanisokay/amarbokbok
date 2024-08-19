@@ -12,12 +12,11 @@ const PreviousComments = ({ blog_id }) => {
     const [totalCount, setTotalCount] = useState(10);
     useEffect(() => {
         (async () => {
-            const c = await getComments(1, 10, 'newest', blog_id, true,);
-            setTotalCount(c.totalCount)
-            setComments(c.comments);
+            const c = await getComments(1, 10, 'newest', blog_id, true);
+            setTotalCount(c?.totalCount)
+            setComments(c?.comments);
         })()
     }, [limit])
-    console.log(comments)
     return (
         <div className="my-6">
             {
