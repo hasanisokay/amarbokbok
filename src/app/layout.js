@@ -26,13 +26,13 @@ export async function generateMetadata() {
       "color-scheme": ["dark", "light"],
       "twitter:image": "https://i.ibb.co/89yqcW8/home-page.jpg",
       "twitter:card": "summary_large_image",
-      "og-url": `${hostname}`,
+      "og-url": `${await hostname()}`,
       "og:image": "https://i.ibb.co/89yqcW8/home-page.jpg",
       "og:type": "website",
       locale: "en_US",
     },
     image: "https://i.ibb.co/89yqcW8/home-page.jpg",
-    url: `${hostname}`,
+    url: `${await hostname()}`,
   };
 }
 

@@ -1,9 +1,8 @@
 "use server"
 import { headers } from "next/headers";
 export const hostname = async () => {
-  const h = headers();
-  const hostname = h.headers.host;
-  
+  const headersList = headers()
+  const hostname = headersList.get('host') || 'localhost'; 
   const env = process.env.NODE_ENV;
   if (env == "development") {
     return `http://${hostname}`;

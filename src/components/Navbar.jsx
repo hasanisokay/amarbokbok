@@ -10,7 +10,6 @@ import useTheme from "@/hooks/useTheme.mjs";
 const Navbar = () => {
     const [visible, setVisible] = useState(true);
     const { theme } = useTheme();
-    console.log(theme)
     const [lastScrollY, setLastScrollY] = useState(0);
     const [menuOpen, setMenuOpen] = useState(false);
     const { currentUser } = useContext(AuthContext);
