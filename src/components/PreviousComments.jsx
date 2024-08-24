@@ -6,13 +6,13 @@ import Comment from "./Comment";
 
 
 const PreviousComments = ({ blog_id }) => {
-    // const getComments = async (page, limit, sort, pendingOnly, approvedOnly, all, keyword) => {
+    // (page, limit, sort, blog_id, approvedOnly, pendingOnly, all, keyword="")
     const [comments, setComments] = useState([])
     const [limit, setLimit] = useState(10);
     const [totalCount, setTotalCount] = useState(10);
     useEffect(() => {
         (async () => {
-            const c = await getComments(1, 10, 'newest', blog_id, true);
+            const c = await getComments(1, 100, 'newest', blog_id, true,"","");
             setTotalCount(c?.totalCount)
             setComments(c?.comments);
         })()

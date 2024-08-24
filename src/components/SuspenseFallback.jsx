@@ -1,9 +1,10 @@
+import Spinner from "@/loaders/Spinner";
 
 const SuspenseFallback = () => {
     return (
-        <div>
-            Please Wait
-        </div>
+        <>
+            <Spinner />
+        </>
     );
 };
 

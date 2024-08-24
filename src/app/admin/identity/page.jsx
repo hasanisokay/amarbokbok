@@ -1,11 +1,11 @@
 'use client'
 import AuthContext from "@/contexts/AuthContext.mjs";
 import changePassword from "@/serverActions/changePassword.mjs";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import toast from "react-hot-toast";
 
 export default function Page() {
-  const [error, setError] = useState("")
+
   const { currentUser } = useContext(AuthContext);
 
   return (
@@ -65,7 +65,6 @@ export default function Page() {
           required
         />
       </div>
-      <p className="text-red-500 text-center">{error}</p>
       <button className="rounded-md mt-4 btn-green px-4 py-2 text-white transition-colors">
         Submit
       </button>

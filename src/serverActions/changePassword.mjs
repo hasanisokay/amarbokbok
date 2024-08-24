@@ -1,4 +1,4 @@
-"use server";
+"use server"
 
 import dbConnect from "@/services/dbConnect.mjs";
 import bcrypt from "bcrypt";

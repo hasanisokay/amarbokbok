@@ -1,9 +1,8 @@
 import "./spinner.css";
 const Spinner = () => {
     return (
-        <div>
-            <span className="loader"></span>
-
+        <div className="flex items-center justify-center mt-10">
+            <span className="loader border dark:border-white border-black"></span>
         </div>
     );
 };

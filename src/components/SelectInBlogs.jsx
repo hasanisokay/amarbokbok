@@ -1,7 +1,7 @@
 'use client'
 import { useRouter } from 'next/navigation';
 import React, { useState, useEffect } from 'react';
-import Select from 'react-select';
+import CustomSelect from './CustomSelect';
 
 const SelectInBlogs = ({ sort, limit, page }) => {
     const router = useRouter();
@@ -32,17 +32,15 @@ const SelectInBlogs = ({ sort, limit, page }) => {
 
     return (
         <div className='flex mb-4 text-black gap-2'>
-            <Select
+            <CustomSelect
                 defaultValue={selectedSort}
                 options={sortOptions}
                 onChange={(e) => setSelectedSort(e)}
-                className=" w-fit"
             />
-            <Select
+            <CustomSelect
                 defaultValue={selectedLimit}
                 options={limitOptions}
                 onChange={setSelectedLimit}
-                className=" w-fit"
             />
         </div>
     );

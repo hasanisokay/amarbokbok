@@ -94,7 +94,6 @@ const BlogEditor = ({ postId }) => {
             content: contentToSave,
             addedOn: date,
             blog_id: blogId,
-            comments: [],
             readCount: 0,
             title: title,
             categories: selectedCategories
@@ -186,7 +185,7 @@ const BlogEditor = ({ postId }) => {
             onChange={(e) => setDate(new Date(e.target.value))}
             className="w-fit border mt-2 text-gray-700 bg-white  text-black rounded-lg shadow-sm focus:outline-none"
           />
-          <small>Leave unchanged to use the {content?.timestamp ? "previous" : "current"} date.</small>
+          <small>Leave unchange to use the {content?.timestamp ? "previous" : "current"} date.</small>
         </div>
       </div>
 
