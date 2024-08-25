@@ -4,8 +4,9 @@ import { useEffect, useState } from "react";
 import CustomSelect from "./CustomSelect";
 import SearchComment from "./SearchComment";
 
-const PendingCommentsHead = ({ sort, commentType, limit, keyword }) => {
+const PendingCommentsHead = ({ sort, page, commentType, limit, keyword }) => {
     const router = useRouter();
+    const [currentPage, setCurrentPage] = useState(page)
     const [selectedSort, setSelectedSort] = useState({ value: sort, label: sort === 'newest' ? 'Newest' : 'Oldest' });
     const [selectedLimit, setSelectedLimit] = useState({ value: limit, label: `${limit} items per page` });
     const [type, setType] = useState({
@@ -37,6 +38,7 @@ const PendingCommentsHead = ({ sort, commentType, limit, keyword }) => {
         query.set('limit', selectedLimit.value);
         query.set('type', type.value);
         query.set('keyword', search);
+        query.set('page', currentPage);
 
         router.replace(`${window.location.pathname}?${query.toString()}`, undefined, { shallow: selectedSort.value === sort });
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -45,7 +47,7 @@ const PendingCommentsHead = ({ sort, commentType, limit, keyword }) => {
 
     return (
 <>
-<div className="flex gap-4 flex-wrap items-center justify-center mt-4">
+<div className="flex gap-4 flex-wrap items-center justify-center my-4">
             <CustomSelect
                 defaultValue={selectedSort}
                 options={sortOptions}

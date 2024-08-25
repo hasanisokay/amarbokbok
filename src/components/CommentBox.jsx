@@ -13,10 +13,8 @@ const CommentBox = ({ isComment, blog_id, isReply, comment_id }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log('h')
-        if (isComment && !blog_id) return console.log("1");
-        if (isReply && !comment_id) return console.log("1");
-        console.log(3)
+        if (isComment && !blog_id) return;
+        if (isReply && !comment_id) return; 
         !isAnonymous && localStorage.setItem("commenter", name)
         const apiUrl = isComment ? "/api/new-comment" : "/api/new-reply"
         const formData = {
@@ -38,7 +36,6 @@ const CommentBox = ({ isComment, blog_id, isReply, comment_id }) => {
             },
             body: JSON.stringify(formData)
         })
-        console.log(res)
         const data = await res.json();
         if (data?.status === 200) {
             toast.success(data?.message);

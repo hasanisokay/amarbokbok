@@ -4,7 +4,6 @@ import Link from "next/link";
 
 const page = async () => {
   const blogs = await getBlogs("", 1, 10000, "newest", "", true);
-  console.log(blogs);
   return (
     <div className="container">
       <h4>Total: {blogs?.length}</h4>

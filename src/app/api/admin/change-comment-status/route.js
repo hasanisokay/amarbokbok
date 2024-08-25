@@ -4,7 +4,6 @@ import {
 } from "@/constants/constants.mjs";
 import dbConnect from "@/services/dbConnect.mjs";
 import { ObjectId } from "mongodb";
-import { revalidatePath } from "next/cache";
 import { NextResponse } from "next/server";
 
 export const POST = async (req) => {
@@ -42,19 +41,15 @@ export const POST = async (req) => {
         );
       }
     }
+
     if (result.deletedCount > 0) {
-      revalidatePath("/admin/pending-comments");
       return NextResponse.json({ message: "Deleted", status: 200 });
     } else if (result.modifiedCount > 0) {
-      revalidatePath("/admin/pending-comments");
       return NextResponse.json({ message: "Approved", status: 200 });
     } else {
       return NextResponse.json({ message: "No changes made", status: 400 });
     }
-
-
   } catch {
     return NextResponse.json(serverErrorResponse);
   }
-
 };

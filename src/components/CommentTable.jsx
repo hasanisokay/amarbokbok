@@ -26,24 +26,30 @@ const CommentTable = ({ comments }) => {
     {
       Header: 'Name',
       accessor: 'name',
+      Cell: ({ value }) => (
+        <span className="max-w-fit">{value}</span>
+      )
     },
     {
       Header: 'Status',
       accessor: 'status',
       Cell: ({ value }) => (
-        <span className={`${value === "approved" ? "text-green-500" : "text-yellow-500"}`}>{value}</span>
+        <span className={`${value === "approved" ? "text-green-500" : "text-yellow-500"} max-w-fit`}>{value}</span>
       )
     },
     {
       Header: 'Comment',
       accessor: 'comment',
       Cell: ({ value }) => (
-        <span className='max-w-[300px] h-auto'>{value}</span>
+        <p className='lg:w-auto md:min-w-[600px] min-w-[300px] h-auto'>{value}</p>
       )
     },
     {
       Header: 'Ip',
       accessor: 'ip',
+      Cell: ({ value }) => (
+        <span className="w-fit">{value}</span>
+      )
     },
     {
       Header: 'Blog',
@@ -64,7 +70,7 @@ const CommentTable = ({ comments }) => {
       Header: 'Actions',
       accessor: '_id',
       Cell: ({ row }) => (
-        <div className='flex gap-2 flex-wrap'>
+        <div className='flex gap-2 flex-wrap w-auto h-auto'>
           <button className='text-red-500 font-semibold' onClick={() => deleteComment(row?.original?._id, "")}>Delete</button>
           {row.original.status === 'pending' && (
             <button className=' text-green-500 font-semibold' onClick={() => approveComment(row?.original?._id, "")}>Approve</button>
@@ -101,7 +107,7 @@ const CommentTable = ({ comments }) => {
           return (
             <React.Fragment key={i}>
               <tr {...row.getRowProps()} key={i}>
-                {row.cells.map((cell, index) => (
+                {row?.cells?.map((cell, index) => (
                   <td {...cell.getCellProps()} key={index} style={{ padding: '10px', borderBottom: '1px solid gray' }}>
                     {cell.render('Cell')}
                   </td>
@@ -129,12 +135,12 @@ const CommentTable = ({ comments }) => {
                             <td>{reply.name}</td>
                             <td className={`${reply.status === "approved" ? "text-green-500" : "text-yellow-500"}`}>{reply.status}</td>
                             <td className='max-w-[300px] h-auto'>{reply.reply}</td>
-                            <td>{reply.ip}</td>
-                            <td>{getTimeWithHours(reply.submittedOn)}</td>
+                            <td>{reply?.ip}</td>
+                            <td>{getTimeWithHours(reply?.submittedOn)}</td>
                             <td className='flex gap-2 flex-wrap'>
-                              <button className='text-red-500 font-semibold' onClick={() => deleteComment(row.original._id, reply._id)}>Delete</button>
+                              <button className='text-red-500 font-semibold' onClick={() => deleteComment(row?.original?._id, reply?._id)}>Delete</button>
                               {reply.status === 'pending' && (
-                                <button className=' text-green-500 font-semibold' onClick={() => approveComment(row.original._id, reply._id)}>Approve</button>
+                                <button className=' text-green-500 font-semibold' onClick={() => approveComment(row?.original?._id, reply?._id)}>Approve</button>
                               )}
                             </td>
                           </tr>
@@ -153,7 +159,6 @@ const CommentTable = ({ comments }) => {
 };
 
 const approveComment = async (comment_id, reply_id = null) => {
-  console.log('Approving comment with ID:', comment_id, 'and reply ID:', reply_id);
   const host = await hostname();
   const res = await fetch(`${host}/api/admin/change-comment-status`, {
     method: "POST",
@@ -167,6 +172,7 @@ const approveComment = async (comment_id, reply_id = null) => {
   const data = await res.json();
   if (data.status === 200) {
     toast.success(data?.message)
+    window.location.reload()
   } else {
     toast.error(data?.message)
   }
@@ -186,6 +192,7 @@ const deleteComment = async (comment_id, reply_id = null) => {
   const data = await res.json();
   if (data?.status === 200) {
     toast.success(data?.message)
+  window.location.reload()
   } else {
     toast.error(data?.message)
   }

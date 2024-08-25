@@ -90,7 +90,6 @@ export const GET = async (req) => {
         },
       });
     }
-
     const result = await commentCollection.aggregate(pipeline).toArray();
     const totalCount = await commentCollection.countDocuments(matchStage);
 
