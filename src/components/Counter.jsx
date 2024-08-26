@@ -9,13 +9,16 @@ const Counter = () => {
     const [blogs, setBlogs] = useState(0);
     const [totalRead, setTotalRead] = useState(0);
     const [totalComments, setTotalComments] = useState(0);
-    const [targets, setTargets] = useState(null);
+    const [targets, setTargets] = useState({
+        blogs: 0,
+        totalRead: 0,
+        totalComments: 0,
+    });
 
     useEffect(() => {
-        // Fetch target values from API
         const fetchTargets = async () => {
             try {
-                const response = await fetch('/api/counter-targets', { next: { revalidate: 600 } }); // Replace with your API endpoint
+                const response = await fetch('/api/counter-targets', { next: { revalidate: 600 } });
                 const data = await response.json();
                 setTargets({
                     blogs: data.blogs,
@@ -56,12 +59,9 @@ const Counter = () => {
         }
     }, [targets]);
 
-    if (!targets) {
-        return <p></p>; // or a skeleton loader
-    }
 
     return (
-        <div className="flex flex-wrap gap-4 items-center justify-center mt-10">
+        <div className="min-h-[130px] mt-10 flex flex-wrap gap-4 items-center justify-center">
             <div className='counter-card'>
                 {blog()}
                 <h3 className="text-2xl font-bold">{blogs}</h3>

@@ -1,9 +1,6 @@
 import CustomSVG from "@/animation/CustomSVG";
 import Counter from "@/components/Counter";
-import blog from "@/svg/blog.mjs";
-import Image from "next/image";
-import Link from "next/link";
-
+import HomeMenu from "@/components/HomeMenu";
 export default function Home() {
   return (
     <section>
@@ -21,15 +18,7 @@ export default function Home() {
         </h1>
       </div>
       <Counter />
-      <div>
-        <Link className="text-center w-[200px] h-auto" href={"/blogs"}>
-          {blog("100px", "100px")}
-          <span className="text-[20px] font-semibold">Blogs</span>
-        </Link>
-        <div>
-          {/* <Image alt="about-me" src={} /> */}
-        </div>
-      </div>
+      <HomeMenu />
     </section>
   );
 }
