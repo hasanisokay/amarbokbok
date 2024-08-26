@@ -90,9 +90,13 @@ export const GET = async (req) => {
         },
       });
     }
+    let totalCount;
     const result = await commentCollection.aggregate(pipeline).toArray();
-    const totalCount = await commentCollection.countDocuments(matchStage);
-
+    if(result.length ===limit ){
+      totalCount = await commentCollection.countDocuments(matchStage);
+    }else{
+      totalCount = result?.length;
+    }
     return NextResponse.json({ comments: result, totalCount });
   } catch (error) {
     console.error("Error fetching comments:", error);

@@ -41,6 +41,7 @@ const page = async ({ searchParams }) => {
         limit={limit}
         commentType={type}
       />
+      <p className="font-semibold mx-2 my-2">Total: {comments?.totalCount}</p>
       <CommentTable comments={comments?.comments}/>
       <Pagination total={comments?.totalCount} currentPage={page} limit={limit} />
   </Suspense>

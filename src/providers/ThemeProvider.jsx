@@ -2,7 +2,7 @@ import ThemeContext from "@/contexts/ThemeContext.mjs";
 import { useEffect, useState } from "react";
 
 const ThemeProvider = ({ children }) => {
-    const [theme, setTheme] = useState('dark');
+    const [theme, setTheme] = useState('light');
     useEffect(() => {
         let storedTheme = localStorage.getItem("theme");
         if (!storedTheme || !(storedTheme === "dark" || storedTheme === "light")) {

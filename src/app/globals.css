@@ -180,6 +180,9 @@ h4 {
   display: block;
   margin: 0 0 0 auto;
 }
+.counter-card{
+ @apply w-[160px] h-[130px] flex flex-col gap-1 items-center justify-center dark:bg-[#333333] bg-slate-100 rounded-lg
+}
 
 /* theme toggle */
 
@@ -255,3 +258,4 @@ h4 {
   content: "N";
   color: black;
 }
+
