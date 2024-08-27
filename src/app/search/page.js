@@ -104,14 +104,14 @@ export async function generateMetadata({searchParams}) {
     ],
     // todos: cahnge with search image.
     other: {
-      "twitter:image": {searchMetaImage},
+      "twitter:image": searchMetaImage,
       "twitter:card": "summary_large_image",
       "og-url": `${host}/search`,
-      "og:image": {searchMetaImage},
+      "og:image": searchMetaImage,
       "og:type": "website",
       locale: "en_US",
     },
-    image: {searchMetaImage},
+    image: searchMetaImage,
     url: `${host}/search`,
   };
 }

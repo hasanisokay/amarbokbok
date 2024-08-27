@@ -56,14 +56,14 @@ export async function generateMetadata() {
       "Jharfuk",
     ],
     other: {
-      "twitter:image": {aboutMetaImage},
+      "twitter:image": aboutMetaImage,
       "twitter:card": "summary_large_image",
       "og-url": `${host}/about`,
-      "og:image": {aboutMetaImage},
+      "og:image": aboutMetaImage,
       "og:type": "website",
       locale: "en_US",
     },
-    image: {aboutMetaImage},
+    image: aboutMetaImage,
     url: `${host}/about`,
   };
 }

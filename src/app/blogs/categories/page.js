@@ -29,12 +29,12 @@ export async function generateMetadata({ params }) {
   try {
     metadata.other = {
       // todos: change the image links with new category image. currently its blog image.
-      "twitter:image": {categoryMetaImage},
+      "twitter:image": categoryMetaImage,
       "twitter:card": "summary_large_image",
       "og-title": "Categories | Blog",
       "og-description": "Blog categories",
       "og-url": `${host}/blogs/categories`, 
-      "og:image": {categoryMetaImage},
+      "og:image": categoryMetaImage,
     };
   } catch (error) {
     console.error("Error fetching blog metadata:", error);

@@ -21,14 +21,14 @@ export async function generateMetadata() {
     ],
     // todos: change image links with contanct image
     other: {
-      'twitter:image': {contactMetaImage},
+      'twitter:image': contactMetaImage,
       'twitter:card': 'summary_large_image',
       'og:url': `${host}/contact`,
-      'og:image': {contactMetaImage},
+      'og:image': contactMetaImage,
       'og:type': 'website',
       locale: 'en_US',
     },
-    image: {contactMetaImage},
+    image: contactMetaImage,
     url: `${host}/contact`,
   };
 }

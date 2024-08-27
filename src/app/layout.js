@@ -23,14 +23,14 @@ export async function generateMetadata() {
     keywords: ["Personal Website", "Blogs", "Jharfuk", "Ahmmad Robins Blogs"],
     other: {
       "color-scheme": ["dark", "light"],
-      "twitter:image": {homeMetaImage},
+      "twitter:image": homeMetaImage,
       "twitter:card": "summary_large_image",
       "og-url": `${await hostname()}`,
-      "og:image": {homeMetaImage},
+      "og:image": homeMetaImage,
       "og:type": "website",
       locale: "en_US",
     },
-    image: {homeMetaImage},
+    image: homeMetaImage,
     url: `${await hostname()}`,
   };
 }

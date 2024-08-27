@@ -41,12 +41,12 @@ export async function generateMetadata() {
   try {
     metadata.other = {
       // change the image links
-      "twitter:image": {blogsMetaImage},
+      "twitter:image": blogsMetaImage,
       "twitter:card": "summary_large_image",
       "og-title": "Categories - Blog",
       "og-description": "Blog categories",
       "og-url": `${host}/blogs`,
-      "og:image": {blogsMetaImage},
+      "og:image": blogsMetaImage,
     };
   } catch (error) {
     console.error("Error fetching blog metadata:", error);

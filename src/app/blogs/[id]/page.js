@@ -33,7 +33,7 @@ export async function generateMetadata({ params }) {
           // change the image links
           "twitter:image": imageUrl
             ? imageUrl
-            : {singleBlogMetaImage},
+            : singleBlogMetaImage,
           "twitter:card": "summary_large_image",
           "og-title": metadata.title || "Blog",
           "og-description":
@@ -43,7 +43,7 @@ export async function generateMetadata({ params }) {
             : `${host}/blogs`,
           "og:image": imageUrl
             ? imageUrl
-            : {singleBlogMetaImage},
+            : singleBlogMetaImage,
         };
       }
     }
