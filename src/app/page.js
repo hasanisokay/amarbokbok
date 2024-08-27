@@ -1,6 +1,11 @@
-import CustomSVG from "@/animation/CustomSVG";
-import Counter from "@/components/Counter";
+// import CustomSVG from "@/animation/CustomSVG";
+// import Counter from "@/components/Counter";
 import HomeMenu from "@/components/HomeMenu";
+import dynamic from "next/dynamic";
+
+const CustomSVG = dynamic(() => import("@/animation/CustomSVG"));
+const Counter = dynamic(() => import("@/components/Counter"));
+
 export default function Home() {
   return (
     <section>
@@ -17,7 +22,9 @@ export default function Home() {
           . Follow what I say.{" "}
         </h1>
       </div>
-      <Counter />
+      <div className="min-h-[130px] mt-10">
+        <Counter />
+      </div>
       <HomeMenu />
     </section>
   );

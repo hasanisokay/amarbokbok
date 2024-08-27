@@ -6,6 +6,7 @@ import { hostname } from "@/constants/hostname.mjs";
 import { homeMetaImage, websiteName } from "@/constants/constants.mjs";
 import Footer from "@/components/Footer";
 
+
 // const inter = Inter({ subsets: ["latin"] });
 
 export async function generateMetadata() {

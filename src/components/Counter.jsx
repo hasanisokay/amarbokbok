@@ -67,20 +67,20 @@ const Counter = () => {
     }, [targets]);
 
     return (
-        <div className="min-h-[130px] mt-10 flex flex-wrap gap-4 items-center justify-center">
+        <div className="flex flex-wrap gap-4 items-center justify-center">
             <div className='counter-card'>
                 {blog()}
-                <h5 className='text-2xl font-bold' >{blogs}</h5>
+                <h1 className='text-2xl font-bold' >{blogs}</h1>
                 <p>Blogs</p>
             </div>
             <div className='counter-card'>
                 {clock()}
-                <h5 className="text-2xl font-bold">{totalRead}</h5>
+                <h1 className="text-2xl font-bold">{totalRead}</h1>
                 <p>Read</p>
             </div>
             <div className='counter-card'>
                 {comment()}
-                <h5 className="text-2xl font-bold">{totalComments}</h5>
+                <h1 className="text-2xl font-bold">{totalComments}</h1>
                 <p>Comments</p>
             </div>
         </div>

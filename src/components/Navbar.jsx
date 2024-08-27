@@ -12,7 +12,7 @@ const Navbar = () => {
     const { theme } = useTheme();
     const [lastScrollY, setLastScrollY] = useState(0);
     const [menuOpen, setMenuOpen] = useState(false);
-    const { currentUser } = useContext(AuthContext);
+    const { currentUser } = useContext(AuthContext) || null;
     const handleScroll = () => {
         if (window.scrollY > lastScrollY) {
             setVisible(false);

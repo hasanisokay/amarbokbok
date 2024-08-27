@@ -186,76 +186,22 @@ h4 {
 
 /* theme toggle */
 
-.toggle {
-  position: absolute;
-  width: 80px;
-  height: 32px;
-  margin: 0;
-  filter: opacity(0);
-  cursor: pointer;
-  z-index: 2;
-}
-
-.toggle ~ .switch {
-  position: absolute;
-  width: 50px;
-  height: 20px;
-  background: linear-gradient(silver, whitesmoke);
-  border-radius: 2.5em;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.toggle ~ .switch .inner {
-  width: 70px;
-  height: 22px;
-  background: linear-gradient(dimgray, silver);
-  border-radius: 32px;
-  box-shadow: inset 0 0 1.5em rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-}
-
-.toggle ~ .switch .inner .disc {
-  width: 22px;
-  height: 22px;
-  background: linear-gradient(to top, silver, whitesmoke);
+/* spinner */
+.loader {
+  width: 48px;
+  height: 48px;
+  border-bottom-color: transparent;
   border-radius: 50%;
-  box-shadow: 0 0.4em 0.6em rgba(0, 0, 0, 0.2);
-  position: relative;
-  left: -27%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: 0.4s;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
 }
 
-.toggle ~ .switch .inner .disc::before {
-  content: "L";
-  font-size: 8px;
-  font-weight: 700;
-  position: absolute;
-  width: 80%;
-  height: 80%;
-  background: linear-gradient(silver, whitesmoke);
-  border-radius: 50%;
-  text-align: center;
-  line-height: calc(3.5em * 0.8);
-  font-family: sans-serif;
-  color: gray;
-}
-
-.toggle:checked ~ .switch .inner {
-  background: linear-gradient(green, limegreen);
-}
-
-.toggle:checked ~ .switch .inner .disc {
-  left: 27%;
-}
-
-.toggle:checked ~ .switch .inner .disc::before {
-  content: "N";
-  color: black;
-}
-
+  @keyframes rotation {
+  0% {
+      transform: rotate(0deg);
+  }
+  100% {
+      transform: rotate(360deg);
+  }
+  } 

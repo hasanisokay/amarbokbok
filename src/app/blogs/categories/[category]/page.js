@@ -3,8 +3,9 @@ import BlogsPage from "@/components/BlogsPage";
 import NotFound from "@/components/NotFound";
 import { websiteName } from "@/constants/constants.mjs";
 import { hostname } from "@/constants/hostname.mjs";
+import capitalize from "@/utils/capitalize.mjs";
 import getBlogs from "@/utils/getBlogs.mjs";
-import { capitalize } from "lodash";
+
 
 export default async function categoryPage({ params, searchParams }) {
   const category = params?.category;

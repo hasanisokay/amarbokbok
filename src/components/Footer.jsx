@@ -7,6 +7,7 @@ import Facebook from "@/svg/Facebook.mjs";
 import Phone from "@/svg/Phone.mjs";
 import { usePathname } from "next/navigation";
 
+
 const Footer = () => {
     const path = usePathname();
     const currentYear = new Date().getFullYear();
@@ -16,7 +17,7 @@ const Footer = () => {
         <footer className="flex flex-col bg-[#e0f7fa] dark:bg-[#2c2c2c]">
             <div className="flex flex-col items-center justify-around gap-5 bg-[#cfd8dc] py-8 dark:bg-[#424242] md:flex-row md:gap-0">
                 <section>
-                    <h6 className="text-2xl font-bold text-[#212121] dark:text-[#fafafa]">{websiteName}</h6>
+                    <h2 className="text-2xl font-bold text-[#212121] dark:text-[#fafafa]">{websiteName}</h2>
                     <p className="md:max-w-[400px] text-sm lg:max-w-[450px] my-2 text-[#424242] dark:text-[#e0e0e0]">
                         লেখালিখি করি শখের বসে। কিছু কিছু নিজের খেয়াল-খুশি মত। আর কিছু হয়ত গুরুত্বপূর্ণ লেখা। 
                         এই সাইটে অনলাইন জগতে লেখালেখির বেশিরভাগ অংশ প্রকাশিত হয়েছে। মনে রাখতে হবে এর মধ্যে কিছু লেখা অনেক আগের 
@@ -25,16 +26,16 @@ const Footer = () => {
                 </section>
                 <nav className="flex justify-between md:gap-10">
                     <section>
-                        <h6 className="text-center text-xl font-semibold text-[#212121] dark:text-[#fafafa]">Browse</h6>
+                        <h3 className="text-center text-xl font-semibold text-[#212121] dark:text-[#fafafa]">Browse</h3>
                         <ul className="flex items-center my-2 flex-col gap-2 text-[#424242] dark:text-[#e0e0e0]">
-                            <li><NavLink activeColor={"text-[#005494] dark:text-[#4da6ff]"} href={"/"}>Home</NavLink></li>
-                            <li><NavLink activeColor={"text-[#0066b3]"} href={"/blogs"}>Blogs</NavLink></li>
-                            <li><NavLink activeColor={"text-[#0066b3]"} href={"/about"}>About</NavLink></li>
-                            <li><NavLink activeColor={"text-[#0066b3]"} href={"/contact"}>Contact</NavLink></li>
+                            <li><NavLink activeColor={"text-[#005494] dark:text-[#1ad93e]"} href={"/"}>Home</NavLink></li>
+                            <li><NavLink activeColor={"text-[#005494] dark:text-[#1ad93e]"} href={"/blogs"}>Blogs</NavLink></li>
+                            <li><NavLink activeColor={"text-[#005494] dark:text-[#1ad93e]"} href={"/about"}>About</NavLink></li>
+                            <li><NavLink activeColor={"text-[#005494] dark:text-[#1ad93e]"} href={"/contact"}>Contact</NavLink></li>
                         </ul>
                     </section>
                     <section>
-                        <h6 className="text-center text-xl font-semibold text-[#212121] dark:text-[#fafafa]">Contact</h6>
+                        <h3 className="text-center text-xl font-semibold text-[#212121] dark:text-[#fafafa]">Contact</h3>
                         <ul className="flex items-center my-2 flex-col gap-4">
                             <li>
                                 <a href="https://www.facebook.com/bonjuiofficial" className="flex items-center gap-2 text-sm text-[#424242] dark:text-[#e0e0e0]">
@@ -48,12 +49,12 @@ const Footer = () => {
                             </li>
                             <li>
                                 <a href="tel:+8801745856249" className="flex items-center gap-2 text-sm text-[#424242] dark:text-[#e0e0e0]">
-                                    <Phone /> <span className="text-blue-800 dark:text-blue-400 font-semibold">+8801745856249</span> <span>(Call Only)</span>
+                                    <Phone /> <span className="text-blue-800 dark:text-[#1ad93e] font-semibold">+8801745856249</span> <span>(Call Only)</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="https://wa.me/8801745856249" className="flex items-center gap-2 text-sm text-[#424242] dark:text-[#e0e0e0]">
-                                    <WhatsApp /> <span className="text-blue-800 dark:text-blue-400 font-semibold">+8801745856249</span> <span>(Text Only)</span>
+                                    <WhatsApp /> <span className="text-blue-800 dark:text-[#1ad93e] font-semibold">+8801745856249</span> <span>(Text Only)</span>
                                 </a>
                             </li>
                         </ul>

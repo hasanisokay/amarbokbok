@@ -1,8 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 'use client'
 
+import capitalize from "@/utils/capitalize.mjs";
 import getCategories from "@/utils/getCategories.mjs";
-import { capitalize } from "lodash";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import Select from "react-select";

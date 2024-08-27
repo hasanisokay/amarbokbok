@@ -1,12 +1,12 @@
-"use server";
+"use server"
 import BlogsPage from "@/components/BlogsPage";
 import SearchBox from "@/components/SearchBox";
 import SearchPage from "@/components/SearchPage";
 import SuspenseFallback from "@/components/SuspenseFallback";
 import { searchMetaImage, websiteName } from "@/constants/constants.mjs";
 import { hostname } from "@/constants/hostname.mjs";
+import capitalize from "@/utils/capitalize.mjs";
 import getBlogs from "@/utils/getBlogs.mjs";
-import { capitalize } from "lodash";
 import { Suspense } from "react";
 
 const searchPage = async ({ searchParams }) => {

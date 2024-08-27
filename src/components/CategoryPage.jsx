@@ -1,8 +1,8 @@
 'use client'
 
 import RightIndicator from '@/svg/RightIndicator.mjs';
+import capitalize from '@/utils/capitalize.mjs';
 import getCategories from '@/utils/getCategories.mjs';
-import { capitalize } from 'lodash';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 
