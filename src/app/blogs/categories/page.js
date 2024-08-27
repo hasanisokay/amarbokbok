@@ -1,8 +1,7 @@
 "use server";
 import CategoryPage from "@/components/CategoryPage";
-import Sidebar from "@/components/Sidebar";
 import SuspenseFallback from "@/components/SuspenseFallback";
-import { websiteName } from "@/constants/constants.mjs";
+import { categoryMetaImage, websiteName } from "@/constants/constants.mjs";
 import { hostname } from "@/constants/hostname.mjs";
 import { Suspense } from "react";
 
@@ -29,13 +28,13 @@ export async function generateMetadata({ params }) {
 
   try {
     metadata.other = {
-      // change the image links
-      "twitter:image": "https://i.ibb.co/YDMvcNN/Untitled-1-Copy.jpg",
+      // todos: change the image links with new category image. currently its blog image.
+      "twitter:image": {categoryMetaImage},
       "twitter:card": "summary_large_image",
       "og-title": "Categories | Blog",
       "og-description": "Blog categories",
-      "og-url": `${host}/blogs/categories`,
-      "og:image": "https://i.ibb.co/YDMvcNN/Untitled-1-Copy.jpg",
+      "og-url": `${host}/blogs/categories`, 
+      "og:image": {categoryMetaImage},
     };
   } catch (error) {
     console.error("Error fetching blog metadata:", error);

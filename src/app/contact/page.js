@@ -1,7 +1,7 @@
 
 
 import ContactDetails from '@/components/ContactDetails';
-import { websiteName } from '@/constants/constants.mjs';
+import { contactMetaImage, websiteName } from '@/constants/constants.mjs';
 import { hostname } from '@/constants/hostname.mjs';
 import React from 'react';
 
@@ -19,15 +19,16 @@ export async function generateMetadata() {
       'Personal Website',
       'Jharfuk',
     ],
+    // todos: change image links with contanct image
     other: {
-      'twitter:image': 'https://yourwebsite.com/path-to-image.jpg',
+      'twitter:image': {contactMetaImage},
       'twitter:card': 'summary_large_image',
       'og:url': `${host}/contact`,
-      'og:image': 'https://yourwebsite.com/path-to-image.jpg',
+      'og:image': {contactMetaImage},
       'og:type': 'website',
       locale: 'en_US',
     },
-    image: 'https://yourwebsite.com/path-to-image.jpg',
+    image: {contactMetaImage},
     url: `${host}/contact`,
   };
 }

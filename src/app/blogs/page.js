@@ -1,7 +1,7 @@
 "use server"
 import BlogsPage from "@/components/BlogsPage";
 import NotFound from "@/components/NotFound";
-import { websiteName } from "@/constants/constants.mjs";
+import { blogsMetaImage, websiteName } from "@/constants/constants.mjs";
 import { hostname } from "@/constants/hostname.mjs";
 import getBlogs from "@/utils/getBlogs.mjs";
 
@@ -41,12 +41,12 @@ export async function generateMetadata() {
   try {
     metadata.other = {
       // change the image links
-      "twitter:image": "https://i.ibb.co/YDMvcNN/Untitled-1-Copy.jpg",
+      "twitter:image": {blogsMetaImage},
       "twitter:card": "summary_large_image",
       "og-title": "Categories - Blog",
       "og-description": "Blog categories",
       "og-url": `${host}/blogs`,
-      "og:image": "https://i.ibb.co/YDMvcNN/Untitled-1-Copy.jpg",
+      "og:image": {blogsMetaImage},
     };
   } catch (error) {
     console.error("Error fetching blog metadata:", error);

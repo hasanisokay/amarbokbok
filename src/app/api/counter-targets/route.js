@@ -3,12 +3,12 @@ import {
   serverErrorResponse,
 } from "@/constants/constants.mjs";
 import dbConnect from "@/services/dbConnect.mjs";
-import { headers } from "next/headers";
 import { NextResponse } from "next/server";
 
-export const GET = async (req) => {
+export const dynamic = 'force-dynamic';
+
+export const GET = async () => {
   try {
-    const headersList = headers()
     const db = await dbConnect();
     if (!db) return NextResponse.json(dbErrorResponse);
     const commentCollection = await db.collection("comments");
@@ -49,6 +49,7 @@ export const GET = async (req) => {
 
     // Prepare the response
     const response = {
+      status:200,
       blogs: await blogCollection.countDocuments(), // Total number of blogs
       totalRead,
       totalComments,

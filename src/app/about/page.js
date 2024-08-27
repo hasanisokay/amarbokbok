@@ -1,5 +1,5 @@
 import ContactDetails from "@/components/ContactDetails";
-import { websiteName } from "@/constants/constants.mjs";
+import { aboutMetaImage, websiteName } from "@/constants/constants.mjs";
 import { hostname } from "@/constants/hostname.mjs";
 
 const AboutPage = () => {
@@ -56,14 +56,14 @@ export async function generateMetadata() {
       "Jharfuk",
     ],
     other: {
-      "twitter:image": "https://i.ibb.co/89yqcW8/home-page.jpg",
+      "twitter:image": {aboutMetaImage},
       "twitter:card": "summary_large_image",
       "og-url": `${host}/about`,
-      "og:image": "https://i.ibb.co/89yqcW8/home-page.jpg",
+      "og:image": {aboutMetaImage},
       "og:type": "website",
       locale: "en_US",
     },
-    image: "https://i.ibb.co/89yqcW8/home-page.jpg",
+    image: {aboutMetaImage},
     url: `${host}/about`,
   };
 }

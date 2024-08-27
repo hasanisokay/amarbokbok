@@ -3,7 +3,7 @@ import Providers from "@/providers/Providers";
 import Navbar from "@/components/Navbar";
 import Toaster from "@/components/Toaster";
 import { hostname } from "@/constants/hostname.mjs";
-import { websiteName } from "@/constants/constants.mjs";
+import { homeMetaImage, websiteName } from "@/constants/constants.mjs";
 import Footer from "@/components/Footer";
 
 // const inter = Inter({ subsets: ["latin"] });
@@ -22,16 +22,15 @@ export async function generateMetadata() {
     ],
     keywords: ["Personal Website", "Blogs", "Jharfuk", "Ahmmad Robins Blogs"],
     other: {
-      // todos: change the image links
       "color-scheme": ["dark", "light"],
-      "twitter:image": "https://i.ibb.co/89yqcW8/home-page.jpg",
+      "twitter:image": {homeMetaImage},
       "twitter:card": "summary_large_image",
       "og-url": `${await hostname()}`,
-      "og:image": "https://i.ibb.co/89yqcW8/home-page.jpg",
+      "og:image": {homeMetaImage},
       "og:type": "website",
       locale: "en_US",
     },
-    image: "https://i.ibb.co/89yqcW8/home-page.jpg",
+    image: {homeMetaImage},
     url: `${await hostname()}`,
   };
 }

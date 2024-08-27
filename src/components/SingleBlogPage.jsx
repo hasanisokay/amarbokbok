@@ -1,8 +1,9 @@
 'use client'
+import Spinner from "@/loaders/Spinner";
 import BlogHead from "./BlogHead";
 import dynamic from "next/dynamic";
 //dynamic imports
-const QuillRenderer = dynamic(() => import("./QuillRenderer"), { ssr: false, loading: () => <p>Loading content...</p>, })
+const QuillRenderer = dynamic(() => import("./QuillRenderer"), { ssr: false, loading: () => <Spinner />, })
 const CommentBox = dynamic(() => import("./CommentBox"), { ssr: false })
 const PreviousComments = dynamic(() => import("./PreviousComments"), { ssr: false });
 const DeleteOption = dynamic(() => import("./DeleteOption"), { ssr: false}); 

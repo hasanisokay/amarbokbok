@@ -1,9 +1,9 @@
-"use server";
+"use server"
 import NotFound from "@/components/NotFound";
 import Sidebar from "@/components/Sidebar";
 import SingleBlogPage from "@/components/SingleBlogPage";
 import SuspenseFallback from "@/components/SuspenseFallback";
-import { websiteName } from "@/constants/constants.mjs";
+import { singleBlogMetaImage, websiteName } from "@/constants/constants.mjs";
 import { hostname } from "@/constants/hostname.mjs";
 import deltaToPlainText from "@/utils/deltaToPlainText.mjs";
 import getBlog from "@/utils/getBlog.mjs";
@@ -24,17 +24,16 @@ export async function generateMetadata({ params }) {
     if (blogId) {
       const blog = await getBlog(blogId);
       const imageUrl = getImageLinkFromDelta(blog?.blog?.content);
-
       if (blog) {
         metadata.title = (blog?.blog?.title || "Not Found") + " - " + `${websiteName}`;
         metadata.description =
           deltaToPlainText(blog?.blog?.content) || "Blog post description";
-        metadata.keywords.push(...blog?.blog?.title.split(" "));
+        metadata.keywords.push(...blog?.blog?.title?.split(" "));
         metadata.other = {
           // change the image links
           "twitter:image": imageUrl
             ? imageUrl
-            : "https://i.ibb.co/YDMvcNN/Untitled-1-Copy.jpg",
+            : {singleBlogMetaImage},
           "twitter:card": "summary_large_image",
           "og-title": metadata.title || "Blog",
           "og-description":
@@ -44,7 +43,7 @@ export async function generateMetadata({ params }) {
             : `${host}/blogs`,
           "og:image": imageUrl
             ? imageUrl
-            : "https://i.ibb.co/YDMvcNN/Untitled-1-Copy.jpg",
+            : {singleBlogMetaImage},
         };
       }
     }

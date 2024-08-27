@@ -7,6 +7,6 @@ export const hostname = async () => {
   if (env == "development") {
     return `http://${hostname}`;
   } else if (env == "production") {
-    return `https://${hostname}`;
+    return `http://${hostname}`;
   }
 };

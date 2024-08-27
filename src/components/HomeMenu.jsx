@@ -44,7 +44,7 @@ const HomeMenu = () => {
     ];
     return (
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-4  justify-items-center my-4 mx-1 lg:mx-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-4  justify-items-center mb-4 mt-10 mx-1 lg:mx-10">
 
             {menu?.map((m, i) => (
                 <HomeCard

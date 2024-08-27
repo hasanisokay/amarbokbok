@@ -58,6 +58,7 @@ const BlogEditor = ({ postId }) => {
     };
 
     fetchPost();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [postId]);
   const fetchCategories = async () => {
     try {

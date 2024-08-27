@@ -3,7 +3,7 @@ import BlogsPage from "@/components/BlogsPage";
 import SearchBox from "@/components/SearchBox";
 import SearchPage from "@/components/SearchPage";
 import SuspenseFallback from "@/components/SuspenseFallback";
-import { websiteName } from "@/constants/constants.mjs";
+import { searchMetaImage, websiteName } from "@/constants/constants.mjs";
 import { hostname } from "@/constants/hostname.mjs";
 import getBlogs from "@/utils/getBlogs.mjs";
 import { capitalize } from "lodash";
@@ -102,15 +102,16 @@ export async function generateMetadata({searchParams}) {
       "Jharfuk",
       "Ahmmad Robins Blogs",
     ],
+    // todos: cahnge with search image.
     other: {
-      "twitter:image": "https://i.ibb.co/89yqcW8/home-page.jpg",
+      "twitter:image": {searchMetaImage},
       "twitter:card": "summary_large_image",
       "og-url": `${host}/search`,
-      "og:image": "https://i.ibb.co/89yqcW8/home-page.jpg",
+      "og:image": {searchMetaImage},
       "og:type": "website",
       locale: "en_US",
     },
-    image: "https://i.ibb.co/89yqcW8/home-page.jpg",
+    image: {searchMetaImage},
     url: `${host}/search`,
   };
 }

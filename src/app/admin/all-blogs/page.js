@@ -1,3 +1,4 @@
+'use server'
 import DeleteOption from "@/components/DeleteOption";
 import getBlogs from "@/utils/getBlogs.mjs";
 import Link from "next/link";
@@ -7,7 +8,7 @@ const page = async () => {
   return (
     <div className="container">
       <h4>Total: {blogs?.length}</h4>
-      {blogs.map((blog) => (
+      {blogs?.map((blog) => (
         <div key={blog?._id} className="my-2">
           <Link className="text-blue-500" href={`/blogs/${blog?.blog_id}`}>
             {blog?.title}
