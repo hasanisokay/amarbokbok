@@ -1,10 +1,11 @@
 'use client'
 import { useRouter } from 'next/navigation';
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import CustomSelect from './CustomSelect';
 
 const SelectInBlogs = ({ sort, limit, page }) => {
     const router = useRouter();
+
     const [selectedSort, setSelectedSort] = useState({ value: sort, label: sort === 'newest' ? 'Newest' : 'Oldest' });
     const [selectedLimit, setSelectedLimit] = useState({ value: limit, label: `${limit} items per page` });
 
@@ -24,7 +25,12 @@ const SelectInBlogs = ({ sort, limit, page }) => {
         query.set('page', page);
         query.set('sort', selectedSort.value);
         query.set('limit', selectedLimit.value);
-        router.replace(`${window.location.pathname}?${query.toString()}`, undefined, { shallow: selectedSort.value === sort });
+
+        router.replace(`${window.location.pathname}?${query.toString()}`, { scroll: false, shallow: true });
+
+        // Restore scroll position after updating the URL
+        // window.scrollTo(0, scrollY);
+        // window.history.replaceState(null, '', `?${query.toString()}`)
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [selectedSort, selectedLimit]);
 

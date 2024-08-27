@@ -4,7 +4,6 @@ import { useRouter } from 'next/navigation';
 const Pagination = ({ total, currentPage, limit }) => {
   const router = useRouter();
   const totalPages = Math.ceil(total / limit);
-
   const handlePageChange = (page) => {
     const query = new URLSearchParams(window.location.search);
     query.set('page', page);

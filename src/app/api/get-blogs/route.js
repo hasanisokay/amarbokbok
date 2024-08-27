@@ -56,11 +56,13 @@ export const GET = async (req) => {
       .toArray();
     if (titleOnly) return NextResponse.json(result);
     let totalCount;
-    if (result?.length === limit) {
-      totalCount = await blogCollection.countDocuments(matchStage);
-    } else {
-      totalCount = result?.length;
-    }
+    totalCount = await blogCollection.countDocuments(matchStage);
+    // if (result?.length === limit) {
+    //   totalCount = await blogCollection.countDocuments(matchStage);
+    // } else {
+    //   totalCount = result?.length;
+    // }
+
     return NextResponse.json({ blogs: result, totalCount });
   } catch {
     return NextResponse.json(serverErrorResponse);

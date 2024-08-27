@@ -6,7 +6,10 @@ export const hostname = async () => {
   const env = process.env.NODE_ENV;
   if (env == "development") {
     return `http://${hostname}`;
-  } else if (env == "production") {
+  }else if(hostname==='localhost:3000'){
+    return `http://${hostname}`;
+  }
+  else if (env == "production") {
     return `https://${hostname}`;
   }
 };

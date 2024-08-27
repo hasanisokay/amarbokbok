@@ -28,7 +28,7 @@ const Footer = () => {
                         <h4 className="text-center text-[#212121] dark:text-[#fafafa]">Browse</h4>
                         <ul className="flex items-center my-2 flex-col gap-2 text-[#424242] dark:text-[#e0e0e0]">
                             <li><NavLink activeColor={"text-[#0066b3]"} href={"/"}>Home</NavLink></li>
-                            <li><NavLink activeColor={"text-[#0066b3]"} href={"/blogs?page=1&sort=newest&limit=10"}>Blogs</NavLink></li>
+                            <li><NavLink activeColor={"text-[#0066b3]"} href={"/blogs"}>Blogs</NavLink></li>
                             <li><NavLink activeColor={"text-[#0066b3]"} href={"/about"}>About</NavLink></li>
                             <li><NavLink activeColor={"text-[#0066b3]"} href={"/contact"}>Contact</NavLink></li>
                         </ul>
