@@ -11,7 +11,7 @@ export const unauthorizedResponse = {
     status: 401,
     message: "Unauthorized.",
   }
-  export const websiteName = "Bonjui"
+  export const websiteName = "Ahmmad Robin"
   // export const hostname = window.location.hostname
 
   export const aboutMetaImage = "https://i.ibb.co/FKSQh4j/photo-2024-08-26-18-04-26.jpg"
