@@ -16,7 +16,7 @@ const Footer = () => {
         <footer className="flex flex-col bg-[#e0f7fa] dark:bg-[#2c2c2c]">
             <div className="flex flex-col items-center justify-around gap-5 bg-[#cfd8dc] py-8 dark:bg-[#424242] md:flex-row md:gap-0">
                 <section>
-                    <h5 className="text-2xl font-bold text-[#212121] dark:text-[#fafafa]">{websiteName}</h5>
+                    <h6 className="text-2xl font-bold text-[#212121] dark:text-[#fafafa]">{websiteName}</h6>
                     <p className="md:max-w-[400px] text-sm lg:max-w-[450px] my-2 text-[#424242] dark:text-[#e0e0e0]">
                         লেখালিখি করি শখের বসে। কিছু কিছু নিজের খেয়াল-খুশি মত। আর কিছু হয়ত গুরুত্বপূর্ণ লেখা। 
                         এই সাইটে অনলাইন জগতে লেখালেখির বেশিরভাগ অংশ প্রকাশিত হয়েছে। মনে রাখতে হবে এর মধ্যে কিছু লেখা অনেক আগের 
@@ -27,8 +27,8 @@ const Footer = () => {
                     <section>
                         <h4 className="text-center text-[#212121] dark:text-[#fafafa]">Browse</h4>
                         <ul className="flex items-center my-2 flex-col gap-2 text-[#424242] dark:text-[#e0e0e0]">
-                            <li><NavLink href={"/"}>Home</NavLink></li>
-                            <li><NavLink href={"/blogs"}>Blogs</NavLink></li>
+                            <li><NavLink activeColor={"text-[#0066b3]"} href={"/"}>Home</NavLink></li>
+                            <li><NavLink activeColor={"text-teal-600"} href={"/blogs?page=1&sort=newest&limit=10"}>Blogs</NavLink></li>
                             <li><NavLink href={"/about"}>About</NavLink></li>
                             <li><NavLink href={"/contact"}>Contact</NavLink></li>
                         </ul>

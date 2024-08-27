@@ -12,7 +12,7 @@ const HomeMenu = () => {
     const { theme } = useTheme();
     const menu = [
         {
-            href: "/blogs",
+            href: "/blogs?page=1&sort=newest&limit=10",
             description: "সব লেখা পাওয়া যাবে ব্লগে",
             title: "Blogs",
             icon: blog("100px", "100px"),

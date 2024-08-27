@@ -40,7 +40,7 @@ const Navbar = () => {
                 </NavLink>
             </li>
             <li>
-                <NavLink href="/blogs" aria-label="Blogs Page">
+                <NavLink href="/blogs?page=1&sort=newest&limit=10" aria-label="Blogs Page">
                     {"Blogs"}
                 </NavLink>
             </li>
