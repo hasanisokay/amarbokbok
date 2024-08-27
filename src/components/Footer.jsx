@@ -37,13 +37,13 @@ const Footer = () => {
                         <h4 className="text-center text-[#212121] dark:text-[#fafafa]">Contact</h4>
                         <ul className="flex items-center my-2 flex-col gap-4">
                             <li>
-                                <a href="https://www.facebook.com/" className="flex items-center gap-2 text-sm text-[#424242] dark:text-[#e0e0e0]">
-                                    <Facebook /> <span>/bonjui</span>
+                                <a href="https://www.facebook.com/bonjuiofficial" className="flex items-center gap-2 text-sm text-[#424242] dark:text-[#e0e0e0]">
+                                    <Facebook /> <span>/bonjuiofficial</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="https://www.youtube.com/" className="flex items-center gap-2 text-sm text-[#424242] dark:text-[#e0e0e0]">
-                                    <Youtube /> <span>/bonjui</span>
+                                <a href="https://www.youtube.com/ahmmadrobin" className="flex items-center gap-2 text-sm text-[#424242] dark:text-[#e0e0e0]">
+                                    <Youtube /> <span>/ahmmadrobin</span>
                                 </a>
                             </li>
                             <li>

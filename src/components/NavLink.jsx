@@ -8,7 +8,7 @@ const NavLink = ({ href, children, fromAdmin, ...props }) => {
         <Link href={href}
             aria-current={path === href ? 'page' : undefined}
             {...props}
-            className={` px-3 py-1 text-sm font-medium duration-300 ${path === href ? fromAdmin ? "bg-orange-500 text-white" : "text-red-500"
+            className={` px-3 py-1 text-sm font-medium duration-300 ${path === href ? fromAdmin ? "bg-orange-500 text-white" : "text-purple-600"
                 : fromAdmin ? 'text-black dark:text-white':'text-black dark:text-white'}`}
         >
             {children}
