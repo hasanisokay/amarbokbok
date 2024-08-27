@@ -10,7 +10,7 @@ const CustomSVG = ({ width = 200, height = 200 }) => {
       pathRef.current.style.strokeDasharray = length;
       pathRef.current.style.strokeDashoffset = length;
       pathRef.current.getBoundingClientRect();
-      pathRef.current.style.transition = 'stroke-dashoffset 4s ease-in-out';
+      pathRef.current.style.transition = 'stroke-dashoffset 2s ease-in-out';
       pathRef.current.style.strokeDashoffset = '0';
     }
   }, []);
