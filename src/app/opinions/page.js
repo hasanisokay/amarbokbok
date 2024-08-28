@@ -1,4 +1,4 @@
-import { opinionsMetaImage } from "@/constants/constants.mjs";
+import { opinionsMetaImage, websiteName } from "@/constants/constants.mjs";
 import { hostname } from "@/constants/hostname.mjs";
 
 const page = () => {
