@@ -1,5 +1,5 @@
 
-const SearchComment = ({searchText, onChange}) => {
+const SearchComment = ({searchText, type, onChange}) => {
 
     return (
         <div className="flex gap-4 flex-wrap mx-2">
@@ -16,7 +16,7 @@ const SearchComment = ({searchText, onChange}) => {
                     className="absolute left-2 top-0.5 text-xs text-secondary duration-300 peer-placeholder-shown:left-2 peer-placeholder-shown:top-[50%] peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-focus:left-2 peer-focus:top-0.5 peer-focus:-translate-y-0 peer-focus:text-xs peer-focus:text-secondary"
                     htmlFor="search-box"
                 >
-                    Search Comment
+                    Search {type}
                 </label>
             </div>
             <button type="submit" className="h-[40px] btn-green">

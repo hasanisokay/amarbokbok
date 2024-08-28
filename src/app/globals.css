@@ -75,9 +75,7 @@ h4 {
 .hover-blue {
   @apply lg:hover:text-blue-500 active:text-blue-500;
 }
-/* .blog-layout{
-  @apply flex lg:flex-row flex-col lg:mx-12 md:mx-4 mx-1  my-1 gap-4  
-} */
+
 
 .blog-layout {
   display: grid;
@@ -85,13 +83,7 @@ h4 {
   gap: 1rem;
   margin: 0.25rem; 
 }
-/* nav{
-  -webkit-backdrop-filter: blur(8px);
-  backdrop-filter: blur(8px);
-} */
- .admin-btn{
-@apply cursor-pointer md:hover:font-semibold
- }
+
 .nav-menu li{
   margin-top: 0.5rem; 
   margin-bottom: 0.5rem; 

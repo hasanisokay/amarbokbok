@@ -55,7 +55,6 @@ const CommentBox = ({ isComment, blog_id, isReply, comment_id }) => {
                         <label htmlFor="name" className="block mb-2">Name</label>
                         <input
                             type="text"
-                            id="name"
                             value={name}
                             onChange={(e) => setName(e.target.value)}
                             className="w-fit p-2 border bg-transparent rounded"
@@ -77,7 +76,7 @@ const CommentBox = ({ isComment, blog_id, isReply, comment_id }) => {
                 <div className="mb-4">
                     <label htmlFor="comment" className="block mb-2">{isComment ? "Comment" : "Reply"}</label>
                     <textarea
-                        id="comment"
+                    name='comment'
                         value={comment}
                         onChange={(e) => setComment(e.target.value)}
                         className="w-full p-2 bg-transparent border rounded"

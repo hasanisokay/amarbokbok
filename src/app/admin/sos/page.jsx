@@ -57,7 +57,6 @@ const Page = () => {
           <textarea
             required
             className="bg-white text-black min-h-[80px] w-full rounded border px-3 py-2 leading-tight focus:outline-none focus:ring-1 dark:border-zinc-700"
-            id="_message"
             placeholder="Type your message here"
             name="message"
           />

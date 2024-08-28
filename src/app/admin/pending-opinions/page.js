@@ -1,10 +1,13 @@
 "use server"
-import CommentTable from "@/components/CommentTable";
+import OpinionTable from "@/components/OpinionTable";
 import Pagination from "@/components/Pagination";
-import PendingCommentsHead from "@/components/PendingCommentsHead";
+// import PendingCommentsHead from "@/components/PendingCommentsHead";
 import SuspenseFallback from "@/components/SuspenseFallback";
-import getComments from "@/utils/getComments.mjs";
+import getOpinions from "@/utils/getOpinions.mjs";
+import dynamic from "next/dynamic";
 import { Suspense } from "react";
+
+const PendingCommentsHead = dynamic(() => import("@/components/PendingCommentsHead"), { ssr: false}); 
 
 const page = async ({ searchParams }) => {
   const sort = searchParams?.sort || "newest";
@@ -15,21 +18,20 @@ const page = async ({ searchParams }) => {
   let approvedOnly = "";
   let pendingOnly = "";
   let all = "";
+
   if (type === "pendingOnly") pendingOnly = true;
   else if (type === "approvedOnly") approvedOnly = true;
   else if (type === "all") all = true;
-  
-  const comments = await getComments(
+
+
+  const opinions = await getOpinions(
     page,
     limit,
     sort,
-    "",
     approvedOnly,
     pendingOnly,
-    all,
     keyword,
   );
-// console.log(comments)
   return (
     <Suspense fallback={<SuspenseFallback />}>
       <PendingCommentsHead
@@ -39,10 +41,12 @@ const page = async ({ searchParams }) => {
         keyword={keyword}
         limit={limit}
         commentType={type}
+        opinion={true}
       />
-      <p className="font-semibold mx-2 my-2">Total: {comments?.totalCount}</p>
-      <CommentTable comments={comments?.comments}/>
-      <Pagination total={comments?.totalCount} currentPage={page} limit={limit} />
+      
+      <p className="font-semibold mx-2 my-2">Total: {opinions?.totalCount}</p>
+      <OpinionTable opinions={opinions?.opinions}/>
+      <Pagination total={opinions?.totalCount} currentPage={page} limit={limit} />
   </Suspense>
   );
 };

@@ -45,10 +45,10 @@ const Login = () => {
             <form className="p-8 flex-1" onSubmit={handleSubmit}>
                 <h1 className="text-center">Admin Login</h1>
                 <div className="space-y-5">
-                    <label htmlFor="email_" className="block">Email</label>
-                    <input id="email_" type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="example@example.com" className="p-3 block w-full shadow-lg outline-none border-2 rounded-md   invalid:border-red-700 valid:border-[#0095ff]" />
-                    <label htmlFor="password_" className="block">Password</label>
-                    <input id="password_" value={password} onChange={(e) => setPassword(e.target.value)} type="password" placeholder=".............." min={5} className="p-3 block w-full shadow-lg outline-none border-2 rounded-md  invalid:border-red-700 valid:border-[#0095ff]" />
+                    <label htmlFor="email222_" className="block">Email</label>
+                    <input id="email222_" type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="example@example.com" className="p-3 block w-full shadow-lg outline-none border-2 rounded-md   invalid:border-red-700 valid:border-[#0095ff]" />
+                    <label htmlFor="password222_" className="block">Password</label>
+                    <input id="password222_" value={password} onChange={(e) => setPassword(e.target.value)} type="password" placeholder=".............." min={5} className="p-3 block w-full shadow-lg outline-none border-2 rounded-md  invalid:border-red-700 valid:border-[#0095ff]" />
                 </div>
                 <button type="submit" onClick={handleSubmit} className="py-2 px-5 mb-4 mt-8 overflow-hidden shadow-lg border-2 rounded-md  border-[#0095ff] before:block before:absolute before:translate-x-full before:inset-0 before:bg-[#0095ff] before:hover:translate-x-0  before:duration-300 before:rounded-s-full before:-z-10 after:-z-10 after:rounded-e-full after:duration-300 after:hover:translate-x-0 after:block after:absolute after:-translate-x-full after:inset-0 after:bg-[#0095ff] relative inline-block hover:text-white z-50">Submit</button>
             </form>

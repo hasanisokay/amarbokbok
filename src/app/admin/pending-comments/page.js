@@ -1,10 +1,13 @@
 "use server"
 import CommentTable from "@/components/CommentTable";
 import Pagination from "@/components/Pagination";
-import PendingCommentsHead from "@/components/PendingCommentsHead";
+// import PendingCommentsHead from "@/components/PendingCommentsHead";
 import SuspenseFallback from "@/components/SuspenseFallback";
 import getComments from "@/utils/getComments.mjs";
+import dynamic from "next/dynamic";
 import { Suspense } from "react";
+
+const PendingCommentsHead = dynamic(() => import("@/components/PendingCommentsHead"), { ssr: false}); 
 
 const page = async ({ searchParams }) => {
   const sort = searchParams?.sort || "newest";

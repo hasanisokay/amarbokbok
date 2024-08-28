@@ -56,7 +56,7 @@ const Navbar = () => {
                 </NavLink>
             </li>
             <li>
-                <NavLink activeClasses={activeClassesNav} inactiveClasses={inactiveClassesNav} href="/opinions" aria-label="Opinions Page">
+                <NavLink activeClasses={activeClassesNav} inactiveClasses={inactiveClassesNav} href='/opinions' aria-label="Opinions Page">
                     {"Opinions"}
                 </NavLink>
             </li>
