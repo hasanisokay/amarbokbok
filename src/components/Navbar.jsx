@@ -6,6 +6,7 @@ import Image from "next/image";
 import ThemeToggle from "./ThemeToggle";
 import AuthContext from "@/contexts/AuthContext.mjs";
 import useTheme from "@/hooks/useTheme.mjs";
+import { activeClassesNav, inactiveClassesNav } from "@/constants/constants.mjs";
 
 const Navbar = () => {
     const [visible, setVisible] = useState(true);
@@ -33,39 +34,39 @@ const Navbar = () => {
 
 
     const menu = (
-        <ul className="md:flex-row flex-col flex items-center md:space-x-4  md:space-y-0 space-y-4">
+        <ul className="md:flex-row flex-col flex items-center  md:space-y-0 space-y-4">
             <li>
-                <NavLink href="/" aria-label="Home Page">
+                <NavLink activeClasses={activeClassesNav} inactiveClasses={inactiveClassesNav} href="/" aria-label="Home Page">
                     {"Home"}
                 </NavLink>
             </li>
             <li>
-                <NavLink href="/blogs" aria-label="Blogs Page">
+                <NavLink activeClasses={activeClassesNav} inactiveClasses={inactiveClassesNav} href="/blogs" aria-label="Blogs Page">
                     {"Blogs"}
                 </NavLink>
             </li>
             {currentUser && <li>
-                <NavLink href="/admin" aria-label="Blogs Page">
+                <NavLink activeClasses={activeClassesNav} inactiveClasses={inactiveClassesNav} href="/admin" aria-label="Admin Page">
                     {"Admin"}
                 </NavLink>
             </li>}
             <li>
-                <NavLink href="/audio" aria-label="Audio Page">
-                    {"Audio"}
+                <NavLink activeClasses={activeClassesNav} inactiveClasses={inactiveClassesNav} href="/others" aria-label="Others Page">
+                    {"Others"}
                 </NavLink>
             </li>
             <li>
-                <NavLink href="/video" aria-label="Video Page">
-                    {"Video"}
+                <NavLink activeClasses={activeClassesNav} inactiveClasses={inactiveClassesNav} href="/opinions" aria-label="Opinions Page">
+                    {"Opinions"}
                 </NavLink>
             </li>
             <li>
-                <NavLink href="/search" aria-label="Search Page">
+                <NavLink activeClasses={activeClassesNav} inactiveClasses={inactiveClassesNav} href="/search" aria-label="Search Page">
                     {"Search"}
                 </NavLink>
             </li>
             <li>
-                <NavLink href="/about" aria-label="About Page">
+                <NavLink activeClasses={activeClassesNav} inactiveClasses={inactiveClassesNav} href="/about" aria-label="About Page">
                     {"About"}
                 </NavLink>
             </li>
@@ -77,8 +78,8 @@ const Navbar = () => {
 
     return (
         <nav
-            className={`fixed top-0 left-0 w-full bg-transparent z-50 transition-transform
-                bg-opacity-90 backdrop-blur-sm 
+            className={`fixed top-0 left-0 w-full bg-[#a9d08f] z-50 transition-transform
+                bg-opacity-85 backdrop-blur-sm 
                 duration-300 ${visible ? 'transform-none' : '-translate-y-full'
                 }`}
             aria-label="Main Navigation"

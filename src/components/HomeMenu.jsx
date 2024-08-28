@@ -6,6 +6,8 @@ import video from "@/svg/video.mjs";
 import audio from "@/svg/audio.mjs";
 import blog from "@/svg/blog.mjs";
 import useTheme from "@/hooks/useTheme.mjs";
+import opinionSVG from "@/svg/opinions.mjs";
+import othersSVG from "@/svg/othersSVG.mjs";
 
 const HomeMenu = () => {
 
@@ -18,16 +20,16 @@ const HomeMenu = () => {
             icon: blog("100px", "100px"),
         },
         {
-            href: "/audio",
-            description: "অডিও পাওয়া যাবে এখানে",
-            title: "Audio",
-            icon: audio("100px", "100px", theme),
+            href: "/opinions",
+            description: "মতামত দিতে এবং দেখতে",
+            title: "Opinions",
+            icon: opinionSVG("100px", "100px"),
         },
         {
-            href: "/video",
-            description: "ভিডিও ",
-            title: "Video",
-            icon: video("100px", "100px", theme),
+            href: "/others",
+            description: "অন্যান্য",
+            title: "Others",
+            icon: othersSVG("100px", "100px", theme),
         },
         {
             href: "/search",

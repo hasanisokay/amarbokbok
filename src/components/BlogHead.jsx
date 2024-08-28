@@ -7,12 +7,12 @@ import React from 'react';
 const BlogHead = ({ blog, clickable }) => {
     return (
         <>
-            {clickable ? 
-            <h3 className='cursor-pointer active:text-blue-600 lg:hover:text-blue-600'>
-                <Link href={`/blogs/${blog?.blog_id}`}>{blog?.title}</Link>
-            </h3> 
-            : 
-            <h2>{blog?.title}</h2> }
+            {clickable ?
+                <h3 className='cursor-pointer active:text-blue-600 lg:hover:text-blue-600'>
+                    {blog?.title}
+                </h3>
+                :
+                <h2>{blog?.title}</h2>}
             <div className='text-gray flex items-center text-sm py-1 gap-1'>
                 <p className='flex gap-1 items-center'> <span>{calculateReadingTime(blog?.content)} min read</span> <Dot /> <span>{getTime(blog?.addedOn)}</span></p>
             </div>
