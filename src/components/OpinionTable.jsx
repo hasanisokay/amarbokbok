@@ -38,6 +38,13 @@ const OpinionTable = ({ opinions }) => {
             )
         },
         {
+            Header: 'Gender',
+            accessor: 'gender',
+            Cell: ({ value }) => (
+                <span className="max-w-fit">{value}</span>
+            )
+        },
+        {
             Header: 'Status',
             accessor: 'status',
             Cell: ({ value }) => (
@@ -50,7 +57,7 @@ const OpinionTable = ({ opinions }) => {
             Cell: ({ row }) => (
                 <>
                     <p className='cursor-pointer  lg:w-auto md:min-w-[600px] min-w-[300px] h-auto'>
-                        {row?.original?.message} {row?.original?._id}
+                        {row?.original?.message}
                     </p>
                     {
                         row?.original?.replies?.length === 0 && row?.original?.status === "approved" && <form action={replyOption}>

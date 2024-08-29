@@ -6,7 +6,7 @@ import Image from "next/image";
 import ThemeToggle from "./ThemeToggle";
 import AuthContext from "@/contexts/AuthContext.mjs";
 import useTheme from "@/hooks/useTheme.mjs";
-import { activeClassesNav, inactiveClassesNav } from "@/constants/constants.mjs";
+
 
 const Navbar = () => {
     const [visible, setVisible] = useState(true);
@@ -34,43 +34,43 @@ const Navbar = () => {
 
 
     const menu = (
-        <ul className="md:flex-row flex-col flex items-center  md:space-y-0 space-y-4">
-            <li>
-                <NavLink activeClasses={activeClassesNav} inactiveClasses={inactiveClassesNav} href="/" aria-label="Home Page">
+        <ul className="md:flex-row flex-col flex items-center md:space-y-0 space-y-4">
+            <li className="lg:hover:scale-110 active:scale-110 lg:after:scale-100">
+                <NavLink activeClasses={"text-[#2b4c19]"} inactiveClasses={"dark:text-black"} href="/" aria-label="Home Page">
                     {"Home"}
                 </NavLink>
             </li>
-            <li>
-                <NavLink activeClasses={activeClassesNav} inactiveClasses={inactiveClassesNav} href="/blogs" aria-label="Blogs Page">
+            <li className="lg:hover:scale-110 active:scale-110 lg:after:scale-100">
+                <NavLink activeClasses={"text-[#2b4c19]"} inactiveClasses={"dark:text-black"} href="/blogs" aria-label="Blogs Page">
                     {"Blogs"}
                 </NavLink>
             </li>
-            {currentUser && <li>
-                <NavLink activeClasses={activeClassesNav} inactiveClasses={inactiveClassesNav} href="/admin" aria-label="Admin Page">
+            {currentUser && <li className="lg:hover:scale-110 active:scale-110 lg:after:scale-100">
+                <NavLink activeClasses={"text-[#2b4c19]"} inactiveClasses={"dark:text-black"} href="/admin" aria-label="Admin Page">
                     {"Admin"}
                 </NavLink>
             </li>}
-            <li>
-                <NavLink activeClasses={activeClassesNav} inactiveClasses={inactiveClassesNav} href="/others" aria-label="Others Page">
+            <li className="lg:hover:scale-110 active:scale-110 lg:after:scale-100">
+                <NavLink activeClasses={"text-[#2b4c19]"} inactiveClasses={"dark:text-black"} href="/others" aria-label="Others Page">
                     {"Others"}
                 </NavLink>
             </li>
-            <li>
-                <NavLink activeClasses={activeClassesNav} inactiveClasses={inactiveClassesNav} href='/opinions' aria-label="Opinions Page">
+            <li className="lg:hover:scale-110 active:scale-110 lg:after:scale-100">
+                <NavLink activeClasses={"text-[#2b4c19]"} inactiveClasses={"dark:text-black"} href='/opinions' aria-label="Opinions Page">
                     {"Opinions"}
                 </NavLink>
             </li>
-            <li>
-                <NavLink activeClasses={activeClassesNav} inactiveClasses={inactiveClassesNav} href="/search" aria-label="Search Page">
+            <li className="lg:hover:scale-110 active:scale-110 lg:after:scale-100">
+                <NavLink activeClasses={"text-[#2b4c19]"} inactiveClasses={"dark:text-black"} href="/search" aria-label="Search Page">
                     {"Search"}
                 </NavLink>
             </li>
-            <li>
-                <NavLink activeClasses={activeClassesNav} inactiveClasses={inactiveClassesNav} href="/about" aria-label="About Page">
+            <li className="lg:hover:scale-110 active:scale-110 lg:after:scale-100">
+                <NavLink activeClasses={"text-[#2b4c19]"} inactiveClasses={"dark:text-black"} href="/about" aria-label="About Page">
                     {"About"}
                 </NavLink>
             </li>
-            <li>
+            <li className="lg:hover:scale-110 active:scale-110 lg:after:scale-100">
                 <ThemeToggle />
             </li>
         </ul>

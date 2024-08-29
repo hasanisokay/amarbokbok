@@ -108,6 +108,10 @@ h4 {
   background-color: #ffffff;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.5); /* Horizontal offset, vertical offset, blur radius, color */
 }
+.shadow2 {
+  background-color: #ffffff;
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.5); /* Horizontal offset, vertical offset, blur radius, color */
+}
 .active {
   color: green;
 }
@@ -198,3 +202,15 @@ h4 {
   }
   } 
 
+  .my-masonry-grid {
+    display: flex;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  .my-masonry-grid_column {
+    padding-left: 10px; /* gutter size offset */
+    padding-right: 10px; /* gutter size offset */
+  }
+  .my-masonry-grid_column > div {
+    margin-bottom: 10px; /* space between items */
+  }

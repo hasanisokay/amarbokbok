@@ -1,3 +1,6 @@
 1. fix category icons for dark mood (done)
 2. fix gray texts. (done)
 3. fix navbar
+
+
+toaster should where it needs only

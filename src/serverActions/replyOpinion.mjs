@@ -10,7 +10,6 @@ const replyOpinion = async (formData) => {
     const newReply = {
       reply: message,
       submittedOn: new Date(),
-      name: "Ahmmad Robin",
     };
     const db = await dbConnect();
     const opinionCollection = await db.collection("opinions");
