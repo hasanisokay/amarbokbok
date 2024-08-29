@@ -12,6 +12,7 @@ const AdminSelectionBar = () => {
         { href: '/admin/pending-opinions', name: 'Pending Opinions' },
         { href: '/admin/identity', name: 'Change Passsword' },
         { href: '/admin/sos', name: 'SOS' },
+        { href: '/admin/others', name: 'Others' },
     ]
     return (
         <>

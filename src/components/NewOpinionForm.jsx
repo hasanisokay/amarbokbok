@@ -30,7 +30,7 @@ const NewOpinionForm = () => {
     };
 
     return (
-        <div className={`md:w-[70%] lg:w-[50%] my-4 w-full mx-auto rounded-lg px-10 pb-10 pt-8 shadow-md bg-[#a9d08f] dark:bg-zinc-900
+        <div className={`md:w-[70%] lg:w-[50%]  w-full mx-auto  form1 greenbg
         ${disableSubmit ? " bg-opacity-60" : "bg-opacity-100 "}
         `}>
             <div className="mb-6">

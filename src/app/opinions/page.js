@@ -54,7 +54,7 @@ const page = async ({ searchParams }) => {
         </section>
       ) : (
         <p className="text-center mt-10 font-semibold">
-          Oho! There are no opinion yet. You can share yours.{" "}
+          Oho! No opinion found. You can share yours.{" "}
           <Link className="text-blue-500" href={"/opinions/share"}>
             Click here
           </Link>{" "}

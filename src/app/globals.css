@@ -76,17 +76,16 @@ h4 {
   @apply lg:hover:text-blue-500 active:text-blue-500;
 }
 
-
 .blog-layout {
   display: grid;
   grid-template-columns: repeat(1fr auto);
   gap: 1rem;
-  margin: 0.25rem; 
+  margin: 0.25rem;
 }
 
-.nav-menu li{
-  margin-top: 0.5rem; 
-  margin-bottom: 0.5rem; 
+.nav-menu li {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
 @media (min-width: 768px) {
@@ -98,11 +97,20 @@ h4 {
 @media (min-width: 1024px) {
   .blog-layout {
     grid-template-columns: 1fr min-content;
-    margin: 3rem; 
+    margin: 3rem;
   }
 }
-.container{
-@apply lg:mx-10 md:mx-6 mx-4 
+.container {
+  @apply lg:mx-10 md:mx-6 mx-4;
+}
+.container1 {
+  @apply lg:w-[60%] md:w-[80%] w-[98%] mx-auto;
+}
+.form1 {
+  @apply my-4 rounded-lg px-10 pb-10 pt-8 shadow-md;
+}
+.greenbg {
+  @apply bg-[#a9d08f] dark:bg-zinc-900;
 }
 .shadow1 {
   background-color: #ffffff;
@@ -176,8 +184,8 @@ h4 {
   display: block;
   margin: 0 0 0 auto;
 }
-.counter-card{
- @apply w-[160px] h-[130px] flex flex-col gap-1 items-center justify-center dark:bg-[#333333] bg-slate-100 rounded-lg
+.counter-card {
+  @apply w-[160px] h-[130px] flex flex-col gap-1 items-center justify-center dark:bg-[#333333] bg-slate-100 rounded-lg;
 }
 
 /* theme toggle */
@@ -193,24 +201,25 @@ h4 {
   animation: rotation 1s linear infinite;
 }
 
-  @keyframes rotation {
+@keyframes rotation {
   0% {
-      transform: rotate(0deg);
+    transform: rotate(0deg);
   }
   100% {
-      transform: rotate(360deg);
+    transform: rotate(360deg);
   }
-  } 
-
-  .my-masonry-grid {
-    display: flex;
-    margin-left: 10px;
-    margin-right: 10px;
-  }
-  .my-masonry-grid_column {
-    padding-left: 10px; /* gutter size offset */
-    padding-right: 10px; /* gutter size offset */
-  }
-  .my-masonry-grid_column > div {
-    margin-bottom: 10px; /* space between items */
-  }
+}
+.audio-card {
+}
+.my-masonry-grid {
+  display: flex;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.my-masonry-grid_column {
+  padding-left: 10px; /* gutter size offset */
+  padding-right: 10px; /* gutter size offset */
+}
+.my-masonry-grid_column > div {
+  margin-bottom: 10px; /* space between items */
+}

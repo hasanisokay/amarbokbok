@@ -11,7 +11,7 @@ const OpinionCard = ({ opinion }) => {
         <div className="px-2  h-fit  rounded-md py-1 bg-[#b6d7a0] dark:bg-[#333333] lg:hover:shadow-lg active:shadow-lg lg:active:shadow-none">
             <div className="flex items-center ">
                 <span className="block">{opinion?.gender === "male" ? maleSVG(theme) : femaleSVG(theme)}</span>
-                <div>
+                <div className="pb-1">
                     <p><span className="text-sm text-gray">{opinion?.name || "Anonymous"}</span></p>
                     <p className="text-xs text-gray"><span>{getTimeWithHours(opinion?.submittedOn)}</span> </p>
                 </div>
@@ -22,7 +22,7 @@ const OpinionCard = ({ opinion }) => {
             {opinion?.replies.map(r => <div key={r?._id} className="my-1">
                 <div className="flex items-center justify-end">
                     <span className="block">{maleSVG(theme)}</span>
-                    <div>
+                    <div className="pb-1">
                         <p><span className="text-gray text-xs">Ahmmad Robin</span></p>
                         <p className="text-sm text-gray"><span>{getTimeWithHours(r?.submittedOn)}</span></p>
                     </div>
@@ -30,8 +30,6 @@ const OpinionCard = ({ opinion }) => {
                 </div>
                 <div className="justify-end items-end flex flex-col">
                     <p>{r?.reply}</p>
-
-
                 </div>
             </div>)}
         </div>
