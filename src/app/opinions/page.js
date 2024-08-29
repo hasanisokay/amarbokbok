@@ -6,6 +6,7 @@ import SuspenseFallback from "@/components/SuspenseFallback";
 import { opinionsMetaImage, websiteName } from "@/constants/constants.mjs";
 import { hostname } from "@/constants/hostname.mjs";
 import getOpinions from "@/utils/getOpinions.mjs";
+import Link from "next/link";
 import { Suspense } from "react";
 
 const page = async ({ searchParams }) => {
@@ -13,12 +14,12 @@ const page = async ({ searchParams }) => {
   const limit = parseInt(searchParams?.limit) || 10;
   const sort = searchParams?.sort || "newest";
   const keyword = searchParams?.keyword || "";
-  let opinions;
+  let opinions = [];
 
   try {
     opinions = await getOpinions(page, limit, sort, true, keyword);
   } catch (error) {
-    blogs = null;
+    opinions = null;
   }
   if (
     opinions?.status === 500 ||
@@ -34,15 +35,15 @@ const page = async ({ searchParams }) => {
   const end = Math.min(page * limit, opinions?.totalCount);
   return (
     <Suspense fallback={<SuspenseFallback />}>
-      <div>
+      {opinions?.opinions?.length > 0 ? (
         <section>
           <p className="my-1 ml-[20px]">
             Showing {start} - {end} of {opinions?.totalCount}
           </p>
-         <div className="ml-[20px]">
-         <SelectInBlogs sort={sort} limit={limit} page={page} />
-         </div>
-            <OpinionList opinions={opinions?.opinions} />
+          <div className="ml-[20px]">
+            <SelectInBlogs sort={sort} limit={limit} page={page} />
+          </div>
+          <OpinionList opinions={opinions?.opinions} />
           {opinions?.totalCount > limit && (
             <Pagination
               currentPage={page}
@@ -51,7 +52,14 @@ const page = async ({ searchParams }) => {
             />
           )}
         </section>
-      </div>
+      ) : (
+        <p className="text-center mt-10 font-semibold">
+          Oho! There are no opinion yet. You can share yours.{" "}
+          <Link className="text-blue-500" href={"/opinions/share"}>
+            Click here
+          </Link>{" "}
+        </p>
+      )}
     </Suspense>
   );
 };

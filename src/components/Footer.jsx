@@ -16,7 +16,7 @@ const Footer = () => {
     return (
         <footer className="flex flex-col bg-[#e0f7fa] dark:bg-[#2c2c2c]">
             <div className="flex flex-col items-center justify-around gap-5 bg-[#cfd8dc] py-8 dark:bg-[#424242] md:flex-row md:gap-0">
-                <section>
+                <section className="ml-4">
                     <h2 className="text-2xl font-bold text-[#212121] dark:text-[#fafafa]">{websiteName}</h2>
                     <p className="md:max-w-[400px] text-sm lg:max-w-[450px] my-2 text-[#424242] dark:text-[#e0e0e0]">
                         লেখালিখি করি শখের বসে। কিছু কিছু নিজের খেয়াল-খুশি মত। আর কিছু হয়ত গুরুত্বপূর্ণ লেখা। 
