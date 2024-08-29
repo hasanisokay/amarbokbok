@@ -36,10 +36,12 @@ const page = async ({ searchParams }) => {
     <Suspense fallback={<SuspenseFallback />}>
       <div>
         <section>
-          <p className="my-1">
+          <p className="my-1 ml-[20px]">
             Showing {start} - {end} of {opinions?.totalCount}
           </p>
-          <SelectInBlogs sort={sort} limit={limit} page={page} />
+         <div className="ml-[20px]">
+         <SelectInBlogs sort={sort} limit={limit} page={page} />
+         </div>
             <OpinionList opinions={opinions?.opinions} />
           {opinions?.totalCount > limit && (
             <Pagination
