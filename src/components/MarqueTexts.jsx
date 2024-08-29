@@ -6,11 +6,11 @@ const MarqueTexts = async () => {
         <>
             {message && (
                 <Marquee
-                    style={{ color: "red", fontSize: "20px", padding: "10px" }}
+                    style={{ fontSize: "20px", padding: "10px" }}
                     pauseOnHover={true}
                 >
                     {message?.map((m) => (
-                        <p key={m?._id} className="mr-2">
+                        <p key={m?._id} className="mr-2 text-red-500 dark:text-white">
                             {m?.message}
                         </p>
                     ))}
