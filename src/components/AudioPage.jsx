@@ -1,41 +1,36 @@
+'use client'
 import { Suspense } from "react";
+import Pagination from "./Pagination";
 import SuspenseFallback from "./SuspenseFallback";
 import SelectInBlogs from "./SelectInBlogs";
-import Blogs from "./Blogs";
-import Pagination from "./Pagination";
-import Sidebar from "./Sidebar";
-import ResetPage from "./ResetPage";
+import AudioList from "./AudioList";
 
-const BlogsPage = ({ blogs, sort, limit, page }) => {
+const AudioPage = ({ audios, totalCount, sort, limit, page }) => {
 
-    if (blogs?.blogs?.length < 1) {
-        return <ResetPage currentPage={page} />
-    }
-    else {
         const start = (page - 1) * limit + 1;
-        const end = Math.min(page * limit, blogs?.totalCount);
+        const end = Math.min(page * limit, totalCount);
         return (
             <Suspense fallback={<SuspenseFallback />}>
                 <div className="blog-layout">
                     <section>
                         <p className="my-1">
-                            Showing {start} - {end} of {blogs?.totalCount}
+                            Showing {start} - {end} of {totalCount}
                         </p>
                         <SelectInBlogs sort={sort} limit={limit} page={page} />
-                        <Blogs blogs={blogs}  />
-                        {blogs?.totalCount > limit && (
+                        <AudioList audios={audios}/>
+                        {audios?.totalCount > limit && (
                             <Pagination
                                 currentPage={page}
-                                total={blogs?.totalCount}
+                                total={totalCount}
                                 limit={limit}
                             />
                         )}
                     </section>
-                    <Sidebar />
+                    {/* <Sidebar /> */}
                 </div>
             </Suspense>
         );
-    }
+    
 };
 
-export default BlogsPage;
+export default AudioPage;

@@ -1,21 +1,11 @@
 "use client"
-import AudioList from "@/components/AudioList";
 import newOthers from "@/serverActions/newOthers.mjs";
-import getOthers from "@/utils/getOthers.mjs";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import toast from "react-hot-toast";
 
-const Page = ({ searchParams }) => {
-  const sort = searchParams?.sort || "newest";
-  const page = parseInt(searchParams?.page) || 1;
-  const limit = searchParams.limit || 10000;
-  const keyword = searchParams.keyword || "";
-
-  const [seePreviousAudios, setSeePreviousAudios] = useState(false);
+const Page = () => {
   const [audioLinks, setAudioLinks] = useState([{ name: "", link: "" }]);
   const [description, setDescription] = useState("");
-  const [previousAudios, setPreviousAudios] = useState([]);
-
   const handleAudioLinkChange = (index, field, value) => {
     const updatedLinks = [...audioLinks];
     updatedLinks[index][field] = value;
@@ -55,16 +45,6 @@ const Page = ({ searchParams }) => {
     }
   };
 
-  useEffect(() => {
-    if (!seePreviousAudios) return;
-    (async () => {
-      const res = await getOthers("audio", page, limit, sort, keyword);
-      setPreviousAudios(res);
-    })();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [seePreviousAudios]);
-
-  console.log(previousAudios);
 
   return (
     <>
@@ -163,19 +143,6 @@ const Page = ({ searchParams }) => {
           Submit
         </button>
       </form>
-      <div className="text-center mb-6">
-        {!seePreviousAudios && (
-          <button
-            className=" rounded-btn-active rounded-btn"
-            onClick={() => setSeePreviousAudios(true)}
-          >
-            See Previous Audios
-          </button>
-        )}
-        {previousAudios.others?.length > 0 && (
-          <AudioList audios={previousAudios?.others} />
-        )}
-      </div>
     </>
   );
 };

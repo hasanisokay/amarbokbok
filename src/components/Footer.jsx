@@ -28,10 +28,10 @@ const Footer = () => {
                     <section>
                         <h3 className="text-center text-xl font-semibold text-[#212121] dark:text-[#fafafa]">Browse</h3>
                         <ul className="flex items-center my-2 flex-col gap-2 text-[#424242] dark:text-[#e0e0e0]">
-                            <li className="lg:hover:scale-110 active:scale-110 lg:after:scale-100"><NavLink activeClasses={"text-[#005494] dark:text-[#1ad93e]"}  href={"/"}>Home</NavLink></li>
-                            <li className="lg:hover:scale-110 active:scale-110 lg:after:scale-100"><NavLink activeClasses={"text-[#005494] dark:text-[#1ad93e]"}  href={"/blogs"}>Blogs</NavLink></li>
-                            <li className="lg:hover:scale-110 active:scale-110 lg:after:scale-100"><NavLink activeClasses={"text-[#005494] dark:text-[#1ad93e]"}  href={"/about"}>About</NavLink></li>
-                            <li className="lg:hover:scale-110 active:scale-110 lg:after:scale-100"><NavLink activeClasses={"text-[#005494] dark:text-[#1ad93e]"}  href={"/contact"}>Contact</NavLink></li>
+                            <li className="duration-300 lg:hover:scale-110 active:scale-110 lg:active:scale-100"><NavLink activeClasses={"text-[#005494] dark:text-[#1ad93e]"}  href={"/blogs"}>Blogs</NavLink></li>
+                            <li className="duration-300 lg:hover:scale-110 active:scale-110 lg:active:scale-100"><NavLink activeClasses={"text-[#005494] dark:text-[#1ad93e]"}  href={"/about"}>About</NavLink></li>
+                            <li className="duration-300 lg:hover:scale-110 active:scale-110 lg:active:scale-100"><NavLink activeClasses={"text-[#005494] dark:text-[#1ad93e]"}  href={"/"}>Home</NavLink></li>
+                            <li className="duration-300 lg:hover:scale-110 active:scale-110 lg:active:scale-100"><NavLink activeClasses={"text-[#005494] dark:text-[#1ad93e]"}  href={"/contact"}>Contact</NavLink></li>
                         </ul>
                     </section>
                     <section>
