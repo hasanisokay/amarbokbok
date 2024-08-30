@@ -85,7 +85,7 @@ const Counter = () => {
         }
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [targets]);
-console.log(targets)
+// console.log(targets)
     return (
         <div className="flex flex-wrap gap-4 items-center justify-center">
             <div className='counter-card'>

@@ -7,13 +7,7 @@ import { homeMetaImage, websiteName } from "@/constants/constants.mjs";
 import Footer from "@/components/Footer";
 import dynamic from "next/dynamic";
 
-const UserTracker = dynamic(
-  () =>
-    new Promise((resolve) => {
-      setTimeout(() => resolve(import("@/components/UserTracker")), 10000);
-    }),
-  { ssr: false }
-);
+const UserTracker = dynamic(() =>import("@/components/UserTracker"), { ssr: false });
 // const inter = Inter({ subsets: ["latin"] });
 
 export async function generateMetadata() {
