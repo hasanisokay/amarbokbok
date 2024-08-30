@@ -20,7 +20,7 @@ const UserTracker = () => {
         const timer = setTimeout(() => {
             // If the user stays for 10 seconds, increase total users count
             increaseTotalUsers();
-        }, 10000); // 10,000 milliseconds = 10 seconds
+        }, 5000); // 10,000 milliseconds = 10 seconds
 
         return () => clearTimeout(timer); // Clear timer on unmount
     };

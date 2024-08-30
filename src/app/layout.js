@@ -6,9 +6,14 @@ import { hostname } from "@/constants/hostname.mjs";
 import { homeMetaImage, websiteName } from "@/constants/constants.mjs";
 import Footer from "@/components/Footer";
 import dynamic from "next/dynamic";
-// import UseDelayedExport from "@/components/UseDelayedExport";
 
-const UseDelayedExport = dynamic(() => import('@/components/UseDelayedExport'),{ssr:false})
+const UserTracker = dynamic(
+  () =>
+    new Promise((resolve) => {
+      setTimeout(() => resolve(import("@/components/UserTracker")), 10000);
+    }),
+  { ssr: false }
+);
 // const inter = Inter({ subsets: ["latin"] });
 
 export async function generateMetadata() {
@@ -47,7 +52,7 @@ export const viewport = {
 };
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className="" >
+    <html lang="en" className="">
       <body className="transition-colors">
         <Providers>
           <header className="min-h-[60px]">
@@ -55,7 +60,7 @@ export default function RootLayout({ children }) {
           </header>
           <main className="min-h-[calc(100vh-100px)]">{children}</main>
           <Footer />
-          <UseDelayedExport />
+          <UserTracker />
         </Providers>
         <Toaster />
       </body>
