@@ -8,8 +8,8 @@ const increaseTotalUsers = async () => {
     const othersCollection = await db.collection("others");
     const result = await othersCollection.updateOne(
       { type: "userCount" },
-      { $inc: { totalCount: 1 } }
-      //   {upsert: true}
+      { $inc: { totalCount: 1 } },
+        {upsert: true}
     );
     if (result?.modifiedCount > 0 || result?.upsertedId) {
       return {};

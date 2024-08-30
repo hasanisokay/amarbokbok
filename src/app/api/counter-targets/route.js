@@ -54,10 +54,10 @@ export const GET = async () => {
     const ip = await getIp();
 
     // Ensure TTL index is created
-    await othersCollection.createIndex(
-      { "onlineUsers.expiresAt": 1 },
-      { expireAfterSeconds: 0 }
-    );
+    // await othersCollection.createIndex(
+    //   { "onlineUsers.expiresAt": 1 },
+    //   { expireAfterSeconds: 0 }
+    // );
 
     // Check if the IP already exists in the onlineUsers array
     const ipExists = await othersCollection.findOne({
