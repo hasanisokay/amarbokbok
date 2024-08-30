@@ -3,7 +3,7 @@
 import { hostname } from "@/constants/hostname.mjs";
 
 const getOthers = async (type, page, limit, sort, keyword = "") => {
-  console.log("hit")
+
   try {
     const host = await hostname();
     const res = await fetch(

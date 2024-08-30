@@ -33,7 +33,6 @@ const page = async ({ searchParams }) => {
     all,
     keyword,
   );
-// console.log(comments)
   return (
     <Suspense fallback={<SuspenseFallback />}>
       <PendingCommentsHead

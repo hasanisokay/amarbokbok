@@ -5,8 +5,10 @@ import Toaster from "@/components/Toaster";
 import { hostname } from "@/constants/hostname.mjs";
 import { homeMetaImage, websiteName } from "@/constants/constants.mjs";
 import Footer from "@/components/Footer";
+import dynamic from "next/dynamic";
+// import UseDelayedExport from "@/components/UseDelayedExport";
 
-
+const UseDelayedExport = dynamic(() => import('@/components/UseDelayedExport'),{ssr:false})
 // const inter = Inter({ subsets: ["latin"] });
 
 export async function generateMetadata() {
@@ -53,6 +55,7 @@ export default function RootLayout({ children }) {
           </header>
           <main className="min-h-[calc(100vh-100px)]">{children}</main>
           <Footer />
+          <UseDelayedExport />
         </Providers>
         <Toaster />
       </body>

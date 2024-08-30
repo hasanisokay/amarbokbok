@@ -2,6 +2,7 @@
 import useTheme from "@/hooks/useTheme.mjs";
 import femaleSVG from "@/svg/femaleSVG.mjs";
 import maleSVG from "@/svg/maleSVG.mjs";
+import ahmmadRobinSVG from "@/svg/ahmmadRobinSVG.mjs";
 import getTimeWithHours from "@/utils/getTimeWithHours.mjs";
 
 const OpinionCard = ({ opinion }) => {
@@ -21,7 +22,7 @@ const OpinionCard = ({ opinion }) => {
 
             {opinion?.replies.map(r => <div key={r?._id} className="my-1">
                 <div className="flex items-center justify-end">
-                    <span className="block">{maleSVG(theme)}</span>
+                    <span className="block">{ahmmadRobinSVG(theme)}</span>
                     <div className="pb-1">
                         <p><span className="text-gray text-xs">Ahmmad Robin</span></p>
                         <p className="text-sm text-gray"><span>{getTimeWithHours(r?.submittedOn)}</span></p>
