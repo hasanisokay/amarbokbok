@@ -87,6 +87,7 @@ const BlogEditor = ({ postId }) => {
             content: contentToSave, updatedOn: updatedOn, blog_id: blogId, title: title,
             categories: selectedCategories
           }),
+          credentials:"include"
         })
         : await fetch('/api/admin/add-new-blog', {
           method: 'POST',
@@ -98,7 +99,7 @@ const BlogEditor = ({ postId }) => {
             readCount: 0,
             title: title,
             categories: selectedCategories
-          }),
+          }),credentials:'include'
         });
       const data = await response.json();
 

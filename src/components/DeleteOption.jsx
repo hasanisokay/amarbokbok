@@ -18,7 +18,7 @@ const DeleteOption = ({ blog_id, noReloadAfterDelete }) => {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
-            },
+            }, credentials: "include",
             body: JSON.stringify({ blog_id, admin: currentUser })
         })
         const data = await response.json()

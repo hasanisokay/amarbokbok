@@ -22,7 +22,7 @@ const Login = () => {
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify({ email, password })
+            body: JSON.stringify({ email, password }),credentials:'include'
         })
         const data = await res.json();
         if (data.status === 200) {

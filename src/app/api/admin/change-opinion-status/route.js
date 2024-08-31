@@ -1,6 +1,8 @@
 import {
+  COOKIE_NAME,
   dbErrorResponse,
   serverErrorResponse,
+  unauthorizedResponse,
 } from "@/constants/constants.mjs";
 import dbConnect from "@/services/dbConnect.mjs";
 import { ObjectId } from "mongodb";
@@ -8,6 +10,11 @@ import { NextResponse } from "next/server";
 
 export const POST = async (req) => {
   try {
+    let token = req?.cookies?.get(COOKIE_NAME);
+    if (!token) {
+      return NextResponse.json(unauthorizedResponse);
+    }
+
     const body = await req.json();
     const { comment_id, reply_id, action, replying } = body;
     const db = await dbConnect();

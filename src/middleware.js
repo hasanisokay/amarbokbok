@@ -6,7 +6,6 @@ import logOut from "./utils/logOut.mjs";
 export async function middleware(request) {
   let token = request.cookies.get(COOKIE_NAME)?.value.split("Bearer")[1];
   const pathName = request.nextUrl.pathname;
-
   if (pathName === "/admin/login" && token) {
     return NextResponse.redirect(new URL("/admin", request.url));
   }
@@ -25,5 +24,9 @@ export async function middleware(request) {
 }
 
 export const config = {
-  matcher: ["/admin", "/admin/:path*", "/dashboard/:path*"],
+  matcher: [
+    "/admin",
+    "/admin/:path*",
+    "/dashboard/:path*",
+  ],
 };

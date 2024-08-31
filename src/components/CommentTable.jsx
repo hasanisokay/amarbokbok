@@ -167,7 +167,7 @@ const approveComment = async (comment_id, reply_id = null) => {
       action: "approve",
       comment_id,
       reply_id
-    })
+    }),credentials:'include'
   });
   const data = await res.json();
   if (data.status === 200) {
@@ -187,7 +187,7 @@ const deleteComment = async (comment_id, reply_id = null) => {
       action: "delete",
       comment_id,
       reply_id
-    })
+    }),credentials:'include'
   });
   const data = await res.json();
   if (data?.status === 200) {

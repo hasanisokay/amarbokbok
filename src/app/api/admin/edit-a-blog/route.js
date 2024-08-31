@@ -1,9 +1,14 @@
-import { dbErrorResponse } from "@/constants/constants.mjs";
+import { COOKIE_NAME, dbErrorResponse, unauthorizedResponse } from "@/constants/constants.mjs";
 import dbConnect from "@/services/dbConnect.mjs";
 import { NextResponse } from "next/server";
 
 export const POST = async (req) => {
   try {
+    let token = req?.cookies?.get(COOKIE_NAME);
+    if (!token) {
+      return NextResponse.json(unauthorizedResponse);
+    }
+
     const body = await req.json();
     const { blog_id, content, updatedOn, title, categories } = body;
     const db = await dbConnect();

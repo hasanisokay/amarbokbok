@@ -36,11 +36,29 @@ export const POST = async (req) => {
         .setIssuedAt()
         .setExpirationTime("30d")
         .sign(secret);
+
+
+      // const response = NextResponse.json({
+      //   status: 200,
+      //   user: { email, role: user.role },
+      //   message: "Validated",
+      // });
+      // response.cookies.set(COOKIE_NAME, `Bearer ${token}`, {
+      //   httpOnly: true,
+      //   secure: process.env.NODE_ENV === 'production',
+      //   maxAge: 24 * 60 * 60 * 30, // 30 days
+      //   path: '/',
+      //   sameSite: 'Strict', // Prevent CSRF attacks
+      // });
+
+      // return response;
       cookies().set({
         name: COOKIE_NAME,
         value: `Bearer${token}`,
-        secure: true,
-        maxAge: 24 * 60 * 60 * 1000 * 7, // 7 day
+        httpOnly: true,
+        sameSite: "strict",
+        secure: process.env.NODE_ENV === 'production',
+        maxAge: 24 * 60 * 60 * 3, // 3 day
       });
       return NextResponse.json({
         status: 200,
