@@ -26,7 +26,6 @@ export const GET = async (req) => {
     const result = await blogCollection.distinct('categories')
     return NextResponse.json(result);
   } catch(err) {
-    console.log(err)
     return NextResponse.json(serverErrorResponse);
   }
 };

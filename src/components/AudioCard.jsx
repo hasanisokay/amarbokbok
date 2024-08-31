@@ -1,4 +1,4 @@
-import deleteOthers from "@/serverActions/deleteOthers.mjs";
+import deleteOthers from "@/utils/deleteOthers.mjs";
 import getTime from "@/utils/getTime.mjs";
 import toast from "react-hot-toast";
 const AudioCard = ({ a, admin = false, index }) => {
@@ -8,9 +8,12 @@ const AudioCard = ({ a, admin = false, index }) => {
             <p className="pb-1 font-semibold text-xl">{a?.title}</p>
             {admin && <button className="btn-red" onClick={
                 async () => {
-                    const res = await deleteOthers(a?._id)
-                    if (res.error) toast.error(res.error);
-                    else { toast.success("deleted") }
+                    const res = await deleteOthers(a?._id);
+                   if(res.status===200){
+                    toast.success(res?.message || "Success")
+                   }else{
+                    toast.error(res.message ||"Error")
+                   }
                 }}>
                 Delete
             </button>}

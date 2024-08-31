@@ -6,12 +6,13 @@ import {
 import dbConnect from "@/services/dbConnect.mjs";
 import { NextResponse } from "next/server";
 
+export const dynamic = 'force-dynamic';
+
 export const GET = async (req) => {
 let token = req.cookies.get(COOKIE_NAME);
 if(token){
   return NextResponse.json({status:200, message:"User is admin. No changes made."})
 }
-console.log(token)
   try {
     const db = await dbConnect();
     if (!db) return NextResponse.json(dbErrorResponse);

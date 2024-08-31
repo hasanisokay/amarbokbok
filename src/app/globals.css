@@ -215,8 +215,7 @@ h4 {
     transform: rotate(360deg);
   }
 }
-.audio-card {
-}
+
 .my-masonry-grid {
   display: flex;
   margin-left: 10px;
@@ -237,3 +236,21 @@ h4 {
 .shadow4 {
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.5); /* Horizontal offset, vertical offset, blur radius, color */
 }
+@media (max-width: 768px) {
+  /* .video-card-w {
+    width: calc(100%-10px) !important;
+  } */
+  .my-masonry-grid {
+    display: flex;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  .my-masonry-grid_column {
+    padding-left: 0px; /* gutter size offset */
+    padding-right: 0px; /* gutter size offset */
+  }
+  .my-masonry-grid_column > div {
+    margin-bottom: 20px; /* space between items */
+  }
+}
+

@@ -1,10 +1,15 @@
 import NotFound from "@/components/NotFound";
 import Pagination from "@/components/Pagination";
-import SelectInBlogs from "@/components/SelectInBlogs";
+// import SelectInBlogs from ";
 import SuspenseFallback from "@/components/SuspenseFallback";
 import VideoList from "@/components/VideoList";
 import getOthers from "@/utils/getOthers.mjs";
+import dynamic from "next/dynamic";
 import { Suspense } from "react";
+
+const SelectInBlogs = dynamic(() => import("@/components/SelectInBlogs"), {
+  ssr: false,
+});
 
 const page = async ({ searchParams }) => {
   const page = parseInt(searchParams?.page) || 1;
