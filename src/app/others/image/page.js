@@ -50,7 +50,7 @@ const page = async ({ searchParams }) => {
           )}
         </section>
       ) : (
-        <p className="text-center mt-10 font-semibold">Oho! No image found.</p>
+        <p className="text-center mt-10 font-semibold">No image found.</p>
       )}
     </Suspense>
   );

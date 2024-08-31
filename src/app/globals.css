@@ -254,3 +254,11 @@ h4 {
   }
 }
 
+/* .btn-bg {
+  [data-theme="dark"] & {
+    background-color: #4e5358;
+  }
+  [data-theme="light"] & {
+    background-color: #f8f9fa;
+  }
+} */

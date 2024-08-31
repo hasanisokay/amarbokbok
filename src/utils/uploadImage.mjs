@@ -15,7 +15,6 @@ try{
       }
     }
   );
-
   const imageUrl = response.data.data.url;
   return imageUrl;
 }catch{

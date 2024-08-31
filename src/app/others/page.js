@@ -23,13 +23,19 @@ const page = async ({ searchParams }) => {
   )
     return <NotFound />;
   return (
-    <AudioPage
-      audios={audios?.others}
-      totalCount={audios?.totalCount}
-      limit={limit}
-      page={page}
-      sort={sort}
-    />
+    <>
+      {audios?.others?.length > 0 ? (
+        <AudioPage
+          audios={audios?.others}
+          totalCount={audios?.totalCount}
+          limit={limit}
+          page={page}
+          sort={sort}
+        />
+      ) : (
+        <p className="text-center mt-10 font-semibold">No audio found.</p>
+      )}
+    </>
   );
 };
 

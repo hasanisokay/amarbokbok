@@ -1,6 +1,6 @@
 
 const ImageList = ({images}) => {
-
+console.log(images)
     return (
         <div>
             
