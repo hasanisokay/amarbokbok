@@ -4,7 +4,7 @@ import toast from "react-hot-toast";
 const AudioCard = ({ a, admin = false, index }) => {
 
     return (
-        <div className="p-2 text-left  whitespace-pre-wrap break-words greenbg rounded-md shadow4 lg:hover:-translate-y-2 active:-translate-y-2 duration-500 ">
+        <div className="p-2 text-left lg:w-[350px] md:w-[300px] whitespace-pre-wrap break-words greenbg rounded-md shadow4 lg:hover:-translate-y-2 active:-translate-y-2 duration-500 ">
             <p className="pb-1 font-semibold text-xl">{a?.title}</p>
             {admin && <button className="btn-red" onClick={
                 async () => {

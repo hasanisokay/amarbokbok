@@ -237,9 +237,6 @@ h4 {
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.5); /* Horizontal offset, vertical offset, blur radius, color */
 }
 @media (max-width: 768px) {
-  /* .video-card-w {
-    width: calc(100%-10px) !important;
-  } */
   .my-masonry-grid {
     display: flex;
     margin-left: 10px;
