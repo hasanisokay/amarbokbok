@@ -114,7 +114,7 @@ const BlogEditor = ({ postId }) => {
   };
 
   return (
-    <div>
+    <div className='mx-2'>
       <h1>{postId ? 'Edit Blog' : 'Create a New Blog'}</h1>
       {uploadPercentage !== 0 && <Progress number={uploadPercentage} />}
       <div className="relative w-max rounded-lg my-1 mx-2">

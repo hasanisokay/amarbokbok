@@ -2,6 +2,8 @@
 import blog from '@/svg/blog.mjs';
 import clock from '@/svg/clock.mjs';
 import comment from '@/svg/comment.mjs';
+import onlineVisitorsSVG from '@/svg/onlineVisitorsSVG.mjs';
+import visitorsSVG from '@/svg/visitorsSVG.mjs';
 
 import { useState, useEffect } from 'react';
 
@@ -56,8 +58,8 @@ const Counter = () => {
                 if (target === 0) {
                     setter(0);
                     return;
-                }            
-                const stepTime = Math.abs(Math.floor(duration / target ));
+                }
+                const stepTime = Math.abs(Math.floor(duration / target));
                 let count = 0;
 
                 const interval = setInterval(() => {
@@ -83,9 +85,9 @@ const Counter = () => {
                 clearInterval(totalUsers);
             };
         }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [targets]);
-// console.log(targets)
+    // console.log(targets)
     return (
         <div className="flex flex-wrap gap-4 items-center justify-center">
             <div className='counter-card'>
@@ -104,12 +106,12 @@ const Counter = () => {
                 <p>Comments</p>
             </div>
             <div className='counter-card'>
-                {comment()}
+                {onlineVisitorsSVG()}
                 <h1 className="text-2xl font-bold">{onlineUsers}</h1>
                 <p>Online Visitor</p>
             </div>
             <div className='counter-card'>
-                {comment()}
+                {visitorsSVG()}
                 <h1 className="text-2xl font-bold">{totalUsers}</h1>
                 <p>Total Visitor</p>
             </div>

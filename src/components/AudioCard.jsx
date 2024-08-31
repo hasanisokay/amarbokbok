@@ -14,7 +14,7 @@ const AudioCard = ({ a, admin = false, index }) => {
                 }}>
                 Delete
             </button>}
-            <p className="py-2 text-sm text-wrap">{a?.description}</p>
+            <p className="py-2 text-sm text-wrap max-w-[300px]">{a?.description}</p>
             <p className="text-xs">Added On: {getTime(a?.date)}</p>
             <div className="grid grid-cols-3 text-xs gap-3 pt-2 pb-1">
                 {a?.links?.map((l, i) => <a target="_blank" key={i} href={l?.link} className="dark:bg-slate-500 text-white text-center bg-[#3b3b3b] rounded-md p-1 duration-300 active:shadow-xl lg:hover:shadow-xl lg:hover:scale-105">

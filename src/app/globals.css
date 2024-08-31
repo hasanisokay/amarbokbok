@@ -47,6 +47,11 @@ body {
     }
   }
 }
+
+.ql-editor{
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
 .section-heading {
   text-align: left;
   width: fit-content;
@@ -82,6 +87,7 @@ h4 {
   gap: 1rem;
   margin: 0.25rem;
 }
+
 
 .nav-menu li {
   margin-top: 0.5rem;

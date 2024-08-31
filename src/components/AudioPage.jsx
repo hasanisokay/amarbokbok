@@ -14,13 +14,13 @@ const AudioPage = ({ audios, totalCount, sort, limit, page }) => {
             {audios.length > 0 && <>
                 <section>
                     <div className="ml-[20px]">
-                    <p className="my-1">
+                        <p className="my-1">
                             Showing {start} - {end} of {totalCount}
                         </p>
                         <SelectInBlogs sort={sort} limit={limit} page={page} />
 
                     </div>
-                                            <AudioList audios={audios} />
+                    <AudioList audios={audios} />
                     {audios?.totalCount > limit && (
                         <Pagination
                             currentPage={page}

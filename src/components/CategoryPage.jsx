@@ -16,7 +16,7 @@ const CategoryPage = () => {
     }, [])
     return (
         <>
-            {categories?.length > 0 && <div className="w-fit my-4">
+            {categories?.length > 0 && <div className="lg:w-fit w-full my-4 bg-[#c6e0b3] min-w-[200px]  p-3 text-black h-fit rounded-md">
                 <h4 className='section-heading'>ক্যাটাগরি</h4>
                 {categories?.map((c, index) =>
                     <div

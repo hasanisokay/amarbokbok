@@ -14,7 +14,7 @@ const RecentBlogs = () => {
     return (
         <>
             {
-                recentBlogs?.length > 0 && <div className="my-4">
+                recentBlogs?.length > 0 && <div className="my-4 min-w-[200px] lg:w-fit w-full  p-3 text-black h-fit rounded-md bg-[#c6e0b3]">
                     <h4 className="section-heading">সাম্প্রতিক</h4>
                     {recentBlogs?.map((blog) => <div
                         className="cursor-pointer hover-blue my-2 py-1"

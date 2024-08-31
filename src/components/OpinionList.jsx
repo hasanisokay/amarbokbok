@@ -5,7 +5,7 @@ import OpinionCard from './OpinionCard';
 const breakpointColumnsObj = {
   default: 3,
   1100: 2,
-  700: 1
+  768: 1
 };
 
 const OpinionList = ({ opinions }) => {

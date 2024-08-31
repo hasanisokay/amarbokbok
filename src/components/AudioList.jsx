@@ -4,9 +4,9 @@ const AudioList = ({ audios }) => {
     const breakpointColumnsObj = {
         default: 3,
         1100: 2,
-        700: 1
+        768: 1
     };
-    return (
+           return (
         <Masonry
             breakpointCols={breakpointColumnsObj}
             className="my-masonry-grid"
@@ -19,6 +19,8 @@ const AudioList = ({ audios }) => {
             }
         </Masonry>
     );
+
+
 };
 
 export default AudioList;

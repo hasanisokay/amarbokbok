@@ -1,9 +1,13 @@
-"use server"
-import BlogsPage from "@/components/BlogsPage";
+// import BlogsPage from "@/components/BlogsPage";
 import NotFound from "@/components/NotFound";
 import { blogsMetaImage, websiteName } from "@/constants/constants.mjs";
 import { hostname } from "@/constants/hostname.mjs";
 import getBlogs from "@/utils/getBlogs.mjs";
+import dynamic from "next/dynamic";
+
+const BlogsPage = dynamic(() => import('@/components/BlogsPage'), {
+  ssr: false,
+})
 
 const blogsPage = async ({ searchParams }) => {
   const page = parseInt(searchParams?.page) || 1;
@@ -24,7 +28,9 @@ const blogsPage = async ({ searchParams }) => {
     blogs?.error
   )
     return <NotFound />;
-  return <BlogsPage blogs={blogs} page={page} limit={limit} sort={sort} />;
+  if (blogs?.blogs?.length > 0) {
+    return <BlogsPage blogs={blogs} page={page} limit={limit} sort={sort} />;
+  }
 };
 
 export default blogsPage;

@@ -2,6 +2,7 @@
 import { useEffect, useRef, useState } from 'react';
 import Quill from 'quill';
 import CustomImageBlot from './CustomImageBlot';
+import 'quill/dist/quill.core.css'; 
 import Image from 'next/image';
 
 const QuillRenderer = ({ content }) => {
