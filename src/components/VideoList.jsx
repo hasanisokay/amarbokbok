@@ -5,9 +5,22 @@ import AuthContext from "@/contexts/AuthContext.mjs";
 import VideoCard from "./VideoCard";
 const VideoList = ({ videos }) => {
     const { currentUser } = useContext(AuthContext);
+    let columnCountTab
+    let columnCountDefault
+    if (videos?.length === 1) {
+        columnCountDefault = 1;
+        columnCountTab = 1;
+    } else if (videos?.length === 2) {
+        columnCountDefault = 2;
+        columnCountTab = 2;
+    } else if (videos?.length > 2) {
+        columnCountDefault = 3
+        columnCountTab = 2
+    }
+
     const breakpointColumnsObj = {
-        default: 3,
-        1100: 2,
+        default: columnCountDefault,
+        1100: columnCountTab,
         768: 1
     };
     return (

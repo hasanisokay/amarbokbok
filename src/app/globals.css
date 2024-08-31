@@ -236,6 +236,14 @@ h4 {
 .shadow4 {
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.5); /* Horizontal offset, vertical offset, blur radius, color */
 }
+/* 
+  default: 3,
+        1100: 2,
+        768: 1
+    
+*/
+
+
 @media (max-width: 768px) {
   .my-masonry-grid {
     display: flex;

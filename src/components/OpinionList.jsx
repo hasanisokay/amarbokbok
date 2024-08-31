@@ -2,13 +2,28 @@
 import Masonry from 'react-masonry-css';
 import OpinionCard from './OpinionCard';
 
-const breakpointColumnsObj = {
-  default: 3,
-  1100: 2,
-  768: 1
-};
+
 
 const OpinionList = ({ opinions }) => {
+
+  let columnCountTab
+    let columnCountDefault
+    if (opinions?.length === 1) {
+        columnCountDefault = 1;
+        columnCountTab = 1;
+    } else if (opinions?.length === 2) {
+        columnCountDefault = 2;
+        columnCountTab = 2;
+    } else if (opinions?.length > 2) {
+        columnCountDefault = 3
+        columnCountTab = 2
+    }
+
+    const breakpointColumnsObj = {
+        default: columnCountDefault,
+        1100: columnCountTab,
+        768: 1
+    };
   return (
     <Masonry
       breakpointCols={breakpointColumnsObj}
