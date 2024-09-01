@@ -15,7 +15,7 @@ const MostRead = () => {
     return (
         <>
             {
-                mostReadBlogs?.length > 0 && <div className="my-4 bg-[#c6e0b3] min-w-[200px] lg:w-fit w-full p-3 text-black h-fit rounded-md">
+                mostReadBlogs?.length > 0 && <div className="my-4 bg-[#c6e0b3] dark:bg-[#333333] dark:text-white min-w-[200px] lg:w-fit w-full p-3 text-black h-fit rounded-md">
                     <h4 className="section-heading">সর্বাধিক পঠিত</h4>
                     {mostReadBlogs.map((blog) => <div className="cursor-pointer my-2 py-1 hover-blue"
                         key={blog?._id}>

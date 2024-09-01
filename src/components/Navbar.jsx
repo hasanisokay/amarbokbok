@@ -36,37 +36,37 @@ const Navbar = () => {
     const menu = (
         <ul className="md:flex-row flex-col flex items-center md:space-y-0 space-y-4">
             <li className="duration-300 lg:hover:scale-110 active:scale-110 lg:active:scale-100">
-                <NavLink activeClasses={"text-[#2b4c19]"} inactiveClasses={"dark:text-black"} href="/" aria-label="Home Page">
+                <NavLink activeClasses={"text-[#0000FF] dark:text-[#00e76f]"} href="/" aria-label="Home Page">
                     {"Home"}
                 </NavLink>
             </li>
             <li className="duration-300 lg:hover:scale-110 active:scale-110 lg:active:scale-100">
-                <NavLink activeClasses={"text-[#2b4c19]"} inactiveClasses={"dark:text-black"} href="/blogs" aria-label="Blogs Page">
+                <NavLink activeClasses={"text-[#0000FF] dark:text-[#00e76f]"} href="/blogs" aria-label="Blogs Page">
                     {"Blogs"}
                 </NavLink>
             </li>
             {currentUser && <li className="duration-300 lg:hover:scale-110 active:scale-110 lg:active:scale-100">
-                <NavLink activeClasses={"text-[#2b4c19]"} inactiveClasses={"dark:text-black"} href="/admin" aria-label="Admin Page">
+                <NavLink activeClasses={"text-[#0000FF] dark:text-[#00e76f]"} href="/admin" aria-label="Admin Page">
                     {"Admin"}
                 </NavLink>
             </li>}
             <li className="duration-300 lg:hover:scale-110 active:scale-110 lg:active:scale-100">
-                <NavLink activeClasses={"text-[#2b4c19]"} inactiveClasses={"dark:text-black"} href="/others" aria-label="Others Page">
+                <NavLink activeClasses={"text-[#0000FF] dark:text-[#00e76f]"} href="/others" aria-label="Others Page">
                     {"Others"}
                 </NavLink>
             </li>
             <li className="duration-300 lg:hover:scale-110 active:scale-110 lg:active:scale-100">
-                <NavLink activeClasses={"text-[#2b4c19]"} inactiveClasses={"dark:text-black"} href='/opinions' aria-label="Opinions Page">
+                <NavLink activeClasses={"text-[#0000FF] dark:text-[#00e76f]"} href='/opinions' aria-label="Opinions Page">
                     {"Opinions"}
                 </NavLink>
             </li>
             <li className="duration-300 lg:hover:scale-110 active:scale-110 lg:active:scale-100">
-                <NavLink activeClasses={"text-[#2b4c19]"} inactiveClasses={"dark:text-black"} href="/search" aria-label="Search Page">
+                <NavLink activeClasses={"text-[#0000FF] dark:text-[#00e76f]"} href="/search" aria-label="Search Page">
                     {"Search"}
                 </NavLink>
             </li>
             <li className="duration-300 lg:hover:scale-110 active:scale-110 lg:active:scale-100">
-                <NavLink activeClasses={"text-[#2b4c19]"} inactiveClasses={"dark:text-black"} href="/about" aria-label="About Page">
+                <NavLink activeClasses={"text-[#0000FF] dark:text-[#00e76f]"} href="/about" aria-label="About Page">
                     {"About"}
                 </NavLink>
             </li>
@@ -78,7 +78,7 @@ const Navbar = () => {
 
     return (
         <nav
-            className={`fixed top-0 left-0 w-full bg-[#a9d08f] z-50 transition-transform
+            className={`fixed top-0 left-0 w-full bg-[#a9d08f] dark:bg-[#424242] z-50 transition-transform
                 bg-opacity-85 backdrop-blur-sm 
                 duration-300 ${visible ? 'transform-none' : '-translate-y-full'
                 }`}

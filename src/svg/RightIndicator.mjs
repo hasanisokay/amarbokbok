@@ -1,4 +1,4 @@
-const RightIndicator = () => {
+const RightIndicator = ({theme}) => {
   return (
     <svg
       width="24px"
@@ -11,12 +11,12 @@ const RightIndicator = () => {
         rx="7"
         ry="7"
         transform="matrix(4.37114e-08 -1 -1 -4.37114e-08 13 12)"
-        fill="#2A4157"
+        fill={theme ==="dark" ? "#ffffff":"#2A4157"}
         fillOpacity="0.24"
       />
       <path
         d="M11.5 9.5L14 12M14 12L11.5 14.5M14 12H4"
-        stroke = "#2A4157"
+        stroke = {theme ==="dark" ? "#ffffff":"#2A4157"}
         strokeLinecap="round"
       />
     </svg>

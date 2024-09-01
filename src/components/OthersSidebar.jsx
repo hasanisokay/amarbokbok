@@ -9,7 +9,7 @@ const OthersSidebar = () => {
     ]
 
     return (
-        <div className="flex md:flex-col bg-[#a9d08f] p-4 rounded-md flex-row md:w-[200px] gap-2">
+        <div className="flex md:flex-col bg-[#a9d08f] dark:bg-[#333333]  p-4 rounded-md flex-row md:w-[200px] w-[300px] gap-2">
             {menu?.map((m, i) => <NavLink  activeClasses={"bg-orange-500 text-white rounded-md"} href={m?.href} key={i}>{m?.name}</NavLink>)}
         </div>
     );

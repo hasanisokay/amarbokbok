@@ -9,7 +9,7 @@ const VideoCard = ({ videoData, admin = false }) => {
     const { videoUrl, title, description, date, _id } = videoData;
     const videoURL = videoUrl.includes("youtu.be/") ? transformYoutuBeLink(videoUrl) : videoUrl 
     return (
-        <div className="text-left lg:w-[350px] md:w-[300px]  whitespace-pre-wrap break-words greenbg rounded-md shadow4">
+        <div className="text-left lg:w-[350px] md:w-[300px]  whitespace-pre-wrap break-words greenbg dark:bg-[#333333] rounded-md shadow4">
             <div className="relative w-full h-0 pb-[56.25%] mb-4">
                 <iframe
                     className="absolute top-0 left-0 w-full h-full rounded-t-lg"

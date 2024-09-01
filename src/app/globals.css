@@ -191,7 +191,7 @@ h4 {
   margin: 0 0 0 auto;
 }
 .counter-card {
-  @apply w-[160px] h-[130px] flex flex-col gap-1 items-center justify-center dark:bg-[#333333] bg-slate-100 rounded-lg;
+  @apply w-[160px] h-[130px] flex flex-col gap-1 lg:hover:-translate-y-2 active:-translate-y-2 duration-500 items-center justify-center dark:bg-[#333333] bg-slate-100 rounded-lg;
 }
 
 /* theme toggle */

@@ -1,5 +1,6 @@
 'use client'
 
+import useTheme from '@/hooks/useTheme.mjs';
 import RightIndicator from '@/svg/RightIndicator.mjs';
 import capitalize from '@/utils/capitalize.mjs';
 import getCategories from '@/utils/getCategories.mjs';
@@ -8,6 +9,7 @@ import React, { useEffect, useState } from 'react';
 
 const CategoryPage = () => {
     const [categories, setCategories] = useState([])
+    const {theme} = useTheme()
     useEffect(() => {
         (async () => {
             const data = await getCategories(true)
@@ -16,7 +18,7 @@ const CategoryPage = () => {
     }, [])
     return (
         <>
-            {categories?.length > 0 && <div className="lg:w-fit w-full my-4 bg-[#c6e0b3] min-w-[200px]  p-3 text-black h-fit rounded-md">
+            {categories?.length > 0 && <div className="lg:w-fit w-full my-4 bg-[#c6e0b3] dark:bg-[#333333] dark:text-white min-w-[200px]  p-3 text-black h-fit rounded-md">
                 <h4 className='section-heading'>ক্যাটাগরি</h4>
                 {categories?.map((c, index) =>
                     <div
@@ -24,7 +26,7 @@ const CategoryPage = () => {
                         key={index}
                     >
                         <Link className='w-max flex gap-2 group' href={`/blogs/categories/${c?.category}`}>
-                            <RightIndicator />
+                            <RightIndicator theme={theme} />
                             <button className='lg:group-hover:text-blue-500 active:text-blue-500'
                             > {capitalize(c?.category)} {`(${c?.count})`} </button>
                         </Link>
