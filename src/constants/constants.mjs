@@ -17,6 +17,8 @@ export const unauthorizedResponse = {
 
 
   export const aboutMetaImage = "https://i.ibb.co/FKSQh4j/photo-2024-08-26-18-04-26.jpg"
+  export const imageMetaImage = "https://i.ibb.co/FKSQh4j/photo-2024-08-26-18-04-26.jpg"
+  export const pdfMetaImage = "https://i.ibb.co/FKSQh4j/photo-2024-08-26-18-04-26.jpg"
   export const opinionsMetaImage = "https://i.ibb.co/FKSQh4j/photo-2024-08-26-18-04-26.jpg"
   export const searchMetaImage = "https://i.ibb.co/FKSQh4j/photo-2024-08-26-18-04-26.jpg"
   export const contactMetaImage = "https://i.ibb.co/FKSQh4j/photo-2024-08-26-18-04-26.jpg"

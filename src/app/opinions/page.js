@@ -70,24 +70,28 @@ export async function generateMetadata() {
   const host = await hostname();
   let metadata = {
     title: `Opinions - ${websiteName}`,
-    description: "Opinions Page",
-    keywords: ["Opinions", "Bonjui Blog", "Ahmmad Robins Blog"],
+    description: "Explore diverse opinions and discussions on various topics. Share your thoughts and see what others are saying.",
+    keywords: ["Opinions", "Discussions", "Bonjui Blog", "Ahmmad Robin's Blog", "Community", "Feedback"],
     url: `${host}/opinions`,
   };
 
   try {
     metadata.other = {
-      // change the image links
       "twitter:image": opinionsMetaImage,
       "twitter:card": "summary_large_image",
-      "og-title": "Opinions - Blog",
-      "og-description":
-        "Share your opinion and see what people saying about this site.",
-      "og-url": `${host}/opinions`,
+      "twitter:title": `Opinions - ${websiteName}`,
+      "twitter:description":
+        "Join the conversation on various topics. Share your opinions and see what others think on this page.",
+      "og:title": `Opinions - ${websiteName}`,
+      "og:description":
+        "Discover and engage with a range of opinions on our blog. Share your views and read others' insights.",
+      "og:url": `${host}/opinions`,
       "og:image": opinionsMetaImage,
+      "og:type": "website",
+      "og:site_name": websiteName,
     };
   } catch (error) {
-    console.error("Error fetching blog metadata:", error);
+    console.error("Error fetching opinions metadata:", error);
   }
 
   return metadata;

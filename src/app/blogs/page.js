@@ -39,23 +39,26 @@ export async function generateMetadata() {
   const host = await hostname();
   let metadata = {
     title: `Blogs - ${websiteName}`,
-    description: "Blogs Page",
-    keywords: ["Blogs", "Bonjui Blog", "Ahmmad Robins Blog"],
+    description: "Explore a variety of blog posts categorized by topics. Discover insights and articles on diverse subjects.",
+    keywords: ["Blogs", "Categories", "Articles", "Bonjui Blog", "Ahmmad Robin's Blog", "Insights"],
     url: `${host}/blogs`,
   };
 
   try {
     metadata.other = {
-      // change the image links
       "twitter:image": blogsMetaImage,
       "twitter:card": "summary_large_image",
-      "og-title": "Categories - Blog",
-      "og-description": "Blog categories",
-      "og-url": `${host}/blogs`,
+      "twitter:title": `Blogs - ${websiteName}`,
+      "twitter:description": "Browse through our blog categories and find articles on various topics. Stay updated with our latest posts.",
+      "og:title": `Blogs - ${websiteName}`,
+      "og:description": "Discover our blog categories and explore posts on a wide range of topics. Find insights and updates here.",
+      "og:url": `${host}/blogs`,
       "og:image": blogsMetaImage,
+      "og:type": "website",
+      "og:site_name": websiteName,
     };
   } catch (error) {
-    console.error("Error fetching blog metadata:", error);
+    console.error("Error fetching blogs metadata:", error);
   }
 
   return metadata;

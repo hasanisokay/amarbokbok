@@ -5,6 +5,7 @@ const OthersSidebar = () => {
         { href: '/others', name: 'Audio' },
         { href: '/others/video', name: 'Video' },
         { href: '/others/image', name: 'Image' },
+        { href: '/others/pdf', name: 'Pdf' },
     ]
 
     return (

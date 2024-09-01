@@ -9,33 +9,40 @@ import dynamic from "next/dynamic";
 
 const UserTracker = dynamic(() =>import("@/components/UserTracker"), { ssr: false });
 // const inter = Inter({ subsets: ["latin"] });
-
 export async function generateMetadata() {
+  const host = await hostname();
   return {
     title: `${websiteName} - Home`,
-    description: "A personal website.",
+    description: "Welcome to Ahmmad Robin's personal website. Explore insightful blogs, discover curated content, and stay updated with the latest from Ahmmad Robin.",
     publisher: "Ahmmad Robin",
     authors: [
-      { name: "Ahmmad Robin", url: `${await hostname()}` },
+      { name: "Ahmmad Robin", url: `${host}` },
       {
         name: "Ahmmad Robin",
         url: "https://web.facebook.com/bonjuiofficial",
       },
     ],
-    keywords: ["Personal Website", "Blogs", "Jharfuk", "Ahmmad Robins Blogs"],
+    keywords: ["Personal Website", "Blogs", "Jharfuk", "Ahmmad Robin's Blogs"],
     other: {
       "color-scheme": ["dark", "light"],
       "twitter:image": homeMetaImage,
       "twitter:card": "summary_large_image",
-      "og-url": `${await hostname()}`,
+      "twitter:description":
+        "Explore Ahmmad Robin's personal website featuring insightful blogs, curated content, and more.",
+      "og:title": `Home - ${websiteName}`,
+      "og:url": `${host}`,
       "og:image": homeMetaImage,
+      "og:description":
+        "Visit Ahmmad Robin's personal website for blogs, curated content, and the latest updates.",
       "og:type": "website",
+      "og:site_name": websiteName,
       locale: "en_US",
     },
     image: homeMetaImage,
-    url: `${await hostname()}`,
+    url: `${host}`,
   };
 }
+
 
 export const viewport = {
   width: "device-width",

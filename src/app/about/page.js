@@ -44,26 +44,31 @@ export async function generateMetadata() {
   const host = await hostname();
   return {
     title: `About - ${websiteName}`,
-    description:
-      "Learn about Ahmad Robin, his education, contact information, and more.",
+    description: "Discover more about Ahmad Robin, including his background, education, and contact information. Learn about his journey and achievements.",
     keywords: [
       "Ahmad Robin",
-      "about",
-      "biography",
-      "contact information",
-      "education",
+      "About",
+      "Biography",
+      "Contact Information",
+      "Education",
       "Personal Website",
-      "Jharfuk",
+      "Jharfuk"
     ],
+    url: `${host}/about`,
+    image: aboutMetaImage,
     other: {
       "twitter:image": aboutMetaImage,
       "twitter:card": "summary_large_image",
-      "og-url": `${host}/about`,
+      "twitter:title": `About - ${websiteName}`,
+      "twitter:description": "Learn more about Ahmad Robin, including his biography, education, and how to get in touch.",
+      "og:title": `About - ${websiteName}`,
+      "og:description": "Explore Ahmad Robin's background, education, and contact details. Get to know the person behind the website.",
+      "og:url": `${host}/about`,
       "og:image": aboutMetaImage,
       "og:type": "website",
+      "og:site_name": websiteName,
       locale: "en_US",
     },
-    image: aboutMetaImage,
-    url: `${host}/about`,
   };
 }
+

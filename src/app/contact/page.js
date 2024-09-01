@@ -4,34 +4,39 @@ import ContactDetails from '@/components/ContactDetails';
 import { contactMetaImage, websiteName } from '@/constants/constants.mjs';
 import { hostname } from '@/constants/hostname.mjs';
 import React from 'react';
-
 export async function generateMetadata() {
-  const host = await hostname()
-
+  const host = await hostname();
   return {
     title: `Contact - ${websiteName}`,
-    description: 'Get in touch with Ahmad Robin through phone or WhatsApp.',
+    description: 'Get in touch with Ahmad Robin via phone or WhatsApp. Reach out for inquiries, feedback, or collaborations.',
     keywords: [
       'Ahmad Robin',
-      'contact',
-      'phone',
+      'Contact',
+      'Phone',
       'WhatsApp',
       'Personal Website',
       'Jharfuk',
+      'Reach Out',
+      'Contact Information'
     ],
-    // todos: change image links with contanct image
+    url: `${host}/contact`,
+    image: contactMetaImage,
     other: {
       'twitter:image': contactMetaImage,
       'twitter:card': 'summary_large_image',
+      'twitter:title': `Contact - ${websiteName}`,
+      'twitter:description': 'Connect with Ahmad Robin through phone or WhatsApp. Reach out for any inquiries or collaborations.',
+      'og:title': `Contact - ${websiteName}`,
+      'og:description': 'Get in touch with Ahmad Robin through phone or WhatsApp. Your inquiries and feedback are welcome.',
       'og:url': `${host}/contact`,
       'og:image': contactMetaImage,
       'og:type': 'website',
+      'og:site_name': websiteName,
       locale: 'en_US',
     },
-    image: contactMetaImage,
-    url: `${host}/contact`,
   };
 }
+
 
 const ContactPage = () => {
   return (

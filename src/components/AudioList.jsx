@@ -5,7 +5,6 @@ import Masonry from 'react-masonry-css';
 import AuthContext from "@/contexts/AuthContext.mjs";
 const AudioList = ({ audios }) => {
     const { currentUser } = useContext(AuthContext);
-
     let columnCountTab
     let columnCountDefault
     if (audios?.length === 1) {

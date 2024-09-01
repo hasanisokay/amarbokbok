@@ -68,10 +68,9 @@ const searchPage = async ({ searchParams }) => {
 
 export default searchPage;
 
-export async function generateMetadata({searchParams}) {
+export async function generateMetadata({ searchParams }) {
   let keyword;
   let type;
-
   const blog = searchParams?.blog;
   const audio = searchParams?.audio;
   const video = searchParams?.video;
@@ -90,28 +89,38 @@ export async function generateMetadata({searchParams}) {
     keyword = book;
     type = "book";
   }
+
   const host = await hostname();
   return {
-    title: `${keyword ? keyword + " in " + capitalize(type)  : "Search"} - ${websiteName}`,
-    description: "Search in this website.",
+    title: `${keyword ? `${keyword} in ${capitalize(type)}` : "Search Results"} - ${websiteName}`,
+    description: `Find results for ${keyword ? `${keyword} in ${capitalize(type)}` : "your search"} on ${websiteName}.`,
     keywords: [
-      "Personal Website",
       "Search",
-      "Search Bojui",
+      "Search Results",
       "Blogs",
+      "Audio",
+      "Video",
+      "Books",
+      "Personal Website",
       "Jharfuk",
-      "Ahmmad Robins Blogs",
-    ],
-    // todos: cahnge with search image.
+      "Ahmmad Robin's Blog",
+      keyword,
+      type
+    ].filter(Boolean),
+    url: `${host}/search`,
+    image: searchMetaImage,
     other: {
       "twitter:image": searchMetaImage,
       "twitter:card": "summary_large_image",
-      "og-url": `${host}/search`,
+      "twitter:title": `${keyword ? `${keyword} in ${capitalize(type)}` : "Search Results"} - ${websiteName}`,
+      "twitter:description": `Find results for ${keyword ? `${keyword} in ${capitalize(type)}` : "your search"} on ${websiteName}.`,
+      "og:title": `${keyword ? `${keyword} in ${capitalize(type)}` : "Search Results"} - ${websiteName}`,
+      "og:description": `Find results for ${keyword ? `${keyword} in ${capitalize(type)}` : "your search"} on ${websiteName}.`,
+      "og:url": `${host}/search`,
       "og:image": searchMetaImage,
       "og:type": "website",
+      "og:site_name": websiteName,
       locale: "en_US",
     },
-    image: searchMetaImage,
-    url: `${host}/search`,
   };
 }

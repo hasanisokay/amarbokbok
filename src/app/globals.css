@@ -259,11 +259,13 @@ h4 {
   }
 }
 
-/* .btn-bg {
+
+.img-card-title {
   [data-theme="dark"] & {
-    background-color: #4e5358;
+    background-image: linear-gradient(15deg, #13547a 0%, #80d0c7 100%);
+    color: black;
   }
   [data-theme="light"] & {
-    background-color: #f8f9fa;
+    background-image: linear-gradient(-20deg, #616161 0%, #9bc5c3 100%);
   }
-} */
+}

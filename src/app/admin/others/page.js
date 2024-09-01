@@ -1,11 +1,13 @@
-"use client"
+"use client";
 import newOthers from "@/serverActions/newOthers.mjs";
+import capitalize from "@/utils/capitalize.mjs";
 import { useState } from "react";
 import toast from "react-hot-toast";
 
 const Page = () => {
   const [audioLinks, setAudioLinks] = useState([{ name: "", link: "" }]);
   const [description, setDescription] = useState("");
+  const [type, setType] = useState("audio");
   const handleAudioLinkChange = (index, field, value) => {
     const updatedLinks = [...audioLinks];
     updatedLinks[index][field] = value;
@@ -32,7 +34,7 @@ const Page = () => {
       description: description,
       title: event.target.audio_title.value,
       date: new Date(),
-      type: "audio",
+      type: type,
     };
     const res = await newOthers(audioDetails);
     if (res?.error) {
@@ -45,19 +47,54 @@ const Page = () => {
     }
   };
 
-
   return (
-    <>
+    <div className="w-full max-w-md mx-auto rounded-lg bg-[#b6d7a0] my-10 px-10 pb-10 pt-8 shadow-md dark:bg-zinc-900">
+      <div className="mb-6">
+        <h2 className="text-center text-3xl font-semibold tracking-tight">
+          Add new Audio of PDF Here
+        </h2>
+        <p className="text-center text-sm text-zinc-500 dark:text-zinc-400">
+          Please provide details below.
+        </p>
+      </div>
       <form
         onSubmit={handleSubmit}
-        className="space-y-6 container1 form1 greenbg"
+        className="space-y-6 "
       >
+        <div className="space-y-2 text-sm  dark:text-zinc-400">
+          <label className="block font-medium" htmlFor="othersType">
+            Type
+          </label>
+          <div className="flex items-center space-x-4">
+            <label className="flex items-center space-x-2">
+              <input
+                type="radio"
+                name="othersType"
+                value="audio"
+                checked={type === "audio"}
+                onChange={(e) => setType(e.target.value)}
+              />
+              <span>Audio</span>
+            </label>
+            <label className="flex items-center space-x-2">
+              <input
+                type="radio"
+                name="othersType"
+                value="pdf"
+                checked={type === "pdf"}
+                onChange={(e) => setType(e.target.value)}
+              />
+              <span>PDF</span>
+            </label>
+          </div>
+        </div>
+
         <div className="space-y-2 text-sm">
           <label
             className="text-sm font-medium leading-none text-black dark:text-zinc-300"
             htmlFor="audio_title"
           >
-            Audio Title
+            {capitalize(type)} Title
           </label>
           <input
             className="flex h-10 w-full bg-white text-black rounded-md border px-3 py-2 focus-visible:outline-none dark:border-zinc-700"
@@ -90,7 +127,7 @@ const Page = () => {
               className="text-sm font-medium leading-none text-black dark:text-zinc-300"
               htmlFor={`audio_link_${index}`}
             >
-              Audio Link {index + 1}
+              {capitalize(type)} Link {index + 1}
             </label>
             <input
               className="flex h-10 w-full bg-white text-black rounded-md border px-3 py-2 focus-visible:outline-none dark:border-zinc-700"
@@ -143,7 +180,7 @@ const Page = () => {
           Submit
         </button>
       </form>
-    </>
+    </div>
   );
 };
 

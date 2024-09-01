@@ -3,6 +3,8 @@ import Pagination from "@/components/Pagination";
 // import SelectInBlogs from ";
 import SuspenseFallback from "@/components/SuspenseFallback";
 import VideoList from "@/components/VideoList";
+import { audioMetaImage, videoMetaImage, websiteName } from "@/constants/constants.mjs";
+import { hostname } from "@/constants/hostname.mjs";
 import getOthers from "@/utils/getOthers.mjs";
 import dynamic from "next/dynamic";
 import { Suspense } from "react";
@@ -61,3 +63,33 @@ const page = async ({ searchParams }) => {
   );
 };
 export default page;
+
+export async function generateMetadata() {
+  const host = await hostname();
+  let metadata = {
+    title: `Videos - ${websiteName}`,
+    description: "Explore a curated collection of videos with detailed descriptions and recommendations.",
+    keywords: ["Video", "Bonjui Blog", "Ahmmad Robin's Blog", "Music Videos", "Educational Videos"],
+    url: `${host}/others/video`,
+  };
+
+  try {
+    metadata.other = {
+      "twitter:image": videoMetaImage,
+      "twitter:card": "summary_large_image",
+      "twitter:title": `Videos - ${websiteName}`,
+      "twitter:description":
+        "Discover a handpicked selection of videos with in-depth descriptions to help you find the best content.",
+      "og:title": `Videos - ${websiteName}`,
+      "og:description":
+        "Explore a collection of recommended videos with detailed descriptions. Get insights into each video selection.",
+      "og:url": `${host}/others/video`,
+      "og:image": videoMetaImage,
+      "og:type": "website",
+      "og:site_name": websiteName,
+    };
+  } catch (error) {
+    console.error("Error fetching video metadata:", error);
+  }
+  return metadata;
+}

@@ -3,6 +3,8 @@ import NotFound from "@/components/NotFound";
 import Pagination from "@/components/Pagination";
 import SelectInBlogs from "@/components/SelectInBlogs";
 import SuspenseFallback from "@/components/SuspenseFallback";
+import { imageMetaImage, websiteName } from "@/constants/constants.mjs";
+import { hostname } from "@/constants/hostname.mjs";
 import getOthers from "@/utils/getOthers.mjs";
 import { Suspense } from "react";
 
@@ -56,3 +58,33 @@ const page = async ({ searchParams }) => {
   );
 };
 export default page;
+
+export async function generateMetadata() {
+  const host = await hostname();
+  let metadata = {
+    title: `Images - ${websiteName}`,
+    description: "Browse a curated gallery of images with detailed descriptions and recommendations.",
+    keywords: ["Images", "Gallery", "Bonjui Blog", "Ahmmad Robin's Blog", "Photography", "Art"],
+    url: `${host}/others/image`,
+  };
+
+  try {
+    metadata.other = {
+      "twitter:image": imageMetaImage,
+      "twitter:card": "summary_large_image",
+      "twitter:title": `Images - ${websiteName}`,
+      "twitter:description":
+        "Explore a handpicked gallery of images with detailed descriptions and recommendations.",
+      "og:title": `Images - ${websiteName}`,
+      "og:description":
+        "Browse a collection of curated images with in-depth descriptions. Discover art, photography, and more.",
+      "og:url": `${host}/others/image`,
+      "og:image": imageMetaImage,
+      "og:type": "website",
+      "og:site_name": websiteName,
+    };
+  } catch (error) {
+    console.error("Error fetching image metadata:", error);
+  }
+  return metadata;
+}

@@ -1,7 +1,7 @@
 'use server'
 import BlogsPage from "@/components/BlogsPage";
 import NotFound from "@/components/NotFound";
-import { websiteName } from "@/constants/constants.mjs";
+import { categoryMetaImage, websiteName } from "@/constants/constants.mjs";
 import { hostname } from "@/constants/hostname.mjs";
 import capitalize from "@/utils/capitalize.mjs";
 import getBlogs from "@/utils/getBlogs.mjs";
@@ -34,25 +34,29 @@ export default async function categoryPage({ params, searchParams }) {
 export async function generateMetadata({ params }) {
   const category = params?.category;
   const host = await hostname();
+  
   let metadata = {
-    title: `${capitalize(category)} - ${websiteName}`,
-    description: "Category Page",
-    keywords: ["Blog", "Bonjui Blog", "Ahmmad Robins Blog"],
+    title: `${capitalize(category) || "Categories"} - ${websiteName}`,
+    description: `Explore blog posts categorized under ${capitalize(category) || "various topics"}. Discover content that interests you.`,
+    keywords: ["Blog", "Categories", "Bonjui Blog", "Ahmmad Robin's Blog", capitalize(category) || "Categories"],
     url: `${host}/blogs/categories`,
   };
 
   try {
     metadata.other = {
-      // change the image links
-      "twitter:image": "https://i.ibb.co/YDMvcNN/Untitled-1-Copy.jpg",
+      "twitter:image": categoryMetaImage,
       "twitter:card": "summary_large_image",
-      "og-title": "Categories | Blog",
-      "og-description": "Blog categories",
-      "og-url": `${host}/blogs/categories`,
-      "og:image": "https://i.ibb.co/YDMvcNN/Untitled-1-Copy.jpg",
+      "twitter:title": metadata.title,
+      "twitter:description": metadata.description,
+      "og:title": metadata.title,
+      "og:description": metadata.description,
+      "og:url": `${host}/blogs/categories`,
+      "og:image": categoryMetaImage,
+      "og:type": "website",
+      "og:site_name": websiteName,
     };
   } catch (error) {
-    console.error("Error fetching blog metadata:", error);
+    console.error("Error fetching category metadata:", error);
   }
 
   return metadata;

@@ -14,42 +14,39 @@ export async function generateMetadata({ params }) {
   const blogId = params?.id;
 
   let metadata = {
-    title: `Blogs - ${websiteName}`,
-    description: "Blog description",
-    keywords: ["Blog", "Bonjui Blog", "Ahmmad Robins Blog"],
-    url: params?.id ? `${host}/blogs/${params?.id}` : `${host}/blogs`,
+    title: `Blog - ${websiteName}`,
+    description: "Read our latest blog posts on various topics.",
+    keywords: ["Blog", "Bonjui Blog", "Ahmmad Robin's Blog"],
+    url: blogId ? `${host}/blogs/${blogId}` : `${host}/blogs`,
   };
 
   try {
     if (blogId) {
       const blog = await getBlog(blogId);
       const imageUrl = getImageLinkFromDelta(blog?.blog?.content);
+      
       if (blog) {
-        metadata.title = (blog?.blog?.title || "Not Found") + " - " + `${websiteName}`;
-        metadata.description =
-          deltaToPlainText(blog?.blog?.content) || "Blog post description";
-        metadata.keywords.push(...blog?.blog?.title?.split(" "));
+        metadata.title = `${blog?.blog?.title || "Untitled"} - ${websiteName}`;
+        metadata.description = deltaToPlainText(blog?.blog?.content) || "Detailed description of the blog post.";
+        metadata.keywords.push(...(blog?.blog?.title?.split(" ") || []));
         metadata.other = {
-          // change the image links
-          "twitter:image": imageUrl
-            ? imageUrl
-            : singleBlogMetaImage,
+          "twitter:image": imageUrl || singleBlogMetaImage,
           "twitter:card": "summary_large_image",
-          "og-title": metadata.title || "Blog",
-          "og-description":
-            deltaToPlainText(blog?.blog?.content) || "Blog post description",
-          "og-url": params?.id
-            ? `${host}/blogs/${params?.id}`
-            : `${host}/blogs`,
-          "og:image": imageUrl
-            ? imageUrl
-            : singleBlogMetaImage,
+          "twitter:title": metadata.title,
+          "twitter:description": metadata.description,
+          "og:title": metadata.title,
+          "og:description": metadata.description,
+          "og:url": `${host}/blogs/${blogId}`,
+          "og:image": imageUrl || singleBlogMetaImage,
+          "og:type": "article",
+          "og:site_name": websiteName,
         };
       }
     }
   } catch (error) {
     console.error("Error fetching blog metadata:", error);
   }
+
   return metadata;
 }
 
