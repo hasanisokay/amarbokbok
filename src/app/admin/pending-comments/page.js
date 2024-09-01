@@ -3,6 +3,7 @@ import CommentTable from "@/components/CommentTable";
 import Pagination from "@/components/Pagination";
 // import PendingCommentsHead from "@/components/PendingCommentsHead";
 import SuspenseFallback from "@/components/SuspenseFallback";
+import { websiteName } from "@/constants/constants.mjs";
 import getComments from "@/utils/getComments.mjs";
 import dynamic from "next/dynamic";
 import { Suspense } from "react";
@@ -51,3 +52,9 @@ const page = async ({ searchParams }) => {
 };
 
 export default page;
+
+export async function generateMetadata() {
+  return {
+    title: `Pending Comments - ${websiteName}`,
+  }
+}

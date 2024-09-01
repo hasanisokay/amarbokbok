@@ -1,5 +1,6 @@
 "use client";
 
+import { websiteName } from "@/constants/constants.mjs";
 import newOthers from "@/serverActions/newOthers.mjs";
 import toast from "react-hot-toast";
 
@@ -78,3 +79,4 @@ const videoPage = () => {
 };
 
 export default videoPage;
+

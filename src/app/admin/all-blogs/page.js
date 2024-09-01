@@ -1,5 +1,6 @@
 'use server'
 import DeleteOption from "@/components/DeleteOption";
+import { websiteName } from "@/constants/constants.mjs";
 import getBlogs from "@/utils/getBlogs.mjs";
 import Link from "next/link";
 
@@ -22,3 +23,9 @@ const page = async () => {
 };
 
 export default page;
+
+export async function generateMetadata() {
+  return {
+    title: `All Blogs - ${websiteName}`,
+  }
+}

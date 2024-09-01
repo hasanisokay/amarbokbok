@@ -5,7 +5,7 @@ import {
 import dbConnect from "@/services/dbConnect.mjs";
 import { NextResponse } from "next/server";
 
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
 
 export const GET = async (req) => {
   try {
@@ -13,6 +13,7 @@ export const GET = async (req) => {
     const category = searchParams.get("category");
     const keyword = searchParams.get("keyword");
     const titleOnly = searchParams.get("titleOnly");
+    const blogIdOnly = searchParams.get("blogIdOnly");
     const sort = searchParams.get("sort");
     const sortOrder = sort === "newest" ? -1 : 1;
     const page = parseInt(searchParams.get("page"));
@@ -20,6 +21,7 @@ export const GET = async (req) => {
     const skip = (page - 1) * limit;
     const db = await dbConnect();
     if (!db) return NextResponse.json(dbErrorResponse);
+    const blogCollection = await db.collection("blogs");
     // const query = category ? { categories: { $in: [category] } } : {};
     // const blogCollection = await db.collection("blogs");
     // const totalCount = await blogCollection.countDocuments(query);
@@ -42,12 +44,30 @@ export const GET = async (req) => {
         { blog_id: { $regex: keyword, $options: "i" } },
       ];
     }
-    const blogCollection = await db.collection("blogs");
+    if (blogIdOnly) {
+      const r = await blogCollection.find(
+        {}, 
+        {
+          projection: {
+            _id: 0,      
+            blog_id: 1,  
+          },
+        }
+      ).toArray();
+      return NextResponse.json(r)
+    }
+
     const result = await blogCollection
       .find(
         matchStage,
         titleOnly && {
-          projection: { title: 1, blog_id: 1, readCount: 1, addedOn: 1 , categories: 1},
+          projection: {
+            title: 1,
+            blog_id: 1,
+            readCount: 1,
+            addedOn: 1,
+            categories: 1,
+          },
         }
       )
       .sort({ addedOn: sortOrder })

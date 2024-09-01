@@ -1,4 +1,5 @@
 "use client";
+import { websiteName } from "@/constants/constants.mjs";
 import newOthers from "@/serverActions/newOthers.mjs";
 import capitalize from "@/utils/capitalize.mjs";
 import { useState } from "react";
@@ -185,3 +186,4 @@ const Page = () => {
 };
 
 export default Page;
+

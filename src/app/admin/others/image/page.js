@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import toast from "react-hot-toast";
 import newOthers from "@/serverActions/newOthers.mjs";
 import uploadImage from "@/utils/uploadImage.mjs";
+import { websiteName } from "@/constants/constants.mjs";
 
 const ImagePage = () => {
   const [uploadProgress, setUploadProgress] = useState(0);
@@ -134,3 +135,10 @@ const ImagePage = () => {
 };
 
 export default ImagePage;
+
+// export async function generateMetadata() {
+//   return {
+//     title: `Images - ${websiteName}`,
+//   }
+// }
+
