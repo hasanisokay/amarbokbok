@@ -5,6 +5,8 @@ const downloadSVG = () => {
       width="24"
       height="24"
       viewBox="0 0 24 24"
+          role="img"
+      aria-label="Download icon"
     >
       <rect
         width="24"

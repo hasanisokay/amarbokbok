@@ -1,13 +1,15 @@
 import NotFound from "@/components/NotFound";
 import OpinionList from "@/components/OpinionList";
 import Pagination from "@/components/Pagination";
-import SelectInBlogs from "@/components/SelectInBlogs";
 import SuspenseFallback from "@/components/SuspenseFallback";
 import { opinionsMetaImage, websiteName } from "@/constants/constants.mjs";
 import { hostname } from "@/constants/hostname.mjs";
 import getOpinions from "@/utils/getOpinions.mjs";
+import dynamic from "next/dynamic";
 import Link from "next/link";
 import { Suspense } from "react";
+
+const SelectInBlogs = dynamic(() =>import("@/components/SelectInBlogs"), { ssr: false });
 
 const page = async ({ searchParams }) => {
   const page = parseInt(searchParams?.page) || 1;

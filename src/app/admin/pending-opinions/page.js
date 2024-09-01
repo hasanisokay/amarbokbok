@@ -1,7 +1,6 @@
 "use server"
 import OpinionTable from "@/components/OpinionTable";
 import Pagination from "@/components/Pagination";
-// import PendingCommentsHead from "@/components/PendingCommentsHead";
 import SuspenseFallback from "@/components/SuspenseFallback";
 import { websiteName } from "@/constants/constants.mjs";
 import getOpinions from "@/utils/getOpinions.mjs";

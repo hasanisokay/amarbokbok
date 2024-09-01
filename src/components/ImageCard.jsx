@@ -5,7 +5,7 @@ import Image from "next/image";
 import toast from "react-hot-toast";
 const ImageCard = ({ i, index, admin= false }) => {
     return (
-        <div>
+        <div className="w-[300px]">
             <div className="w-[300px] h-[300px] relative">
                 <div className="">
                     {(i?.imageUrl.includes("//i.bb") || i?.imageUrl.includes("ibb")) ?

@@ -1,5 +1,5 @@
-"use server";
-import CategoryPage from "@/components/CategoryPage";
+"use server"
+import HomeCategoryCard from "@/components/HomeCategoryCard";
 import SuspenseFallback from "@/components/SuspenseFallback";
 import { categoryMetaImage, websiteName } from "@/constants/constants.mjs";
 import { hostname } from "@/constants/hostname.mjs";
@@ -9,7 +9,7 @@ const page = () => {
   return (
     <Suspense fallback={<SuspenseFallback />}>
       <div className="flex items-center justify-center">
-        <CategoryPage />
+        <HomeCategoryCard />
       </div>
     </Suspense>
   );
@@ -33,7 +33,7 @@ export async function generateMetadata({ params }) {
       "twitter:card": "summary_large_image",
       "og-title": "Categories | Blog",
       "og-description": "Blog categories",
-      "og-url": `${host}/blogs/categories`, 
+      "og-url": `${host}/blogs/categories`,
       "og:image": categoryMetaImage,
     };
   } catch (error) {

@@ -6,6 +6,8 @@ const search = (width = "48px", height = "48px") => {
       viewBox="0 0 48 48"
       width={width}
       height={height}
+          role="img"
+      aria-label="Search icon"
     >
       <g>
         <rect

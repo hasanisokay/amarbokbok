@@ -8,6 +8,8 @@ const clock = (width = "35px", height = "35px") => {
           id="Layer_1"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 512.015 512.015"
+              role="img"
+      aria-label="Clock icon"
         >
           <circle style={{ fill: '#49DB95' }} cx="256.007" cy="256.007" r="256.007" />
           <circle style={{ fill: '#F2F2F2' }} cx="256.007" cy="256.007" r="201.106" />

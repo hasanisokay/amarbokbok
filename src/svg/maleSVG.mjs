@@ -5,6 +5,8 @@ const maleSVG = (theme) => {
       width="60"
       height="60"
       viewBox="0 0 60 60"
+          role="img"
+      aria-label="Muslim male icon"
     >
       {/* <rect width="100%" height="100%" fill="transparent"></rect> */}
       {/* <rect

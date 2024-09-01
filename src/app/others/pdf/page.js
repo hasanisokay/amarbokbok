@@ -1,12 +1,14 @@
 import AudioList from "@/components/AudioList";
 import NotFound from "@/components/NotFound";
 import Pagination from "@/components/Pagination";
-import SelectInBlogs from "@/components/SelectInBlogs";
 import SuspenseFallback from "@/components/SuspenseFallback";
 import { pdfMetaImage, websiteName } from "@/constants/constants.mjs";
 import { hostname } from "@/constants/hostname.mjs";
 import getOthers from "@/utils/getOthers.mjs";
+import dynamic from "next/dynamic";
 import { Suspense } from "react";
+
+const SelectInBlogs = dynamic(() =>import("@/components/SelectInBlogs"), { ssr: false });
 
 const pdfPage = async ({ searchParams }) => {
   const page = parseInt(searchParams?.page) || 1;

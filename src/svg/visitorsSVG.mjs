@@ -5,6 +5,8 @@ const visitorsSVG = (theme) => {
         width="40"
         height="40"
         viewBox="0 0 40 40"
+            role="img"
+      aria-label="Visitor icon"
       >
         <rect
           width="40"

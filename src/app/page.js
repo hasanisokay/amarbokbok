@@ -1,12 +1,15 @@
 // import CustomSVG from "@/animation/CustomSVG";
 // import Counter from "@/components/Counter";
 // import MarqueTexts from "@/components/MarqueTexts";
+// import CategoryPage from "@/components/CategoryPage";
+// import HomeCategoryCard from "@/components/HomeCategoryCard";
 import HomeMenu from "@/components/HomeMenu";
 import dynamic from "next/dynamic";
 
 const CustomSVG = dynamic(() => import("@/animation/CustomSVG"));
 const Counter = dynamic(() => import("@/components/Counter"));
 const MarqueTexts = dynamic(() => import("@/components/MarqueTexts"));
+const HomeCategoryCard = dynamic(() => import("@/components/HomeCategoryCard"));
 
 export default async function Home() {
   return (
@@ -29,6 +32,9 @@ export default async function Home() {
         <Counter />
       </div>
       <HomeMenu />
+      <div className="min-h-[200px] flex justify-center">
+        <HomeCategoryCard />
+      </div>
     </section>
   );
 }

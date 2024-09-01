@@ -4,6 +4,8 @@ const audio = (width = "48px", height = "48px", theme) => {
     <svg
       width={width}
       height={height}
+          role="img"
+      aria-label="Audio icon"
       viewBox="0 0 24 24"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

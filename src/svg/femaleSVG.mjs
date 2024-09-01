@@ -5,6 +5,8 @@ const femaleSVG = (theme) => {
       width="60"
       height="60"
       viewBox="0 0 60 60"
+        role="img"
+      aria-label="Muslim female icon"
     >
       {/* <rect
         width="60"

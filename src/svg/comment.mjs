@@ -7,6 +7,8 @@ const comment = (width = "35px", height = "35px") => {
         viewBox="0 0 48 48"
         width={width}
         height={height}
+            role="img"
+      aria-label="Comment icon"
       >
         <path
           fill="#8BC34A"

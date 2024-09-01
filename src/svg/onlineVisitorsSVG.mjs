@@ -19,6 +19,8 @@ const onlineVisitorsSVG = () => {
         transform="translate(20 20)"
         vectorEffect="non-scaling-stroke"
         visibility="hidden"
+            role="img"
+      aria-label="Visitors icon"
       ></rect>
       <path
         fill="#8bc24a"

@@ -7,6 +7,8 @@ const blog = (width = "35px", height = "35px") => {
         viewBox="0 0 64 64"
         height={height}
         width={width}
+            role="img"
+      aria-label="Blog icon"
       >
         <g>
           <polygon

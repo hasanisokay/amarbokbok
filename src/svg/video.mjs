@@ -6,6 +6,8 @@ const video = (width = "48px", height = "48px", theme) => {
       viewBox="0 0 24 24"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+          role="img"
+      aria-label="Video icon"
     >
       <path
         fillRule="evenodd"

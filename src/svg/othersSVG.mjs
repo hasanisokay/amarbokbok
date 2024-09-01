@@ -11,6 +11,8 @@ const othersSVG = (width = "100px", height = "100px", theme) => {
       height={height}
       viewBox="0 0 498.567 498.567"
       xmlSpace="preserve"
+          role="img"
+      aria-label="Suitcase icon"
     >
       <g>
         <path

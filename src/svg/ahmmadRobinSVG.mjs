@@ -6,6 +6,8 @@ const ahmmadRobinSVG = (theme)=> {
       width="60"
       height="60"
       viewBox="0 0 60 60"
+          role="img"
+      aria-label="Person icon"
     >
       <rect
         width="60"

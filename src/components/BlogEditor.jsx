@@ -129,7 +129,6 @@ const BlogEditor = ({ postId }) => {
           <Select
             options={loadingCategory ? [{ value: '', label: 'Loading...' }] : availableCategories?.map(category => ({ value: category, label: category }))}
             onChange={option => setSelectedCategories((prev) => [...prev, option.value])}
-            // onChange={option => console.log(option)}
            className='text-black'
             onMenuOpen={fetchCategories}
             placeholder="Select from previous category"

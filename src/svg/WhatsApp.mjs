@@ -7,6 +7,8 @@ const WhatsApp = () => {
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"
       preserveAspectRatio="xMidYMid"
+          role="img"
+      aria-label="WhatsApp icon"
     >
       <g>
         <path

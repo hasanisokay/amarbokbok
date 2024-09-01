@@ -10,6 +10,8 @@ const opinionSVG = (width, height) => {
       fillRule="evenodd"
       clipRule="evenodd"
       viewBox="0 0 512 452.387"
+          role="img"
+      aria-label="Opinion icon"
     >
       <path
         fillRule="nonzero"

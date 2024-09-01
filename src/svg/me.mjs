@@ -1,4 +1,4 @@
-const me = (height="20px", width="20px") => {
+const me = (height = "20px", width = "20px") => {
   return (
     <div>
       <svg
@@ -7,6 +7,8 @@ const me = (height="20px", width="20px") => {
         viewBox="0 0 32 32"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
+        role="img"
+        aria-label="Person icon colored"
       >
         <g clipPath="url(#clip0_901_3019)">
           <path
