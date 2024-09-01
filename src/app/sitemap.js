@@ -1,9 +1,8 @@
 import { hostname } from "@/constants/hostname.mjs";
 import getBlogs from "@/utils/getBlogs.mjs";
 import getCategories from "@/utils/getCategories.mjs";
-// import getSitemapDynamicUrls from "@/utils/getSitemapDynamicUrls"
 
-export const revalidate = 60;
+export const revalidate = 60 * 60 * 60 * 24 * 7;
 
 export default async function sitemap() {
   const host = await hostname();
@@ -24,19 +23,19 @@ export default async function sitemap() {
     },
     {
       url: `${host}/categories`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
+      lastModified: "2024-09-01T11:14:10+06:00",
+      changeFrequency: "yearly",
       priority: 0.2,
     },
     {
       url: `${host}/about`,
-      lastModified: new Date(),
+      lastModified: "2024-09-01T11:14:10+06:00",
       changeFrequency: "monthly",
       priority: 0.5,
     },
     {
       url: `${host}/contact`,
-      lastModified: new Date(),
+      lastModified: "2024-09-01T11:14:10+06:00",
       changeFrequency: "monthly",
       priority: 0.5,
     },
@@ -44,7 +43,7 @@ export default async function sitemap() {
       url: `${host}/opinions`,
       lastModified: new Date(),
       changeFrequency: "daily",
-      priority: 0.7,
+      priority: 0.9,
     },
     {
       url: `${host}/opinions/share`,
@@ -78,22 +77,22 @@ export default async function sitemap() {
     },
     {
       url: `${host}/search`,
-      lastModified: new Date(),
+      lastModified: "2024-09-01T11:14:10+06:00",
       changeFrequency: "yearly",
       priority: 0.2,
     },
     ...blogIds?.map((item) => ({
       url: `${host}/blogs/${item.blog_id}`,
-      lastModified: new Date(),
+      lastModified: item?.addedOn,
       changeFrequency: "weekly",
-      priority: 0.5,
+      priority: 0.7,
     })),
     
     ...categories?.map((item) => ({
       url: `${host}/blogs/categories/${item}`,
-      lastModified: new Date(),
+      lastModified: "2024-09-01T11:14:10+06:00",
       changeFrequency: "monthly",
-      priority: 0.5,
+      priority: 0.4,
     })),
 
   ];

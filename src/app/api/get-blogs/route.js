@@ -51,6 +51,7 @@ export const GET = async (req) => {
           projection: {
             _id: 0,      
             blog_id: 1,  
+            addedOn: 1
           },
         }
       ).toArray();
