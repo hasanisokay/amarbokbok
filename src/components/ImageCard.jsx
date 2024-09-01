@@ -14,7 +14,7 @@ const ImageCard = ({ i, index, admin= false }) => {
                         : <picture>
                             {/* <source srcSet="https://example.com/hero.avif" type="image/avif" /> */}
                             {/* <source srcSet="https://example.com/hero.webp" type="image/webp" /> */}
-                            <img className="w-[300px] h-[300px] rounded-t-md " src={"https://images.unsplash.com/photo-1515041219749-89347f83291a"} alt={`image ${index}`} />
+                            <img className="w-[300px] h-[300px] rounded-t-md " src={i?.imageUrl} alt={`image ${index}`} />
 
                         </picture>
 
