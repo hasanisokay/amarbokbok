@@ -19,7 +19,7 @@ const CategoryPage = () => {
     return (
         <>
             {categories?.length > 0 && <div className="lg:w-fit w-full my-4 bg-[#c6e0b3] dark:bg-[#333333] dark:text-white min-w-[200px]  p-3 text-black h-fit rounded-md">
-                <h4 className='section-heading'>ক্যাটাগরি</h4>
+                <p className='section-heading text-lg font-semibold'>ক্যাটাগরি</p>
                 {categories?.map((c, index) =>
                     <div
                         className="py-1 my-2"

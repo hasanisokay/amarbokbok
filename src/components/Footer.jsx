@@ -28,7 +28,7 @@ const Footer = () => {
                     <h2 className="text-2xl font-bold text-[#212121] dark:text-[#fafafa]">Developer</h2>
                     <p className="my-2">Rafael Hasan</p>
                     <p >
-                        Email: <a href="mailto:devhasanvibes@gmail.com" className="dark:text-yellow-400 text-blue-800 font-semibold ">devhasanvibes@gmail.com</a>
+                        Email: <a href="mailto:devhasanvibes@gmail.com" className="dark:text-[#E5E7EB] text-blue-800 font-semibold ">devhasanvibes@gmail.com</a>
                     </p>
                 </section>
                 <nav className="flex justify-between gap-6 md:gap-10">

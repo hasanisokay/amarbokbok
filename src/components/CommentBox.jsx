@@ -14,7 +14,7 @@ const CommentBox = ({ isComment, blog_id, isReply, comment_id }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (isComment && !blog_id) return;
-        if (isReply && !comment_id) return; 
+        if (isReply && !comment_id) return;
         !isAnonymous && localStorage.setItem("commenter", name)
         const apiUrl = isComment ? "/api/new-comment" : "/api/new-reply"
         const formData = {
@@ -48,12 +48,14 @@ const CommentBox = ({ isComment, blog_id, isReply, comment_id }) => {
 
     return (
         <div className="mt-10 mb-4">
-            <h4>{isComment ? "Leave a comment" : "Reply to this comment"} </h4>
+            <p className='font-semibold text-xl mb-4'>{isComment ? "Leave a comment" : "Reply to this comment"} </p>
             <form onSubmit={handleSubmit}>
                 {!isAnonymous && (
                     <div className="mb-2">
-                        <label htmlFor="name" className="block mb-2">Name</label>
+                        <label htmlFor="name_comment" className="block mb-2">Name</label>
                         <input
+                            id="name_comment"
+                            name="name_comment"
                             type="text"
                             value={name}
                             onChange={(e) => setName(e.target.value)}
@@ -76,7 +78,8 @@ const CommentBox = ({ isComment, blog_id, isReply, comment_id }) => {
                 <div className="mb-4">
                     <label htmlFor="comment" className="block mb-2">{isComment ? "Comment" : "Reply"}</label>
                     <textarea
-                    name='comment'
+                        name='comment'
+                        id='comment_comment'
                         value={comment}
                         onChange={(e) => setComment(e.target.value)}
                         className="w-full p-2 bg-transparent border rounded"
