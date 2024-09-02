@@ -93,10 +93,11 @@ const Navbar = () => {
                                 src={logo} 
                                 className="dark:brightness-100 brightness-0"
                                 alt="Amar Bok Bok Logo"
-                                width={150} 
-                                height={100} 
+                                width={180} 
+                                height={135} 
                                 // srcSet="/logo-small.png 500w, /logo-medium.png 1000w, /logo-large.png 1500w" 
-                                sizes="(max-width: 600px) 100px, (max-width: 1200px) 150px, 200px"                         
+                                // sizes="(max-width: 600px) 100px, (max-width: 1200px) 150px, 200px" 
+                                sizes="(min-width: 808px) 50vw, 100vw"                        
                                 priority={true}
                             /></Link>
                         </li>

@@ -28,11 +28,11 @@ export default async function Home() {
           . Follow what I say.{" "}
         </h1>
       </div>
-      <div className="min-h-[130px] mt-10">
+      <div className="lg:min-h-[130px] md:min-h-[276px] mih-h-[422px] mt-10">
         <Counter />
       </div>
       <HomeMenu />
-      <div className="min-h-[200px] flex justify-center">
+      <div className="min-h-[231px] lg:min-h-[231px] md:min-h-[243px] flex justify-center">
         <HomeCategoryCard />
       </div>
     </section>

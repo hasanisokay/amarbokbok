@@ -24,11 +24,11 @@ const Footer = () => {
                         এবং মানহীন। আলাদা করে এখন যাচাই বাছাই করার ইচ্ছা এবং সময় কোনটাই নেই। সবই তুলে দেয়া হল।
                     </p>
                 </section>
-                <section className="md:border-r-2 px-2 h-[148px]">
+                <section className="md:border-r-2 pr-2 h-[148px]">
                     <h2 className="text-2xl font-bold text-[#212121] dark:text-[#fafafa]">Developer</h2>
                     <p className="my-2">Rafael Hasan</p>
                     <p >
-                        Email: <a href="mailto:devhasanvibes@gmail.com" className="text-[#004080] dark:text-[#66aaff]">devhasanvibes@gmail.com</a>
+                        Email: <a href="mailto:devhasanvibes@gmail.com" className="dark:text-yellow-400 text-blue-800 font-semibold ">devhasanvibes@gmail.com</a>
                     </p>
                 </section>
                 <nav className="flex justify-between gap-6 md:gap-10">
