@@ -4,6 +4,7 @@ import femaleSVG from "@/svg/femaleSVG.mjs";
 import maleSVG from "@/svg/maleSVG.mjs";
 import ahmmadRobinSVG from "@/svg/ahmmadRobinSVG.mjs";
 import getTimeWithHours from "@/utils/getTimeWithHours.mjs";
+import formatTextWithLinks from "@/utils/formatTextWithLinks.mjs";
 
 const OpinionCard = ({ opinion }) => {
     const { theme } = useTheme()
@@ -17,7 +18,9 @@ const OpinionCard = ({ opinion }) => {
                     <p className="text-xs text-gray"><span>{getTimeWithHours(opinion?.submittedOn)}</span> </p>
                 </div>
             </div>
-            <p><span>&#34;</span>{opinion?.message}<span>&#34;</span></p>
+            {/* <p><span>&#34;</span>{opinion?.message}<span>&#34;</span></p> */}
+            <div dangerouslySetInnerHTML={{__html:formatTextWithLinks(opinion?.message)}}/>
+            
 
 
             {opinion?.replies.map(r => <div key={r?._id} className="my-1">
