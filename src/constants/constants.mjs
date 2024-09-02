@@ -11,7 +11,8 @@ export const unauthorizedResponse = {
     status: 401,
     message: "Unauthorized.",
   }
-  export const websiteName = "Ahmmad Robin"
+  // export const websiteName = "Ahmmad Robin"
+  export const websiteName = "Amarbokbok"
   // export const hostname = window.location.hostname
 
 
