@@ -41,7 +41,7 @@ group-active:text-slate-500
                 <div className="flex py-2 mt-2 px-1 items-center justify-center flex-wrap gap-4">
                     {categories?.length > 0 && categories?.map((c, i) => <Link
                         aria-label={`Category ${capitalize(c)}`}
-                        className="py-1 px-3 hover:bg-[#03e579] dark:hover:bg-[#03e579]  font-medium dark:bg-[#c2cee8] bg-[#202124]  text-white rounded-md dark:text-black" href={`/blogs/categories/${c}`} key={i}>{capitalize(c)}</Link>)}
+                        className="py-1 px-3 hover:bg-[#03e579] dark:hover:bg-[#03e579] hover:text-black  font-medium dark:bg-[#c2cee8] bg-[#202124]  text-white rounded-md dark:text-black" href={`/blogs/categories/${c}`} key={i}>{capitalize(c)}</Link>)}
                 </div>
             </div>
         </>

@@ -1,12 +1,12 @@
 'use client'
 import { useContext, useEffect, useState } from "react";
 import NavLink from "./NavLink";
-import logo from "@/../public/images/jharfuk-logo-white.png";
+import logo from "@/../public/images/logo.png";
 import Image from "next/image";
 import ThemeToggle from "./ThemeToggle";
 import AuthContext from "@/contexts/AuthContext.mjs";
 import useTheme from "@/hooks/useTheme.mjs";
-
+import Link from "next/link";
 
 const Navbar = () => {
     const [visible, setVisible] = useState(true);
@@ -88,7 +88,19 @@ const Navbar = () => {
             <div className="bg-gray-900 relative text-black dark:text-white shadow-md">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <ul className="h-16 flex items-center justify-between">
-                        <li><Image src={logo} alt="logo" width={100} height={100} /></li>
+                        <li >
+                            <Link href={"/"}><Image
+                                src={logo} 
+                                className="filter dark:contrast-0 contrast-200 brightness-50"
+                                // className=""
+                                alt="Amar Bok Bok Logo"
+                                width={130} 
+                                height={50} 
+                                // srcSet="/logo-small.png 500w, /logo-medium.png 1000w, /logo-large.png 1500w" 
+                                sizes="(max-width: 600px) 100px, (max-width: 1200px) 150px, 200px"                         
+                                priority={true}
+                            /></Link>
+                        </li>
                         <li className="hidden md:block">{menu}</li>
                         <li className="block md:hidden">
                             {
