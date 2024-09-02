@@ -29,22 +29,22 @@ const Footer = () => {
                         <p className=" text-xl font-semibold text-[#212121] dark:text-[#fafafa]">Contact</p>
                         <ul className="flex items-start my-2 flex-col gap-4">
                             <li>
-                                <a href="https://www.facebook.com/bonjuiofficial" className="flex items-center gap-2 text-sm text-[#424242] dark:text-[#e0e0e0]">
+                                <a href="https://www.facebook.com/bonjuiofficial" className="flex items-center gap-2 flex-wrap text-sm text-[#424242] dark:text-[#e0e0e0]">
                                     <Facebook /> <span>/bonjuiofficial</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="https://www.youtube.com/ahmmadrobin" className="flex items-center gap-2 text-sm text-[#424242] dark:text-[#e0e0e0]">
+                                <a href="https://www.youtube.com/ahmmadrobin" className="flex items-center gap-2 flex-wrap text-sm text-[#424242] dark:text-[#e0e0e0]">
                                     <Youtube /> <span>/ahmmadrobin</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="tel:+8801745856249" className="flex items-center gap-2 text-sm text-[#424242] dark:text-[#e0e0e0]">
+                                <a href="tel:+8801745856249" className="flex items-center gap-2 flex-wrap text-sm text-[#424242] dark:text-[#e0e0e0]">
                                     <Phone /> <span className="text-blue-800 dark:text-[#1ad93e] font-semibold">+8801745856249</span> <span>(Call Only)</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="https://wa.me/8801745856249" className="flex items-center gap-2 text-sm text-[#424242] dark:text-[#e0e0e0]">
+                                <a href="https://wa.me/8801745856249" className="flex items-center gap-2 flex-wrap text-sm text-[#424242] dark:text-[#e0e0e0]">
                                     <WhatsApp /> <span className="text-blue-800 dark:text-[#1ad93e] font-semibold">+8801745856249</span> <span>(Text Only)</span>
                                 </a>
                             </li>

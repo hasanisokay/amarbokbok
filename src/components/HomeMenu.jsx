@@ -6,6 +6,7 @@ import blog from "@/svg/blog.mjs";
 import useTheme from "@/hooks/useTheme.mjs";
 import opinionSVG from "@/svg/opinions.mjs";
 import othersSVG from "@/svg/othersSVG.mjs";
+import categorySVG from "@/svg/categorySVG.mjs";
 
 const HomeMenu = () => {
 
@@ -41,9 +42,14 @@ const HomeMenu = () => {
             title: "About Me",
             icon: me("100px", "100px"),
         },
+        {
+            href: "/blogs/categories",
+            description: "ব্লগের সব ক্যাটাগরি লিস্ট",
+            title: "Categories",
+            icon: categorySVG(),
+        },
     ];
     return (
-
         <div className="flex flex-wrap gap-4 items-center justify-center mb-4 mt-10 mx-1 lg:mx-10">
 
             {menu?.map((m, i) => (
