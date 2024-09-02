@@ -16,7 +16,7 @@ const Footer = () => {
     return (
         <footer className="flex flex-col bg-[#e0f7fa] dark:bg-[#2c2c2c]">
             <div className="flex flex-col justify-around items-start gap-5 pl-4 md:pl-0 bg-[#cfd8dc] py-8 dark:bg-[#424242] md:flex-row md:gap-0">
-                <div className="md:border-r-2 md:px-4 flex flex-col md:flex-row gap-8 pl-3 md:gap-4">
+                <div className="md:px-4 flex flex-col md:flex-row gap-8 pl-3 md:gap-4">
                     <section className="h-[148px]">
                         <h2 className="text-2xl font-bold text-[#212121] dark:text-[#fafafa]">Ahmmad Robin</h2>
                         <p className="md:max-w-[400px] text-sm lg:max-w-[450px] my-2 text-[#424242] dark:text-[#e0e0e0]">
@@ -51,6 +51,7 @@ const Footer = () => {
                         </ul>
                     </section>
                 </div>
+                <hr className="h-[160px] md:block hidden my-auto w-[2px] dark:bg-gray text-gray bg-[#424242]" />
                 <nav className="flex items-start md:flex-row flex-col gap-6 md:gap-10">
                     <section>
                         <p className="text-xl font-semibold text-[#212121] dark:text-[#fafafa] pl-3">Browse</p>
