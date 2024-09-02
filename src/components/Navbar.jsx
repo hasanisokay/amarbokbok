@@ -1,7 +1,7 @@
 'use client'
 import { useContext, useEffect, useState } from "react";
 import NavLink from "./NavLink";
-import logo from "@/../public/images/logo.png";
+import logo from "@/../public/images/logo3.png";
 import Image from "next/image";
 import ThemeToggle from "./ThemeToggle";
 import AuthContext from "@/contexts/AuthContext.mjs";
@@ -91,11 +91,10 @@ const Navbar = () => {
                         <li >
                             <Link href={"/"}><Image
                                 src={logo} 
-                                className="filter dark:contrast-0 contrast-200 brightness-50"
-                                // className=""
+                                className="dark:brightness-100 brightness-0"
                                 alt="Amar Bok Bok Logo"
-                                width={130} 
-                                height={50} 
+                                width={150} 
+                                height={100} 
                                 // srcSet="/logo-small.png 500w, /logo-medium.png 1000w, /logo-large.png 1500w" 
                                 sizes="(max-width: 600px) 100px, (max-width: 1200px) 150px, 200px"                         
                                 priority={true}
