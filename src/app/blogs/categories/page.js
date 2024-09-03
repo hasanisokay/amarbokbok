@@ -1,5 +1,5 @@
 "use server"
-import CategoryCard from "@/components/CategoryCard";
+import HomeCategoryCard from "@/components/HomeCategoryCard";
 import SuspenseFallback from "@/components/SuspenseFallback";
 import { categoryMetaImage, websiteName } from "@/constants/constants.mjs";
 import { hostname } from "@/constants/hostname.mjs";
@@ -9,7 +9,7 @@ const page = () => {
   return (
     <Suspense fallback={<SuspenseFallback />}>
       <div className="flex items-center justify-center">
-        <CategoryCard />
+        <HomeCategoryCard />
       </div>
     </Suspense>
   );

@@ -22,7 +22,7 @@ body {
   @apply bg-[#121212] text-[#e3ebdb];
 }
 [data-theme="light"] {
-  @apply bg-[#bfcfb4] text-black;
+  @apply bg-white text-black;
 }
 @media (prefers-color-scheme: light) {
   :root {
@@ -51,9 +51,6 @@ body {
 .ql-editor{
   padding-left: 0 !important;
   padding-right: 0 !important;
-}
-.ql-editor p, li {
-  font-size: 16px; /* Replace 16px with your desired font size */
 }
 .section-heading {
   text-align: left;

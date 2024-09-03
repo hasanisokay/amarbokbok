@@ -9,6 +9,7 @@ import dynamic from "next/dynamic";
 const CustomSVG = dynamic(() => import("@/animation/CustomSVG"));
 const Counter = dynamic(() => import("@/components/Counter"));
 const MarqueTexts = dynamic(() => import("@/components/MarqueTexts"));
+const HomeCategoryCard = dynamic(() => import("@/components/HomeCategoryCard"));
 
 export default async function Home() {
   return (
@@ -31,7 +32,9 @@ export default async function Home() {
         <Counter />
       </div>
       <HomeMenu />
-
+      <div className="min-h-[231px] lg:min-h-[231px] md:min-h-[243px] flex justify-center">
+        <HomeCategoryCard />
+      </div>
     </section>
   );
 }
