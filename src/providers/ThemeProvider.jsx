@@ -39,13 +39,6 @@ const ThemeProvider = ({ children }) => {
         };
     }, []);
 
-    // const toggleTheme = () => {
-    //     setTheme((preTheme) => {
-    //         const currentTheme = preTheme === "dark" ? "light" : "dark";
-    //         localStorage.setItem("theme", currentTheme);
-    //         return currentTheme;
-    //     });
-    // };
     const toggleTheme = () => {
         setTheme((prevTheme) => {
             const newTheme = prevTheme === "dark" ? "light" : "dark";
