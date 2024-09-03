@@ -1,9 +1,9 @@
-const categorySVG = (width='100px',height='100px') => {
+const categorySVG = () => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width={width}
-      height={height}
+      width="64"
+      height="64"
       role="img"
       aria-label="Category icon"
     >
