@@ -1,6 +1,5 @@
 "use server";
 import SuspenseFallback from "@/components/SuspenseFallback";
-// import VideoList from "@/components/VideoList";
 import { searchMetaImage, websiteName } from "@/constants/constants.mjs";
 import { hostname } from "@/constants/hostname.mjs";
 import capitalize from "@/utils/capitalize.mjs";
@@ -11,7 +10,7 @@ import { Suspense } from "react";
 
 const SelectInBlogs = dynamic(() =>import("@/components/SelectInBlogs"), { ssr: false });
 const VideoList = dynamic(() =>import("@/components/VideoList"), { ssr: false });
-const SearchBox = dynamic(() =>import("@/components/SearchBox"));
+const SearchBox = dynamic(() =>import("@/components/SearchBox"), {ssr:false});
 const Pagination = dynamic(() =>import("@/components/Pagination"), { ssr: false });
 const ImageList = dynamic(() =>import("@/components/ImageList"), { ssr: false });
 const BlogsPage = dynamic(() =>import("@/components/BlogsPage"), { ssr: false });
