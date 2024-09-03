@@ -6,9 +6,9 @@ import { hostname } from "@/constants/hostname.mjs";
 import { homeMetaImage, websiteName } from "@/constants/constants.mjs";
 import Footer from "@/components/Footer";
 import dynamic from "next/dynamic";
+import getThemeCookie from "@/utils/getThemeCookie.mjs";
 
 const UserTracker = dynamic(() =>import("@/components/UserTracker"), { ssr: false });
-// const inter = Inter({ subsets: ["latin"] });
 export async function generateMetadata() {
   const host = await hostname();
   return {
@@ -47,15 +47,16 @@ export async function generateMetadata() {
 export const viewport = {
   width: "device-width",
   themeColor: [
-    { media: "(prefers-color-scheme: dark)", color: "#4c4c4c" },
-    { media: "(prefers-color-scheme: light)", color: "#f5f4f069" },
+    { media: "(prefers-color-scheme: dark)", color: "#121212" },
+    { media: "(prefers-color-scheme: light)", color: "#bfcfb4" },
   ],
 };
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
+  let storedTheme = await getThemeCookie();
   return (
-    <html lang="en" className="">
+    <html lang="en" data-theme={storedTheme || "light"} >
       <body className="transition-colors">
-        <Providers>
+        <Providers initialTheme={storedTheme}>
           <header className="min-h-[60px]">
             <Navbar />
           </header>

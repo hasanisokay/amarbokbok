@@ -2,9 +2,9 @@
 import AuthProvider from "./AuthProvider";
 import ThemeProvider from "./ThemeProvider";
 
-const Providers = ({ children }) => {
+const Providers = ({ children, initialTheme }) => {
     return (
-        <ThemeProvider>
+        <ThemeProvider initialTheme={initialTheme}>
             <AuthProvider>{children}</AuthProvider>
         </ThemeProvider>
     );
