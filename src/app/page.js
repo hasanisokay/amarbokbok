@@ -30,7 +30,7 @@ export default async function Home() {
       <div className="counter-area  mt-10">
         <Counter />
       </div>
-      <div className="">
+      <div className="menu-area mb-10">
         <HomeMenu />
       </div>
     </section>
