@@ -22,7 +22,7 @@ body {
   @apply bg-[#121212] text-[#e3ebdb];
 }
 [data-theme="light"] {
-  @apply bg-white text-black;
+  @apply bg-[#bfcfb4] text-black;
 }
 @media (prefers-color-scheme: light) {
   :root {
