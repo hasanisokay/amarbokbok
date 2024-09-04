@@ -31,7 +31,7 @@ const Counter = () => {
     useEffect(() => {
         const fetchTargets = async () => {
             try {
-                const response = await fetch('/api/counter-targets', {next:{revalidate:60}});
+                const response = await fetch('/api/counter-targets', {next:{revalidate:60}, cache:"force-cache"});
                 const data = await response.json();
                 if (data?.status === 200) {
                     setTargets({
