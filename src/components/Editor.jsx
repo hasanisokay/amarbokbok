@@ -107,8 +107,8 @@ const Editor = forwardRef(
                     }
 
                     const loading = toast.loading('Uploading...');
-                    const resizedFile = await resizeImage(file, maxWidth, maxHeight);
-                    const imageUrl = await uploadImage(resizedFile, setUploadPercentage);
+                    // const resizedFile = await resizeImage(file, maxWidth, maxHeight);
+                    const imageUrl = await uploadImage(file, setUploadPercentage);
                     toast.dismiss(loading);
 
                     if (!imageUrl) {

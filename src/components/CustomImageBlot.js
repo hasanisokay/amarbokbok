@@ -26,6 +26,8 @@ class CustomImageBlot extends BlockEmbed {
 CustomImageBlot.blotName = 'customImage';
 CustomImageBlot.tagName = 'img';
 
-Quill.register(CustomImageBlot);
+if (!Quill.imports['formats/customImage']) {
+  Quill.register(CustomImageBlot);
+}
 
 export default CustomImageBlot;

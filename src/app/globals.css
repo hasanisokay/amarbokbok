@@ -32,10 +32,30 @@ body {
   }
 }
 .ql-editor img{
-  margin-top: 10px;
-  margin-bottom: 10px;
+  width: 100%;
+  height: 100%;
+  padding: 10px;
   cursor: pointer;
 }
+@media screen and (min-width:787px) {
+  .ql-editor img{
+    width: 700px;
+    height: auto;
+  } 
+}
+@media screen and(min-width:430px) and (max-width:786px) {
+  .ql-editor img{
+    width: 400px;
+    height: auto;
+  }
+}
+@media screen and(min-width:300px) and (max-width:430px) {
+  .ql-editor img{
+    width: 280px;
+    height: auto;
+  }
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .ql-editor img {
     scale: 0.8;

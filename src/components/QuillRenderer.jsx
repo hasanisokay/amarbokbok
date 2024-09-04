@@ -3,10 +3,11 @@ import { useEffect, useRef, useState } from 'react';
 import Quill from 'quill';
 import CustomImageBlot from './CustomImageBlot';
 import 'quill/dist/quill.core.css';
-import Image from 'next/image';
+// import Image from 'next/image';
 
-// Register CustomImageBlot globally
-Quill.register(CustomImageBlot);
+if (!Quill.imports['formats/customImage']) {
+  Quill.register(CustomImageBlot);
+}
 
 const QuillRenderer = ({ content }) => {
   const containerRef = useRef(null);
