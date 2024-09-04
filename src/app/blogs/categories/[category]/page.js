@@ -1,18 +1,21 @@
 'use server'
-import BlogsPage from "@/components/BlogsPage";
+// import BlogsPage from "@/components/BlogsPage";
 import NotFound from "@/components/NotFound";
 import { categoryMetaImage, websiteName } from "@/constants/constants.mjs";
 import { hostname } from "@/constants/hostname.mjs";
 import capitalize from "@/utils/capitalize.mjs";
 import getBlogs from "@/utils/getBlogs.mjs";
+import dynamic from "next/dynamic";
 
+const BlogsPage = dynamic(() =>import("@/components/BlogsPage"), { ssr: false });
 
 export default async function categoryPage({ params, searchParams }) {
-  const category = params?.category;
+  const category = decodeURIComponent(params?.category?.trim());
   const page = parseInt(searchParams?.page) || 1;
   const limit = parseInt(searchParams?.limit) || 10;
   const sort = searchParams?.sort || "newest";
   let blogs;
+
   try {
     if (category) {
       blogs = await getBlogs(category, page, limit, sort);
@@ -20,6 +23,8 @@ export default async function categoryPage({ params, searchParams }) {
   } catch (error) {
     blogs = null;
   }
+  console.log(category)
+  console.log(blogs)
   if (
     blogs?.status === 500 ||
     blogs?.status === 400 ||
@@ -32,7 +37,7 @@ export default async function categoryPage({ params, searchParams }) {
 }
 
 export async function generateMetadata({ params }) {
-  const category = params?.category;
+  const category = decodeURIComponent(params?.category?.trim());
   const host = await hostname();
   
   let metadata = {

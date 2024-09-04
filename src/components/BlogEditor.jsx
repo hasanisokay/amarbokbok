@@ -150,7 +150,7 @@ console.log(date)
             type="text"
             value={newCategory}
             className='focus:outline-none bg-white border rounded border-gray-400 p-1'
-            onChange={(e) => setNewCategory(e.target.value)}
+            onChange={(e) => setNewCategory(e.target.value.trim())}
             placeholder="Or add a new category"
           />
           <button className='btn-submit' onClick={() => {

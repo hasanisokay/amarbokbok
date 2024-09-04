@@ -36,7 +36,6 @@ export const GET = async (req) => {
     if (category) {
       matchStage.categories = { $in: [category] };
     }
-
     if (keyword) {
       matchStage.$or = [
         { "content.ops.insert": { $regex: keyword, $options: "i" } },
@@ -76,6 +75,7 @@ export const GET = async (req) => {
       .limit(limit)
       .toArray();
     if (titleOnly) return NextResponse.json(result);
+
     let totalCount;
     totalCount = await blogCollection.countDocuments(matchStage);
     // if (result?.length === limit) {
