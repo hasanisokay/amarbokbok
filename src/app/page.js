@@ -27,10 +27,10 @@ export default async function Home() {
           . Follow what I say.{" "}
         </h1>
       </div>
-      <div className="lg:min-h-[130px] md:min-h-[276px] mih-h-[422px] mt-10">
+      <div className="counter-area  mt-10">
         <Counter />
       </div>
-      <div className="min-h-[1199px] md:min-h-[713px] lg:min-h-[470px]">
+      <div className="">
         <HomeMenu />
       </div>
     </section>
