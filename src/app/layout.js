@@ -8,7 +8,32 @@ import Footer from "@/components/Footer";
 import dynamic from "next/dynamic";
 import getThemeCookie from "@/utils/getThemeCookie.mjs";
 
+// const kalpurush = localFont({
+//   src: '@/../../../public/font/kalpurush.ttf',
+//   display: 'swap',
+// })
+
 const UserTracker = dynamic(() =>import("@/components/UserTracker"), { ssr: false });
+
+export default async function RootLayout({ children }) {
+  let storedTheme = await getThemeCookie();
+  return (
+    <html lang="en"  data-theme={storedTheme || "light"} >
+      <body className="transition-colors">
+        <Providers initialTheme={storedTheme}>
+          <header className="min-h-[60px]">
+            <Navbar />
+          </header>
+          <main className="min-h-[calc(100vh-100px)]">{children}</main>
+          <Footer />
+          <UserTracker />
+        </Providers>
+        <Toaster />
+      </body>
+    </html>
+  );
+}
+
 export async function generateMetadata() {
   const host = await hostname();
   return {
@@ -51,21 +76,3 @@ export const viewport = {
     { media: "(prefers-color-scheme: light)", color: "#bfcfb4" },
   ],
 };
-export default async function RootLayout({ children }) {
-  let storedTheme = await getThemeCookie();
-  return (
-    <html lang="en" data-theme={storedTheme || "light"} >
-      <body className="transition-colors">
-        <Providers initialTheme={storedTheme}>
-          <header className="min-h-[60px]">
-            <Navbar />
-          </header>
-          <main className="min-h-[calc(100vh-100px)]">{children}</main>
-          <Footer />
-          <UserTracker />
-        </Providers>
-        <Toaster />
-      </body>
-    </html>
-  );
-}

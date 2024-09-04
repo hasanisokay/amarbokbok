@@ -1,4 +1,4 @@
-"use server";
+"use server"
 import SuspenseFallback from "@/components/SuspenseFallback";
 import { searchMetaImage, websiteName } from "@/constants/constants.mjs";
 import { hostname } from "@/constants/hostname.mjs";

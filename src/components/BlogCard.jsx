@@ -7,14 +7,14 @@ const BlogCard = ({ blog }) => {
     const plainText = deltaToPlainText(blog.content);
     const truncatedText = truncateText(plainText, 60);
     return (
-        <Link href={`/blogs/${blog?.blog_id}`}>
-        <div className='my-4 p-4 w-fit py-1 shadow-md lg:hover:shadow-lg active:shadow-lg'>
-            <BlogHead clickable={true} blog={blog} />
-            <p>
-                {truncatedText}
-            </p>
-        </div>
-        </Link>
+        <>
+            <div className='my-4 p-4 w-fit py-1 shadow-md lg:hover:shadow-lg active:shadow-lg'>
+                <BlogHead clickable={true} blog={blog} />
+                <Link href={`/blogs/${blog?.blog_id}`}>
+                    {truncatedText}
+                </Link>
+            </div>
+        </>
 
     );
 };

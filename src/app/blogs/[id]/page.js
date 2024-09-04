@@ -1,4 +1,5 @@
 "use server"
+
 import NotFound from "@/components/NotFound";
 import Sidebar from "@/components/Sidebar";
 import SingleBlogPage from "@/components/SingleBlogPage";
@@ -8,6 +9,7 @@ import { hostname } from "@/constants/hostname.mjs";
 import deltaToPlainText from "@/utils/deltaToPlainText.mjs";
 import getBlog from "@/utils/getBlog.mjs";
 import getImageLinkFromDelta from "@/utils/getImageLinkFromDelta.mjs";
+// import localFont from 'next/font/local'
 import { Suspense } from "react";
 export async function generateMetadata({ params }) {
   const host = await hostname();
@@ -50,7 +52,10 @@ export async function generateMetadata({ params }) {
   return metadata;
 }
 
+
+
 export default async function page({ params }) {
+  
   const blogId = params?.id;
   let blog;
   try {
@@ -71,7 +76,7 @@ export default async function page({ params }) {
   else
     return (
       <Suspense fallback={<SuspenseFallback />}>
-        <div className="blog-layout">
+        <div className={` blog-layout`}>
           <section className="lg:mx-2 mx-1">
             <SingleBlogPage blog={blog} />
           </section>
