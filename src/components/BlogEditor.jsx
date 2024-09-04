@@ -25,6 +25,10 @@ const BlogEditor = ({ postId }) => {
   const [uploadPercentage, setUploadPercentage] = useState(0);
   const [date, setDate] = useState(new Date());
   const [updatedOn, setUpdatedOn] = useState(new Date())
+
+  useEffect(() => {
+    setUpdatedOn(new Date(date));
+  }, [date])
   useEffect(() => {
     const isAvailable = async () => {
       setChecking(true);
@@ -45,7 +49,7 @@ const BlogEditor = ({ postId }) => {
         try {
           const response = await fetch(`/api/get-single-blog?blog_id=${postId}`);
           const data = await response.json();
-          if(data.status===404) return router.push("/admin/blog-editor");
+          if (data.status === 404) return router.push("/admin/blog-editor");
           setContent(data?.blog);
           setBlogId(data?.blog?.blog_id);
           setTitle(data?.blog?.title);
@@ -58,7 +62,7 @@ const BlogEditor = ({ postId }) => {
     };
 
     fetchPost();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [postId]);
   const fetchCategories = async () => {
     try {
@@ -87,7 +91,7 @@ const BlogEditor = ({ postId }) => {
             content: contentToSave, updatedOn: updatedOn, blog_id: blogId, title: title,
             categories: selectedCategories
           }),
-          credentials:"include"
+          credentials: "include"
         })
         : await fetch('/api/admin/add-new-blog', {
           method: 'POST',
@@ -99,7 +103,7 @@ const BlogEditor = ({ postId }) => {
             readCount: 0,
             title: title,
             categories: selectedCategories
-          }),credentials:'include'
+          }), credentials: 'include'
         });
       const data = await response.json();
 
@@ -129,7 +133,7 @@ const BlogEditor = ({ postId }) => {
           <Select
             options={loadingCategory ? [{ value: '', label: 'Loading...' }] : availableCategories?.map(category => ({ value: category, label: category }))}
             onChange={option => setSelectedCategories((prev) => [...prev, option.value])}
-           className='text-black'
+            className='text-black'
             onMenuOpen={fetchCategories}
             placeholder="Select from previous category"
           />
