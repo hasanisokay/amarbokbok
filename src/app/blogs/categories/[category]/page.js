@@ -1,5 +1,4 @@
 'use server'
-// import BlogsPage from "@/components/BlogsPage";
 import NotFound from "@/components/NotFound";
 import { categoryMetaImage, websiteName } from "@/constants/constants.mjs";
 import { hostname } from "@/constants/hostname.mjs";
@@ -23,8 +22,6 @@ export default async function categoryPage({ params, searchParams }) {
   } catch (error) {
     blogs = null;
   }
-  console.log(category)
-  console.log(blogs)
   if (
     blogs?.status === 500 ||
     blogs?.status === 400 ||

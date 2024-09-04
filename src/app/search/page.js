@@ -31,7 +31,7 @@ const searchPage = async ({ searchParams }) => {
   const limit = parseInt(searchParams?.limit) || 10;
   const sort = searchParams?.sort || "newest";
   const category =
-    searchParams?.category === "any" ? "" : searchParams.category;
+    searchParams?.category === "any" ? "" :  decodeURIComponent(searchParams.category.trim());
 
   if (blog) {
     keyword = blog;
@@ -116,12 +116,15 @@ const searchPage = async ({ searchParams }) => {
 export default searchPage;
 
 export async function generateMetadata({ searchParams }) {
+  let items;
   let keyword;
   let type;
+
   const blog = searchParams?.blog;
   const audio = searchParams?.audio;
   const video = searchParams?.video;
-  const book = searchParams?.book;
+  const pdf = searchParams?.pdf;
+  const image = searchParams?.image;
 
   if (blog) {
     keyword = blog;
@@ -132,15 +135,18 @@ export async function generateMetadata({ searchParams }) {
   } else if (video) {
     keyword = video;
     type = "video";
-  } else if (book) {
-    keyword = book;
-    type = "book";
+  } else if (pdf) {
+    keyword = pdf;
+    type = "pdf";
+  } else if (image) {
+    keyword = image;
+    type = "image";
   }
 
   const host = await hostname();
   return {
     title: `${
-      keyword ? `${keyword} in ${capitalize(type)}` : "Search Results"
+      keyword ? `${decodeURIComponent(keyword.trim())} in ${capitalize(type)}` : "Search Results"
     } - ${websiteName}`,
     description: `Find results for ${
       keyword ? `${keyword} in ${capitalize(type)}` : "your search"
