@@ -31,7 +31,11 @@ body {
     --background-end-rgb: 0, 0, 0;
   }
 }
-
+.ql-editor img{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
 @media (prefers-reduced-motion: no-preference) {
   .ql-editor img {
     scale: 0.8;

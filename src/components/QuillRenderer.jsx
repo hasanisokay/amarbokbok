@@ -1,14 +1,12 @@
 'use client'
 import { useEffect, useRef, useState } from 'react';
 import Quill from 'quill';
-import CustomImageBlot from './CustomImageBlot';
 import 'quill/dist/quill.core.css'; 
-import Image from 'next/image';
 
 const QuillRenderer = ({ content }) => {
   const containerRef = useRef(null);
   const [quill, setQuill] = useState(null);
-
+console.log(content)
   useEffect(() => {
     if (!content || !containerRef.current) return;
     const quillInstance = new Quill(containerRef.current, {
@@ -21,35 +19,16 @@ const QuillRenderer = ({ content }) => {
 
   useEffect(() => {
     if (!quill || !content) return;
-
     quill.setContents(content);
-
-    Array.from(containerRef.current.children).forEach((child) => {
-      const blot = Quill.find(child);
-      if (blot instanceof CustomImageBlot) {
-        const imageElement = renderCustomImage(CustomImageBlot.value(child));
-        child.replaceWith(imageElement);
-      }
+    const images = containerRef.current.querySelectorAll('img');
+    images.forEach((img) => {
+      img.onclick = () => {
+        window.open(img.src, '_blank');
+      };
     });
-  }, [quill, content]);
+     }, [quill, content]);
 
-  const renderCustomImage = (value) => {
-    const { url, alt, width, height } = value;
-    return (
-      <div style={{ textAlign: 'center', margin: '10px 10px', }}>
-        <Image
-          src={url}
-          className='cursor-pointer my-2'
-          onClick={() => window.open(url, '_blank')}
-          alt={alt || 'Blog_Image'}
-          width={width || 100}
-          height={height || 100}
-          layout="responsive"
-          style={{ maxWidth: '100%', height: 'auto', }}
-        />
-      </div>
-    );
-  };
+  
 
   return <div ref={containerRef}></div>;
 };

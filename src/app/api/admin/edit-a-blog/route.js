@@ -13,12 +13,14 @@ export const POST = async (req) => {
     const { blog_id, content, updatedOn, title, categories } = body;
     const db = await dbConnect();
     if (!db) return NextResponse.json(dbErrorResponse);
+    console.log(updatedOn)
 
     const postCollection = await db.collection("blogs");
     const result = await postCollection.updateOne(
       { blog_id: blog_id },
-      { $set: { content: content, date: updatedOn, title:title, categories: categories  } }
+      { $set: { content: content, addedOn: updatedOn, title:title, categories: categories  } }
     );
+    console.log(result)
     if (result?.modifiedCount > 0) {
       return NextResponse.json({
         status: 200,
