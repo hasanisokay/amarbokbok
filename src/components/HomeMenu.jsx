@@ -46,7 +46,7 @@ const HomeMenu = () => {
             href: "/blogs/categories",
             description: "ব্লগের সব ক্যাটাগরি লিস্ট",
             title: "Categories",
-            icon: categorySVG(),
+            icon: categorySVG('100px','100px'),
         },
     ];
     return (
