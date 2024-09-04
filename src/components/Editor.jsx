@@ -4,7 +4,6 @@ import React, { forwardRef, useEffect, useLayoutEffect, useRef } from 'react';
 import Quill from 'quill';
 import 'quill/dist/quill.snow.css';
 import uploadImage from '@/utils/uploadImage.mjs';
-import resizeImage from '@/utils/resizeImage.mjs';
 import toast from 'react-hot-toast';
 
 
@@ -107,7 +106,6 @@ const Editor = forwardRef(
                     }
 
                     const loading = toast.loading('Uploading...');
-                    // const resizedFile = await resizeImage(file, maxWidth, maxHeight);
                     const imageUrl = await uploadImage(file, setUploadPercentage);
                     toast.dismiss(loading);
 

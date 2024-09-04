@@ -8,8 +8,12 @@ import getTimeWithHours from "@/utils/getTimeWithHours.mjs";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+
 const Page = () => {
   const [previousSOS, setPreviousSOS] = useState([]);
+  const [expiredDate, setExpiredDate] = useState(null);
   useEffect(() => {
     (async () => {
       const res = await getSOS();
@@ -25,6 +29,24 @@ const Page = () => {
       window.location.reload();
     }
   }
+  const handleSubmit = async (formData) => {
+
+    if (expiredDate) {
+      formData.set(
+        "expiredOn",
+        expiredDate.toISOString().slice(0, 16) 
+      );
+    }
+
+    const result = await newSOS(formData);
+    if (result?.error) {
+      toast.error(result?.error);
+    } else {
+      toast.success("Success");
+      window.location.reload();
+    }
+  };
+
   return (
     <div>
       <div className="md:w-[70%] w-[95%] mt-10 mx-auto">
@@ -38,17 +60,11 @@ const Page = () => {
           </div>)
         }
       </div>
+
       <h4 className="text-center mt-10">New SOS</h4>
       <form
         className="md:w-[70%] w-full mx-auto"
-        action={async (formData) => {
-          const result = await newSOS(formData);
-          if (result?.error) toast.error(result?.error);
-          else {
-            toast.success("Success")
-            window.location.reload();
-          };
-        }}
+        action={handleSubmit}
       >
         <div className="space-y-2 text-sm text-zinc-700 dark:text-zinc-400">
           <label className="block font-medium" htmlFor="_message">
@@ -62,19 +78,19 @@ const Page = () => {
           />
         </div>
         <div>
-          <label htmlFor="expiredOn" className="block font-medium">
-            {" "}
-            Expired On:{" "}
-          </label>
-          <input
-            type="datetime-local"
-            id="expiredOn"
-            name="expiredOn"
-            className="bg-white text-black border"
-            required
-          />
-        </div>
-        <button type="submit" className="btn-submit mt-2">
+        <label htmlFor="expiredOn" className="block font-medium">
+          Expired On: (YYYY-MM-DDTHH:mm)
+        </label>
+        <DatePicker
+          selected={expiredDate}
+          onChange={(date) => setExpiredDate(date)}
+          showTimeSelect
+          dateFormat="yyyy-MM-dd HH:mm"
+          timeFormat="HH:mm"
+          className="bg-white text-black border w-full"
+          required
+        />
+      </div>        <button type="submit" className="btn-submit mt-2">
           Submit
         </button>
       </form>

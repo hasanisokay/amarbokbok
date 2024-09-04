@@ -7,7 +7,8 @@ import checkLinkAvailability from '@/utils/checkLinkAvailability.mjs';
 import { useRouter } from 'next/navigation';
 import Select from 'react-select';
 import getCategories from '@/utils/getCategories.mjs';
-
+import "react-datepicker/dist/react-datepicker.css";
+import DatePicker from "react-datepicker";
 const BlogEditor = ({ postId }) => {
   const [range, setRange] = useState();
   const [blogId, setBlogId] = useState("");
@@ -25,7 +26,7 @@ const BlogEditor = ({ postId }) => {
   const [uploadPercentage, setUploadPercentage] = useState(0);
   const [date, setDate] = useState(new Date());
   const [updatedOn, setUpdatedOn] = useState(new Date())
-
+console.log(date)
   useEffect(() => {
     setUpdatedOn(new Date(date));
   }, [date])
@@ -88,7 +89,7 @@ const BlogEditor = ({ postId }) => {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            content: contentToSave, updatedOn: updatedOn, blog_id: blogId, title: title,
+            content: contentToSave, updatedOn: new Date(updatedOn), blog_id: blogId, title: title,
             categories: selectedCategories
           }),
           credentials: "include"
@@ -98,7 +99,7 @@ const BlogEditor = ({ postId }) => {
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
             content: contentToSave,
-            addedOn: date,
+            addedOn: new Date(date),
             blog_id: blogId,
             readCount: 0,
             title: title,
@@ -182,20 +183,20 @@ const BlogEditor = ({ postId }) => {
         {
           blogId.length > 0 && !postId && (isIdAvailable ? <p className='text-sm text-green-500'>Available</p> : <p className='text-sm text-red-500'>Not available</p>)
         }
-        <div className="relative">
-          <label className="block text-sm font-medium text-gray-700">Added On</label>
-          <input
-            type="date"
-            value={date.toISOString().split('T')[0]}
-            onChange={(e) => setDate(new Date(e.target.value))}
-            className="w-fit border mt-2 text-gray-700 bg-white  text-black rounded-lg shadow-sm focus:outline-none"
+        <div className="relative ml-10">
+          <label className="block text-sm font-medium text-gray-700">Added On (yyyy-mm-dd)</label>
+          <DatePicker
+            selected={date}
+            onChange={(date) => setDate(date)}
+            dateFormat="yyyy-MM-dd"
+            className="w-fit border mt-2 text-gray-700 bg-white text-black rounded-lg shadow-sm focus:outline-none"
           />
-          <small>Leave unchange to use the {content?.timestamp ? "previous" : "current"} date.</small>
-        </div>
-      </div>
+          {/* <small className='pr-2'>yyyy-mm-dd.</small> */}
+          <small>Leave unchanged to use the {content?.timestamp ? "previous" : "current"} date.</small>
+        </div>      </div>
 
 
-      <div className='mt-4'>
+      <div className='my-4 ml-10'>
         <button type="button" className='btn-submit' onClick={handleSave}>
           {postId ? 'Update' : 'Submit'}
         </button>

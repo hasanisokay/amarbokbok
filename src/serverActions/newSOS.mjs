@@ -9,6 +9,7 @@ const newSOS = async (formData) => {
       message: formData.get("message"),
       expiredOn: new Date(expiryDate),
     };
+    console.log(rawFormData)
     const db = await dbConnect();
     const messageCollection = await db.collection("messages");
     const result = await messageCollection.insertOne(rawFormData);
