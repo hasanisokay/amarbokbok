@@ -37,7 +37,7 @@ body {
   padding: 10px;
   cursor: pointer;
 }
-.ql-editor p{
+.ql-editor p, li{
 font-size: 16px;
 }
 @media screen and (min-width:787px) {
