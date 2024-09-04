@@ -39,7 +39,7 @@ const QuillRenderer = ({ content }) => {
       <div style={{ textAlign: 'center', margin: '10px 10px', }}>
         <Image
           src={url}
-          className='cursor-pointer'
+          className='cursor-pointer my-2'
           onClick={() => window.open(url, '_blank')}
           alt={alt || 'Blog_Image'}
           width={width || 100}
