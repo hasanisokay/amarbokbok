@@ -10,7 +10,7 @@ import { Suspense } from "react";
 
 const SelectInBlogs = dynamic(() =>import("@/components/SelectInBlogs"), { ssr: false });
 const VideoList = dynamic(() =>import("@/components/VideoList"), { ssr: false });
-const SearchBox = dynamic(() =>import("@/components/SearchBox"), {ssr:false});
+const SearchBox = dynamic(() =>import("@/components/SearchBox"));
 const Pagination = dynamic(() =>import("@/components/Pagination"), { ssr: false });
 const ImageList = dynamic(() =>import("@/components/ImageList"), { ssr: false });
 const BlogsPage = dynamic(() =>import("@/components/BlogsPage"), { ssr: false });
@@ -31,7 +31,7 @@ const searchPage = async ({ searchParams }) => {
   const limit = parseInt(searchParams?.limit) || 10;
   const sort = searchParams?.sort || "newest";
   const category =
-    searchParams?.category === "any" ? "" :  decodeURIComponent(searchParams.category.trim());
+    searchParams?.category === "any" ? "" :  searchParams.category;
 
   if (blog) {
     keyword = blog;
