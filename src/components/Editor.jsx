@@ -69,12 +69,15 @@ const Editor = forwardRef(
         modules: {
           toolbar: {
             container: [
-              [{ 'header': [1, 2, false] }],
+              [{ 'header': [1, 2, 3, false] }],
               ['bold', 'italic', 'underline', 'strike'],
               [{ 'color': [] }, { 'background': [] }],
               [{ 'align': [] }],
-              [{ 'list': 'ordered' }, { 'list': 'bullet' }], // Added list support
+              [{ 'list': 'ordered' }, { 'list': 'bullet' }], 
               ['link', 'image'],
+              [{ 'indent': '-1' }, { 'indent': '+1' }],
+              ['blockquote', 'code-block'],
+              [{ 'script': 'sub' }, { 'script': 'super' }],
               ['clean']
             ],
             handlers: {
