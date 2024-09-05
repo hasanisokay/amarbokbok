@@ -5,6 +5,7 @@ import Quill from 'quill';
 import 'quill/dist/quill.snow.css';
 import uploadImage from '@/utils/uploadImage.mjs';
 import toast from 'react-hot-toast';
+import 'quill/dist/quill.core.css';
 
 
 // Register CustomImageBlot
@@ -74,7 +75,7 @@ const Editor = forwardRef(
               [{ 'color': [] }, { 'background': [] }],
               [{ 'align': [] }],
               [{ 'list': 'ordered' }, { 'list': 'bullet' }], 
-              ['link', 'image'],
+              ['link', 'image', 'video'],
               [{ 'indent': '-1' }, { 'indent': '+1' }],
               ['blockquote', 'code-block'],
               [{ 'script': 'sub' }, { 'script': 'super' }],
