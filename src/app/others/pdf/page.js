@@ -66,7 +66,7 @@ export async function generateMetadata() {
   let metadata = {
     title: `PDFs - ${websiteName}`,
     description: "Access a collection of PDFs with detailed descriptions and useful resources.",
-    keywords: ["PDF", "Documents", "Bonjui Blog", "Ahmmad Robin's Blog", "Educational PDFs", "Resources"],
+    keywords: ["PDF", "Documents", "AmarBokBok_Blog", "Ahmmad Robin's Blog", "Educational PDFs", "Resources"],
     url: `${host}/others/pdf`,
   };
 

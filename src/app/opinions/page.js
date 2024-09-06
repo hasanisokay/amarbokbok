@@ -73,7 +73,7 @@ export async function generateMetadata() {
   let metadata = {
     title: `Opinions - ${websiteName}`,
     description: "Explore diverse opinions and discussions on various topics. Share your thoughts and see what others are saying.",
-    keywords: ["Opinions", "Discussions", "Bonjui Blog", "Ahmmad Robin's Blog", "Community", "Feedback"],
+    keywords: ["Opinions", "Discussions", "AmarBokBok", "Ahmmad Robin's Blog", "Community", "Feedback"],
     url: `${host}/opinions`,
   };
 

@@ -69,7 +69,7 @@ export async function generateMetadata() {
   let metadata = {
     title: `Videos - ${websiteName}`,
     description: "Explore a curated collection of videos with detailed descriptions and recommendations.",
-    keywords: ["Video", "Bonjui Blog", "Ahmmad Robin's Blog", "Music Videos", "Educational Videos"],
+    keywords: ["Video", "AmarBokBok Blog", "Ahmmad Robin's Blog", "Music Videos", "Educational Videos"],
     url: `${host}/others/video`,
   };
 

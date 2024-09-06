@@ -14,7 +14,7 @@ const BlockEmbed = Quill.import('blots/block/embed');
 class CustomImageBlot extends BlockEmbed {
   static create(value) {
     let node = super.create();
-    node.setAttribute('alt', value.alt || 'Bonjui_Blog');
+    node.setAttribute('alt', value.alt || 'AmarBokBok_Blog');
     node.setAttribute('src', value.url);
     node.setAttribute('width', value.width || 'auto');
     node.setAttribute('height', value.height || 'auto');

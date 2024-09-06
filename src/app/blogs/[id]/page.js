@@ -19,7 +19,7 @@ export async function generateMetadata({ params }) {
   let metadata = {
     title: `Blog - ${websiteName}`,
     description: "Read our latest blog posts on various topics.",
-    keywords: ["Amar Bok Bok", "Ahmmad Robin", "Ahmmad Robins Blog"],
+    keywords: ["Amar bokbok blog"],
     url: blogId ? `${host}/blogs/${blogId}` : `${host}/blogs`,
   };
 
@@ -29,9 +29,14 @@ export async function generateMetadata({ params }) {
       const imageUrl = getImageLinkFromDelta(blog?.blog?.content);
       
       if (blog) {
-        metadata.title = `${blog?.blog?.title || "Untitled"} - ${websiteName}`;
-        metadata.description = truncateText(deltaToPlainText(blog?.blog?.content), 160) || "Detailed description of the blog post.";
-        metadata.keywords.push(...(blog?.blog?.title?.split(" ") || []));
+        const blogTitle = blog?.blog?.title || "Blog Post";
+        metadata.title = `${blogTitle} - ${websiteName}`;
+        const titleKeywords = blogTitle.split(" ").filter(kw => kw.length > 3);
+        metadata.keywords.push(...titleKeywords);
+        if(blog?.blog?.categories.length > 0) {metadata.keywords.push(...blog?.blog?.categories)}
+        
+        metadata.description = truncateText(deltaToPlainText(blog?.blog?.content), 160, false) || "Detailed description of the blog post.";
+// console.log(truncateText(deltaToPlainText(blog?.blog?.content), 160, false))
         metadata.other = {
           "twitter:image": imageUrl || singleBlogMetaImage,
           "twitter:card": "summary_large_image",

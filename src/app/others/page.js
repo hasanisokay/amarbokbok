@@ -51,7 +51,7 @@ export async function generateMetadata() {
   let metadata = {
     title: `Audio - ${websiteName}`,
     description: "Explore a curated collection of audios with detailed descriptions.",
-    keywords: ["Audio", "Bonjui Blog", "Ahmmad Robins Blog", "Music", "Podcasts"],
+    keywords: ["Audio", "AmarBokBok_Audio", "Ahmmad Robins Blog", "Music", "Podcasts"],
     url: `${host}/others`,
   };
 

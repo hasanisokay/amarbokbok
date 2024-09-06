@@ -40,7 +40,7 @@ export async function generateMetadata() {
   let metadata = {
     title: `Blogs - ${websiteName}`,
     description: "Explore a variety of blog posts categorized by topics. Discover insights and articles on diverse subjects.",
-    keywords: ["Blogs", "Categories", "Articles", "Bonjui Blog", "Ahmmad Robin's Blog", "Insights"],
+    keywords: ["Blogs", "Categories", "Articles", "Ahmmad Robin's Blog","Amar Bok Bok Blogs", "Insights"],
     url: `${host}/blogs`,
   };
 

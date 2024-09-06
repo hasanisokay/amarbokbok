@@ -40,7 +40,7 @@ export async function generateMetadata({ params }) {
   let metadata = {
     title: `${capitalize(category) || "Categories"} - ${websiteName}`,
     description: `Explore blog posts categorized under ${capitalize(category) || "various topics"}. Discover content that interests you.`,
-    keywords: ["Blog", "Categories", "Bonjui Blog", "Ahmmad Robin's Blog", capitalize(category) || "Categories"],
+    keywords: ["Blog", "Category", "Amarbokbok Blog", "Ahmmad Robin's Blog", capitalize(category) || "Category"],
     url: `${host}/blogs/categories`,
   };
 

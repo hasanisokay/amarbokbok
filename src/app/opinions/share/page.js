@@ -19,7 +19,7 @@ export async function generateMetadata() {
     keywords: [
       "Opinions",
       "Share Opinion",
-      "Bonjui Blog",
+      "Amarbokbok Blog",
       "Ahmmad Robin's Blog",
       "Feedback",
       "Community Discussion"
