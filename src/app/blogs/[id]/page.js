@@ -9,6 +9,7 @@ import { hostname } from "@/constants/hostname.mjs";
 import deltaToPlainText from "@/utils/deltaToPlainText.mjs";
 import getBlog from "@/utils/getBlog.mjs";
 import getImageLinkFromDelta from "@/utils/getImageLinkFromDelta.mjs";
+import truncateText from "@/utils/truncateText.mjs";
 // import localFont from 'next/font/local'
 import { Suspense } from "react";
 export async function generateMetadata({ params }) {
@@ -18,7 +19,7 @@ export async function generateMetadata({ params }) {
   let metadata = {
     title: `Blog - ${websiteName}`,
     description: "Read our latest blog posts on various topics.",
-    keywords: ["Blog", "Bonjui Blog", "Ahmmad Robin's Blog"],
+    keywords: ["Amar Bok Bok", "Ahmmad Robin", "Ahmmad Robins Blog"],
     url: blogId ? `${host}/blogs/${blogId}` : `${host}/blogs`,
   };
 
@@ -29,7 +30,7 @@ export async function generateMetadata({ params }) {
       
       if (blog) {
         metadata.title = `${blog?.blog?.title || "Untitled"} - ${websiteName}`;
-        metadata.description = deltaToPlainText(blog?.blog?.content) || "Detailed description of the blog post.";
+        metadata.description = truncateText(deltaToPlainText(blog?.blog?.content), 160) || "Detailed description of the blog post.";
         metadata.keywords.push(...(blog?.blog?.title?.split(" ") || []));
         metadata.other = {
           "twitter:image": imageUrl || singleBlogMetaImage,
