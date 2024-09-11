@@ -5,7 +5,7 @@ const HomeCard = ({ href, description, title, icon }) => {
   return (
     <Link href={href}>
       <div className="shadow3 w-[300px] lg:hover:-translate-y-2 active:-translate-y-2 duration-500 dark:bg-[#333333] bg-[#b6d7a0] rounded-md group py-4 text-center ">
-        <span className="flex justify-center mb-6 lg:group-hover:scale-105 group-active:scale-105 lg:group-active:scale-100 duration-500">{icon}</span>
+        <div className="w-[100px] h-[100px] mx-auto mb-6 lg:group-hover:scale-105 group-active:scale-105 lg:group-active:scale-100 duration-500">{icon}</div>
         <hr className="lg:group-hover:text-slate-500
 group-active:text-slate-500 
           dark:lg:group-hover:text-slate-300
