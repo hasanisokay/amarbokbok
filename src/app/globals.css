@@ -37,7 +37,10 @@ body {
   padding: 10px;
   cursor: pointer;
 }
-.ql-editor p, li{
+.ql-editor p{
+font-size: 18px;
+}
+.ql-editor li{
 font-size: 16px;
 }
 
