@@ -11,7 +11,7 @@ const DeleteOption = dynamic(() => import("./DeleteOption"), { ssr: false});
 const SingleBlogPage = ({ blog }) => {
     return (
         <>
-            <section className="lg:mx-12 md:mx-4 mx-2 p-1">
+            <section className="lg:mx-12 md:mx-4 mx-auto">
                 <div>
                     <BlogHead blog={blog?.blog} clickable={false} />
                 </div>
