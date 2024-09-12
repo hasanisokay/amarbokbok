@@ -134,7 +134,7 @@ console.log(date)
           <Select
             options={loadingCategory ? [{ value: '', label: 'Loading...' }] : availableCategories?.map(category => ({ value: category, label: category }))}
             onChange={option => setSelectedCategories((prev) => [...prev, option.value])}
-            className='text-black'
+            className='text-black min-w-[150px] w-fit'
             onMenuOpen={fetchCategories}
             placeholder="Select from previous category"
           />

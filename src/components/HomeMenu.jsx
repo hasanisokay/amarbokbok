@@ -19,6 +19,12 @@ const HomeMenu = () => {
             icon: blog("100px", "100px"),
         },
         {
+            href: "/blogs/categories",
+            description: "ব্লগের সব ক্যাটাগরি লিস্ট",
+            title: "Categories",
+            icon: categorySVG('100px','100px'),
+        },
+        {
             href: "/opinions",
             description: "মতামত দিতে এবং দেখতে",
             title: "Opinions",
@@ -41,12 +47,6 @@ const HomeMenu = () => {
             description: "আমার সম্পর্কে জানতে",
             title: "About Me",
             icon: me("100px", "100px"),
-        },
-        {
-            href: "/blogs/categories",
-            description: "ব্লগের সব ক্যাটাগরি লিস্ট",
-            title: "Categories",
-            icon: categorySVG('100px','100px'),
         },
     ];
     return (
