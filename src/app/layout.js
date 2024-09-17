@@ -38,7 +38,7 @@ export async function generateMetadata() {
   const host = await hostname();
   return {
     title: `${websiteName} - Home`,
-    description: "Welcome to Ahmmad Robin's personal website. Explore insightful blogs, discover curated content, and stay updated with the latest from Ahmmad Robin.",
+    description: "আহম্মাদ রবিনের ব্যক্তিগত ওয়েবসাইটে আপনাকে স্বাগতম। ব্লগগুলি অন্বেষণ করুন, নির্বাচিত বিষয়বস্তু খুঁজে নিন এবং আহম্মাদ রবিনের সর্বশেষ আপডেটের সাথে থাকুন।",
     publisher: "Ahmmad Robin",
     authors: [
       { name: "Ahmmad Robin", url: `${host}` },
@@ -47,23 +47,22 @@ export async function generateMetadata() {
         url: "https://web.facebook.com/bonjuiofficial",
       },
     ],
-    keywords: ["Personal Website", "Blogs", "Jharfuk", "Ahmmad Robin's Blogs"],
+    keywords: ["আহমাদ রবিনের বকবক", "ব্লগ", "ঝাড়ফুঁক", "আমার বকবক", "আহমাদ রবিন"],
     other: {
       "color-scheme": ["dark", "light"],
       "twitter:image": homeMetaImage,
       "twitter:card": "summary_large_image",
-      "twitter:description":
-        "Explore Ahmmad Robin's personal website featuring insightful blogs, curated content, and more.",
+     "twitter:description": "আহমাদ রবিনের ব্যক্তিগত ওয়েবসাইট আমার বকবক এ ব্লগ, নির্বাচিত বিষয়বস্তু এবং আরও অনেক কিছু আবিষ্কার করুন।",
       "og:title": `Home - ${websiteName}`,
       "og:url": `${host}`,
       "og:image": homeMetaImage,
-      "og:description":
-        "Visit Ahmmad Robin's personal website for blogs, curated content, and the latest updates.",
+      "og:description": "আহমাদ রবিনের ব্যক্তিগত ওয়েবসাইট আমার বকবক এ ব্লগ, নির্বাচিত বিষয়বস্তু এবং সর্বশেষ আপডেটগুলি পান।",
       "og:type": "website",
       "og:site_name": websiteName,
-      locale: "en_US",
+      "og:locale": "bn_BD",
     },
     image: homeMetaImage,
+    canonical: `${host}`, 
     url: `${host}`,
   };
 }

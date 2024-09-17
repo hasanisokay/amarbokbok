@@ -50,9 +50,10 @@ export async function generateMetadata() {
   const host = await hostname();
   let metadata = {
     title: `Audio - ${websiteName}`,
-    description: "Explore a curated collection of audios with detailed descriptions.",
-    keywords: ["Audio", "AmarBokBok_Audio", "Ahmmad Robins Blog", "Music", "Podcasts"],
+    description: "দরকারী অডিওগুলো পাবেন এখানে। অডিওর সাথে সংক্ষেপে পরিচিতি এবং ডাউনলোড লিংক থাকবে।",
+    keywords: ["Audio", "AmarBokBok Audio", "অডিও","আমার বকবক", ],
     url: `${host}/others`,
+    canonical: `${host}/others`, 
   };
 
   try {
@@ -61,14 +62,15 @@ export async function generateMetadata() {
       "twitter:card": "summary_large_image",
       "twitter:title": `Audio - ${websiteName}`,
       "twitter:description":
-        "Discover recommended audios along with detailed descriptions to help you choose what to listen to.",
+"দরকারী অডিওগুলো পাবেন এখানে। অডিওর সাথে সংক্ষেপে পরিচিতি এবং ডাউনলোড লিংক থাকবে।",
       "og:title": `Audio - ${websiteName}`,
       "og:description":
-        "Check out my recommended audios with in-depth descriptions. Get insights into each audio selection.",
+"দরকারী অডিওগুলো পাবেন এখানে। অডিওর সাথে সংক্ষেপে পরিচিতি এবং ডাউনলোড লিংক থাকবে।",
       "og:url": `${host}/others`,
       "og:image": audioMetaImage,
       "og:type": "website",
       "og:site_name": websiteName,
+      "og:locale": "bn_BD",
     };
   } catch (error) {
     console.error("Error fetching blog metadata:", error);

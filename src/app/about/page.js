@@ -44,30 +44,30 @@ export async function generateMetadata() {
   const host = await hostname();
   return {
     title: `About - ${websiteName}`,
-    description: "Discover more about Ahmad Robin, including his background, education, and contact information. Learn about his journey and achievements.",
+    description: "আহম্মাদ রবিন সম্পর্কে আরও জানুন, তার পটভূমি এবং যোগাযোগের তথ্য। তার যাত্রা এবং লেখালেখি সম্পর্কে জানুন।",
     keywords: [
       "Ahmad Robin",
-      "About",
-      "Biography",
-      "Contact Information",
-      "Education",
-      "Personal Website",
-      "Jharfuk"
+      "আহমাদ রবিন",
+      "সম্পর্কে", 
+      "জীবনী", 
+      "আমার সম্পর্কে",
+      "আমার বকবক"
     ],
     url: `${host}/about`,
+    canonical: `${host}/about`, 
     image: aboutMetaImage,
     other: {
       "twitter:image": aboutMetaImage,
       "twitter:card": "summary_large_image",
       "twitter:title": `About - ${websiteName}`,
-      "twitter:description": "Learn more about Ahmad Robin, including his biography, education, and how to get in touch.",
+      "twitter:description": "আহমাদ রবিন পদ্ধতি সম্পর্কে আরও জানুন। তার বকবক শুনুন।",
       "og:title": `About - ${websiteName}`,
-      "og:description": "Explore Ahmad Robin's background, education, and contact details. Get to know the person behind the website.",
+      "twitter:description": "আহমাদ রবিন পদ্ধতি সম্পর্কে আরও জানুন। তার ববকব সম্পর্কে জানুন",
       "og:url": `${host}/about`,
       "og:image": aboutMetaImage,
       "og:type": "website",
       "og:site_name": websiteName,
-      locale: "en_US",
+      "og:locale": "bn_BD",
     },
   };
 }

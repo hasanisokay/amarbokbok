@@ -146,21 +146,25 @@ export async function generateMetadata({ searchParams }) {
   const host = await hostname();
   return {
     title: `${
-      keyword ? `${decodeURIComponent(keyword.trim())} in ${capitalize(type)}` : "Search Results"
+      keyword ? `${decodeURIComponent(keyword.trim())} in ${capitalize(type)}` : "Search"
     } - ${websiteName}`,
-    description: `Find results for ${
-      keyword ? `${keyword} in ${capitalize(type)}` : "your search"
-    } on ${websiteName}.`,
+    canonical: `${host}/search`,
+    // description: `Find results for ${
+    //   keyword ? `${keyword} in ${capitalize(type)}` : "your search"
+    // } on ${websiteName}.`,
+    description: `আমার বকবকে ${
+      keyword ? `${keyword} ${capitalize(type)} এ` : "আপনার অনুসন্ধান"
+    } এর ফলাফল খুঁজে নিন।`,
     keywords: [
-      "Search",
-      "Search Results",
-      "Blogs",
-      "Audio",
-      "Video",
-      "Books",
-      "Personal Website",
-      "Jharfuk",
-      "Ahmmad Robin's Blog",
+      "অনুসন্ধান",  
+      "অনুসন্ধান ফলাফল",  
+      "ব্লগ",  
+      "অডিও",  
+      "ভিডিও", 
+      "বই", 
+      "ব্যক্তিগত ওয়েবসাইট", 
+      "ঝারফুক",
+      "আহম্মাদ রবিনের ব্লগ",
       keyword,
       type,
     ].filter(Boolean),
@@ -170,22 +174,22 @@ export async function generateMetadata({ searchParams }) {
       "twitter:image": searchMetaImage,
       "twitter:card": "summary_large_image",
       "twitter:title": `${
-        keyword ? `${keyword} in ${capitalize(type)}` : "Search Results"
+        keyword ? `${keyword} in ${capitalize(type)}` : "Search"
       } - ${websiteName}`,
       "twitter:description": `Find results for ${
         keyword ? `${keyword} in ${capitalize(type)}` : "your search"
       } on ${websiteName}.`,
       "og:title": `${
-        keyword ? `${keyword} in ${capitalize(type)}` : "Search Results"
+        keyword ? `${keyword} in ${capitalize(type)}` : "Search"
       } - ${websiteName}`,
-      "og:description": `Find results for ${
-        keyword ? `${keyword} in ${capitalize(type)}` : "your search"
-      } on ${websiteName}.`,
+      "og:description": `আমার বকবকে ${
+        keyword ? `${keyword} ${capitalize(type)} এ` : "আপনার অনুসন্ধান"
+      } এর ফলাফল খুঁজে নিন।`,
       "og:url": `${host}/search`,
       "og:image": searchMetaImage,
       "og:type": "website",
       "og:site_name": websiteName,
-      locale: "en_US",
+      "og:locale": "bn_BD", 
     },
   };
 }

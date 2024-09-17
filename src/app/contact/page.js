@@ -8,31 +8,32 @@ export async function generateMetadata() {
   const host = await hostname();
   return {
     title: `Contact - ${websiteName}`,
-    description: 'Get in touch with Ahmad Robin via phone or WhatsApp. Reach out for inquiries, feedback, or collaborations.',
-    keywords: [
-      'Ahmad Robin',
-      'Contact',
+    description: 'আহম্মাদ রবিনের সাথে ফোন বা WhatsApp এর মাধ্যমে যোগাযোগ করুন। জিজ্ঞাসা, মতামত বা সহযোগিতার জন্য যোগাযোগ করুন।',
+     keywords: [
+      'Ahmmad Robin',
+      'আহমাদ রবিন',
       'Phone',
       'WhatsApp',
-      'Personal Website',
-      'Jharfuk',
-      'Reach Out',
-      'Contact Information'
+      'Contact Information',
+      'যোগাযোগ তথ্য',
+      'যোগাযোগ', 
+      'ফোন',   
     ],
     url: `${host}/contact`,
+    canonical: `${host}/contact`, 
     image: contactMetaImage,
     other: {
       'twitter:image': contactMetaImage,
       'twitter:card': 'summary_large_image',
       'twitter:title': `Contact - ${websiteName}`,
-      'twitter:description': 'Connect with Ahmad Robin through phone or WhatsApp. Reach out for any inquiries or collaborations.',
+      'twitter:description': 'আহম্মাদ রবিনের সাথে ফোন বা WhatsApp এর মাধ্যমে যোগাযোগ করুন। যে কোন প্রশ্ন বা সহযোগিতার জন্য যোগাযোগ করুন।',
       'og:title': `Contact - ${websiteName}`,
-      'og:description': 'Get in touch with Ahmad Robin through phone or WhatsApp. Your inquiries and feedback are welcome.',
+      'og:description': 'ফোন বা WhatsApp এর মাধ্যমে আহম্মাদ রবিনের সাথে যোগাযোগ করুন। আপনার প্রশ্ন এবং মতামত স্বাগত।',
       'og:url': `${host}/contact`,
       'og:image': contactMetaImage,
       'og:type': 'website',
       'og:site_name': websiteName,
-      locale: 'en_US',
+      "og:locale": "bn_BD",
     },
   };
 }

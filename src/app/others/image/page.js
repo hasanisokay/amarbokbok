@@ -66,9 +66,10 @@ export async function generateMetadata() {
   const host = await hostname();
   let metadata = {
     title: `Images - ${websiteName}`,
-    description: "Browse a curated gallery of images with detailed descriptions and recommendations.",
-    keywords: ["Images", "Gallery", "Bonjui Blog", "Ahmmad Robin's Blog", "Photography", "Art"],
+    description: "প্রয়োজনীয় এবং উপকারী কিছু ছবি এখানে আছে। ছবিতে ক্লিক করে সংক্ষেপে ছবি সম্পর্কে জানা যাবে। বড় করে দেখা যাবে।",
+    keywords: ["Images", "Gallery", "আমার বকবক ছবি", "Ahmmad Robin's Photo", "ছবি", "আমার বকবক"],
     url: `${host}/others/image`,
+    canonical: `${host}/others/image`,
   };
 
   try {
@@ -77,14 +78,15 @@ export async function generateMetadata() {
       "twitter:card": "summary_large_image",
       "twitter:title": `Images - ${websiteName}`,
       "twitter:description":
-        "Explore a handpicked gallery of images with detailed descriptions and recommendations.",
+"প্রয়োজনীয় এবং উপকারী কিছু ছবি এখানে আছে। ছবিতে ক্লিক করে সংক্ষেপে ছবি সম্পর্কে জানা যাবে। বড় করে দেখা যাবে।",
       "og:title": `Images - ${websiteName}`,
       "og:description":
-        "Browse a collection of curated images with in-depth descriptions. Discover art, photography, and more.",
+"প্রয়োজনীয় এবং উপকারী কিছু ছবি এখানে আছে। ছবিতে ক্লিক করে সংক্ষেপে ছবি সম্পর্কে জানা যাবে। বড় করে দেখা যাবে।",
       "og:url": `${host}/others/image`,
       "og:image": imageMetaImage,
       "og:type": "website",
       "og:site_name": websiteName,
+    "og:locale": "bn_BD",
     };
   } catch (error) {
     console.error("Error fetching image metadata:", error);

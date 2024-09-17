@@ -39,9 +39,10 @@ export async function generateMetadata({ params }) {
   
   let metadata = {
     title: `${capitalize(category) || "Categories"} - ${websiteName}`,
-    description: `Explore blog posts categorized under ${capitalize(category) || "various topics"}. Discover content that interests you.`,
+    description: `ক্যাটাগরি অনুযায়ী ব্লগ পড়ুন। ${capitalize(category) || ""} এই ক্যাটাগরির লেখাগুলো সব একসাথে।`,
     keywords: ["Blog", "Category", "Amarbokbok Blog", "Ahmmad Robin's Blog", capitalize(category) || "Category"],
     url: `${host}/blogs/categories`,
+    canonical: `${host}/blogs/categories`, 
   };
 
   try {
@@ -56,6 +57,7 @@ export async function generateMetadata({ params }) {
       "og:image": categoryMetaImage,
       "og:type": "website",
       "og:site_name": websiteName,
+      "og:locale": "bn_BD",
     };
   } catch (error) {
     console.error("Error fetching category metadata:", error);

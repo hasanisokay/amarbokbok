@@ -18,9 +18,10 @@ export async function generateMetadata({ params }) {
 
   let metadata = {
     title: `Blog - ${websiteName}`,
-    description: "Read our latest blog posts on various topics.",
-    keywords: ["Amar bokbok blog"],
+    description: "বিভিন্ন বিষয়ের উপর আমার সর্বশেষ ব্লগ পোস্টগুলি পড়ুন।",  
+    keywords: ["আমার বকবক ব্লগ"], 
     url: blogId ? `${host}/blogs/${blogId}` : `${host}/blogs`,
+    canonical: blogId ? `${host}/blogs/${blogId}` : `${host}/blogs`,
   };
 
   try {
@@ -48,6 +49,7 @@ export async function generateMetadata({ params }) {
           "og:image": imageUrl || singleBlogMetaImage,
           "og:type": "article",
           "og:site_name": websiteName,
+          "og:locale": "bn_BD",
         };
       }
     }

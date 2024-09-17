@@ -8,7 +8,9 @@ import getOthers from "@/utils/getOthers.mjs";
 import dynamic from "next/dynamic";
 import { Suspense } from "react";
 
-const SelectInBlogs = dynamic(() =>import("@/components/SelectInBlogs"), { ssr: false });
+const SelectInBlogs = dynamic(() => import("@/components/SelectInBlogs"), {
+  ssr: false,
+});
 
 const pdfPage = async ({ searchParams }) => {
   const page = parseInt(searchParams?.page) || 1;
@@ -65,9 +67,18 @@ export async function generateMetadata() {
   const host = await hostname();
   let metadata = {
     title: `PDFs - ${websiteName}`,
-    description: "Access a collection of PDFs with detailed descriptions and useful resources.",
-    keywords: ["PDF", "Documents", "AmarBokBok_Blog", "Ahmmad Robin's Blog", "Educational PDFs", "Resources"],
+    description:
+      "প্রয়োজনীয় এবং উপকারী পিডিএফগুলো এখানে আছে। সাথে ডাউনলোড লিংকও থাকবে।",
+    keywords: [
+      "PDF",
+      "Documents",
+      "AmarBokBok_PDF",
+      "প্রয়োজনীয় পিডিএফ",
+      "আমার বকবক পিডিএফ",
+      "পিডিএফ",
+    ],
     url: `${host}/others/pdf`,
+    canonical: `${host}/others/pdf`,
   };
 
   try {
@@ -76,14 +87,15 @@ export async function generateMetadata() {
       "twitter:card": "summary_large_image",
       "twitter:title": `PDFs - ${websiteName}`,
       "twitter:description":
-        "Browse a curated selection of PDFs with detailed descriptions and valuable resources.",
+        "প্রয়োজনীয় এবং উপকারী পিডিএফগুলো এখানে আছে। সাথে ডাউনলোড লিংকও থাকবে।",
       "og:title": `PDFs - ${websiteName}`,
       "og:description":
-        "Explore a collection of useful PDFs with comprehensive descriptions and resources.",
+       "প্রয়োজনীয় এবং উপকারী পিডিএফগুলো এখানে আছে। সাথে ডাউনলোড লিংকও থাকবে।",
       "og:url": `${host}/others/pdf`,
       "og:image": pdfMetaImage,
       "og:type": "website",
       "og:site_name": websiteName,
+      "og:locale": "bn_BD",
     };
   } catch (error) {
     console.error("Error fetching PDF metadata:", error);

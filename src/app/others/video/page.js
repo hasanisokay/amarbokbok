@@ -68,9 +68,10 @@ export async function generateMetadata() {
   const host = await hostname();
   let metadata = {
     title: `Videos - ${websiteName}`,
-    description: "Explore a curated collection of videos with detailed descriptions and recommendations.",
-    keywords: ["Video", "AmarBokBok Blog", "Ahmmad Robin's Blog", "Music Videos", "Educational Videos"],
+    description: "প্রয়োজনীয় এবং উপকারী ভিডিওগুলো এখানে আছে। সাথে ডাউনলোড লিংকও",
+    keywords: ["Video", "AmarBokBok Video", "আমার বকবক", "ভিডিও", "আমার বকবক ভিডিও"],
     url: `${host}/others/video`,
+    canonical: `${host}/others/video`,
   };
 
   try {
@@ -79,14 +80,15 @@ export async function generateMetadata() {
       "twitter:card": "summary_large_image",
       "twitter:title": `Videos - ${websiteName}`,
       "twitter:description":
-        "Discover a handpicked selection of videos with in-depth descriptions to help you find the best content.",
+"প্রয়োজনীয় এবং উপকারী ভিডিওগুলো এখানে আছে। সাথে ডাউনলোড লিংকও",
       "og:title": `Videos - ${websiteName}`,
       "og:description":
-        "Explore a collection of recommended videos with detailed descriptions. Get insights into each video selection.",
+"প্রয়োজনীয় এবং উপকারী ভিডিওগুলো এখানে আছে। সাথে ডাউনলোড লিংকও",
       "og:url": `${host}/others/video`,
       "og:image": videoMetaImage,
       "og:type": "website",
       "og:site_name": websiteName,
+      "og:locale": "bn_BD",
     };
   } catch (error) {
     console.error("Error fetching video metadata:", error);

@@ -29,8 +29,9 @@ export async function generateMetadata() {
       // todos: change the image links
       "og-url": `${await hostname()}/admin`,
       "og:type": "website",
-      locale: "en_US",
+      "og:locale": "bn_BD",
     },
+    canonical: `${host}/admin`, 
     url: `${await hostname()}/admin`,
   };
 }

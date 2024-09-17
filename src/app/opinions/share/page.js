@@ -15,15 +15,9 @@ export async function generateMetadata() {
   const host = await hostname();
   let metadata = {
     title: `Share Your Opinion - ${websiteName}`,
-    description: "Share your thoughts and opinions on this page. Contribute your insights and be part of the discussion.",
-    keywords: [
-      "Opinions",
-      "Share Opinion",
-      "Amarbokbok Blog",
-      "Ahmmad Robin's Blog",
-      "Feedback",
-      "Community Discussion"
-    ],
+    description: "আপনার মতামত বা যেকোন গঠনমূলক মন্তব্য শেয়ার করুন।",
+    keywords: ["Opinions", "AmarBokBok opinions", "Ahmmad Robin's Blog","মতামত","আমার বকবক", "Feedback"],
+    canonical: `${host}/opinions/share`, 
     url: `${host}/opinions/share`,
   };
 
@@ -32,13 +26,14 @@ export async function generateMetadata() {
       "twitter:image": opinionsMetaImage,
       "twitter:card": "summary_large_image",
       "twitter:title": `Share Your Opinion - ${websiteName}`,
-      "twitter:description": "Contribute your opinions and insights on this page. Join the discussion and share your feedback.",
+      "twitter:description": metadata.description,
       "og:title": `Share Your Opinion - ${websiteName}`,
-      "og:description": "Join the conversation by sharing your thoughts. Your feedback is valuable to us.",
+      "og:description": metadata.description,
       "og:url": `${host}/opinions/share`,
       "og:image": opinionsMetaImage,
       "og:type": "website",
       "og:site_name": websiteName,
+      "og:locale": "bn_BD",
     };
   } catch (error) {
     console.error("Error fetching opinion sharing metadata:", error);

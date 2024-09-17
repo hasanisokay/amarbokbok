@@ -21,9 +21,10 @@ export async function generateMetadata({ params }) {
   const host = await hostname();
   let metadata = {
     title: `Categories - ${websiteName}`,
-    description: "Category Page",
-    keywords: ["Blog", "Categories","Amar Bok Bok Blogs Categories", "Ahmmad Robins Blog"],
+    description: "ক্যাটাগরি অনুযায়ী লেখা পড়তে পারবেন এই পেইজ থেকে। আমার বকবকের সব ব্লগের ক্যাটাগরি একসাথে পাবেন।",
+    keywords: ["Blogs", "Categories","Amar Bok Bok Blogs Categories", "সব ক্যাটাগরি", "আমার বকবক"],
     url: `${host}/blogs/categories`,
+    canonical: `${host}/blogs/categories`, 
   };
 
   try {
@@ -35,6 +36,7 @@ export async function generateMetadata({ params }) {
       "og-description": "Blog categories",
       "og-url": `${host}/blogs/categories`,
       "og:image": categoryMetaImage,
+      "og:locale": "bn_BD",
     };
   } catch (error) {
     console.error("Error fetching blog metadata:", error);
