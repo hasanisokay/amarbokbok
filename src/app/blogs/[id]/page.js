@@ -1,5 +1,3 @@
-"use server"
-
 import NotFound from "@/components/NotFound";
 import Sidebar from "@/components/Sidebar";
 import SingleBlogPage from "@/components/SingleBlogPage";
@@ -10,12 +8,11 @@ import deltaToPlainText from "@/utils/deltaToPlainText.mjs";
 import getBlog from "@/utils/getBlog.mjs";
 import getImageLinkFromDelta from "@/utils/getImageLinkFromDelta.mjs";
 import truncateText from "@/utils/truncateText.mjs";
-// import localFont from 'next/font/local'
 import { Suspense } from "react";
+
 export async function generateMetadata({ params }) {
   const host = await hostname();
   const blogId = params?.id;
-
   let metadata = {
     title: `Blog - ${websiteName}`,
     description: "বিভিন্ন বিষয়ের উপর আমার সর্বশেষ ব্লগ পোস্টগুলি পড়ুন।",  
@@ -85,7 +82,7 @@ export default async function page({ params }) {
     return (
       <Suspense fallback={<SuspenseFallback />}>
         <div className={` blog-layout`}>
-          <section className="lg:mx-2 mx-1">
+          <section className="lg:mx-2 mx-1 min-h-screen">
             <SingleBlogPage blog={blog} />
           </section>
           <section className="px-2 max-w-fit min-w-[200px]">
