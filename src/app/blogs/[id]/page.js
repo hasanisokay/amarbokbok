@@ -85,7 +85,7 @@ export default async function page({ params }) {
           <section className="lg:mx-2 mx-1 min-h-screen">
             <SingleBlogPage blog={blog} />
           </section>
-          <section className="px-2 max-w-fit min-w-[200px]">
+          <section className="px-2 max-w-fit min-w-[216px]">
             <Sidebar />
           </section>
         </div>

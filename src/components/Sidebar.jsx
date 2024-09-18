@@ -5,7 +5,7 @@ import RecentBlogs from './RecentBlogs';
 
 const Sidebar = () => {
     return (
-        <section className='lg:block flex flex-col items-center justify-center '>
+        <section className='lg:block min-w-[216px] flex flex-col items-center justify-center '>
             <MostRead />
             <RecentBlogs />
             <CategoryPage />
