@@ -58,8 +58,8 @@ body {
   font-size: 18px;
 }
 .ql-editor blockquote {
-  padding: 0 1em !important;
-  padding-top: 1em !important;
+  padding: 2px 1em !important;
+  /* padding-top: 8px !important; */
 
   [data-theme="dark"] & {
     border-left: 2px solid #eee !important;
