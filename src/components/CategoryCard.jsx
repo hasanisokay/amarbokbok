@@ -22,7 +22,7 @@ const CategoryCard = () => {
         };
         fetchCategories();
     }, []);
-    console.log(categories)
+
     return (
         <>
             <div className="shadow3 w-fit md:max-w-[80%] lg:max-w-[60%] max-w-[95%] mx-auto  group lg:hover:-translate-y-2 active:-translate-y-2 duration-500 dark:bg-[#333333] bg-[#b6d7a0] rounded-md group py-4 text-center my-10">

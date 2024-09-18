@@ -26,7 +26,7 @@ const BlogEditor = ({ postId }) => {
   const [uploadPercentage, setUploadPercentage] = useState(0);
   const [date, setDate] = useState(new Date());
   const [updatedOn, setUpdatedOn] = useState(new Date())
-console.log(date)
+
   useEffect(() => {
     setUpdatedOn(new Date(date));
   }, [date])
