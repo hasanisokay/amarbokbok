@@ -150,12 +150,12 @@ const BlogEditor = ({ postId }) => {
             type="text"
             value={newCategory}
             className='focus:outline-none bg-white border rounded border-gray-400 p-1'
-            onChange={(e) => setNewCategory(e.target.value.trim())}
+            onChange={(e) => setNewCategory(e.target.value)}
             placeholder="Or add a new category"
           />
           <button className='btn-submit' onClick={() => {
             setNewCategory("")
-            setSelectedCategories((prev) => [...prev, newCategory])
+            setSelectedCategories((prev) => [...prev, newCategory.trim()])
           }
           }>add</button>
         </div>
