@@ -59,7 +59,7 @@ body {
 }
 .ql-editor blockquote {
   padding: 0 1em !important;
-  margin-top: 1em !important;
+  padding-top: 1em !important;
 
   [data-theme="dark"] & {
     border-left: 2px solid #eee !important;
