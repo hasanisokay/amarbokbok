@@ -15,10 +15,11 @@ const adminLayout = ({ children }) => {
 export default adminLayout;
 
 export async function generateMetadata() {
+  const host = await hostname()
   return {
     title: `${websiteName} - Admin`,
     authors: [
-      { name: "Ahmmad Robin", url: `${await hostname()}` },
+      { name: "Ahmmad Robin", url: `${host}` },
       {
         name: "Ahmmad Robin",
         url: "https://web.facebook.com/bonjuiofficial",
@@ -27,11 +28,11 @@ export async function generateMetadata() {
     keywords: ["Personal Website", "Admin", "Blogs", "Jharfuk"],
     other: {
       // todos: change the image links
-      "og-url": `${await hostname()}/admin`,
+      "og-url": `${host}/admin`,
       "og:type": "website",
       "og:locale": "bn_BD",
     },
     canonical: `${host}/admin`, 
-    url: `${await hostname()}/admin`,
+    url: `${host}/admin`,
   };
 }
