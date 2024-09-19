@@ -11,6 +11,8 @@ import "react-datepicker/dist/react-datepicker.css";
 import DatePicker from "react-datepicker";
 const BlogEditor = ({ postId }) => {
   const [range, setRange] = useState();
+  const [objectId, setObjectId]= useState(null);
+  const [changeBlogId, setChangeBlogId]= useState(false);
   const [blogId, setBlogId] = useState("");
   const [isIdAvailable, setIsIdAvailable] = useState(false);
   const [checking, setChecking] = useState(false);
@@ -26,7 +28,6 @@ const BlogEditor = ({ postId }) => {
   const [uploadPercentage, setUploadPercentage] = useState(0);
   const [date, setDate] = useState(new Date());
   const [updatedOn, setUpdatedOn] = useState(new Date())
-
   useEffect(() => {
     setUpdatedOn(new Date(date));
   }, [date])
@@ -52,6 +53,7 @@ const BlogEditor = ({ postId }) => {
           const data = await response.json();
           if (data.status === 404) return router.push("/admin/blog-editor");
           setContent(data?.blog);
+          setObjectId(data?.blog?._id)
           setBlogId(data?.blog?.blog_id);
           setTitle(data?.blog?.title);
           setSelectedCategories(data?.blog?.categories)
@@ -90,7 +92,7 @@ const BlogEditor = ({ postId }) => {
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
             content: contentToSave, updatedOn: new Date(updatedOn), blog_id: blogId, title: title,
-            categories: selectedCategories
+            categories: selectedCategories, _id: objectId,
           }),
           credentials: "include"
         })
@@ -169,7 +171,7 @@ const BlogEditor = ({ postId }) => {
       // onTextChange={(content, delta, source, editor) => setLastChange(content)}
       />
       <div className='flex gap-2 items-center'>
-        {!postId && <div className="relative w-max my-3">
+        {((!postId) || (postId && changeBlogId)) && <div className="relative w-max my-3">
           <input value={blogId} onChange={(e) => setBlogId(e.target.value)} className="peer h-[50px] border-b bg-blue-100 px-2 pt-4 focus:outline-none dark:bg-blue-500/20" type="text" id="linkInput" placeholder="" />
           <label className="absolute left-2 top-0.5 text-xs duration-300 peer-placeholder-shown:left-2 peer-placeholder-shown:top-[50%] peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-focus:left-2 peer-focus:top-0.5 peer-focus:-translate-y-0 peer-focus:text-xs " htmlFor="linkInput">
             Link
@@ -193,8 +195,14 @@ const BlogEditor = ({ postId }) => {
           />
           {/* <small className='pr-2'>yyyy-mm-dd.</small> */}
           <small>Leave unchanged to use the {content?.timestamp ? "previous" : "current"} date.</small>
-        </div>      </div>
+        </div>      
+        </div>
 
+{postId && <div>
+
+  <input type="checkbox" name="changeBlogId" id="changeBlogId" checked={changeBlogId} onChange={()=>setChangeBlogId(!changeBlogId)} />
+  <label htmlFor="changeBlogId">Want to change blog link</label>
+</div> }
 
       <div className='my-4 ml-10'>
         <button type="button" className='btn-submit' onClick={handleSave}>

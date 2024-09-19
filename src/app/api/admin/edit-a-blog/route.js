@@ -1,5 +1,6 @@
 import { COOKIE_NAME, dbErrorResponse, unauthorizedResponse } from "@/constants/constants.mjs";
 import dbConnect from "@/services/dbConnect.mjs";
+import { ObjectId } from "mongodb";
 import { NextResponse } from "next/server";
 
 export const POST = async (req) => {
@@ -10,15 +11,16 @@ export const POST = async (req) => {
     }
 
     const body = await req.json();
-    const { blog_id, content, updatedOn, title, categories } = body;
+    const { blog_id, content, updatedOn, title, categories, _id } = body;
     const db = await dbConnect();
     if (!db) return NextResponse.json(dbErrorResponse);
  
 
     const postCollection = await db.collection("blogs");
+  
     const result = await postCollection.updateOne(
-      { blog_id: blog_id },
-      { $set: { content: content, addedOn: updatedOn, title:title, categories: categories  } }
+      { _id: new ObjectId(_id) },
+      { $set: { content: content, blog_id: blog_id, addedOn: updatedOn, title:title, categories: categories  } }
     );
 
     if (result?.modifiedCount > 0) {
