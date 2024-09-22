@@ -13,7 +13,7 @@
     "bcrypt": "^5.1.1",
     "jose": "^5.4.0",
     "mongodb": "^6.7.0",
-    "next": "14.2.3",
+    "next": "^14.2.13",
     "quill": "^2.0.0-rc.0",
     "react": "^18",
     "react-datepicker": "^7.3.0",
