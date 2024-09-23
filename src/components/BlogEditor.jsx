@@ -11,6 +11,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import DatePicker from "react-datepicker";
 const BlogEditor = ({ postId }) => {
   const [range, setRange] = useState();
+  const [isSaving, setIsSaving] = useState(false);
   const [objectId, setObjectId]= useState(null);
   const [changeBlogId, setChangeBlogId]= useState(false);
   const [blogId, setBlogId] = useState("");
@@ -84,7 +85,9 @@ const BlogEditor = ({ postId }) => {
     if (title.length < 1) {
       return toast.error("Insert a valid title for this post.");
     }
+    if(isSaving) return;
     const contentToSave = quillRef.current.getContents();
+    setIsSaving(true);
     try {
       const response = postId
         ? await fetch(`/api/admin/edit-a-blog`, {
@@ -118,6 +121,9 @@ const BlogEditor = ({ postId }) => {
       }
     } catch (error) {
       console.error('Error saving post:', error);
+    }
+    finally{
+      setIsSaving(false);
     }
   };
 
