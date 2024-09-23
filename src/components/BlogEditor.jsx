@@ -162,6 +162,7 @@ const BlogEditor = ({ postId }) => {
             placeholder="Or add a new category"
           />
           <button className='btn-submit' onClick={() => {
+            if(newCategory?.length < 1) return;
             setNewCategory("")
             setSelectedCategories((prev) => [...prev, newCategory.trim()])
           }
