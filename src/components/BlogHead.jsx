@@ -21,7 +21,7 @@ const BlogHead = ({ blog, clickable }) => {
                     <p className='flex gap-1 items-center'> <span>{calculateReadingTime(blog?.content)} min read</span> <Dot /> <span>{getTime(blog?.addedOn)}</span></p>
                 </div>
             </>}
-{blog?.categories.length >0 &&             <p className='text-sm'>Categories: {blog?.categories?.map((c, i) => <Link href={`/blogs/categories/${c}`} className="mr-1 text-blue-500 cursor-pointer" key={i}>{c}</Link>)}</p>
+{blog?.categories.length >0 &&             <p className='text-sm'>Categories: {blog?.categories?.map((c, i) => <Link href={`/blogs/categories/${c}`} className="mr-3 text-blue-500 cursor-pointer" key={i}>{c}</Link>)}</p>
 }        </>
     );
 };
