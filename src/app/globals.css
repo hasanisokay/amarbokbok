@@ -143,12 +143,7 @@ h4 {
   @apply lg:hover:text-blue-500 active:text-blue-500;
 }
 
-.blog-layout {
-  display: grid;
-  grid-template-columns: repeat(1fr auto);
-  gap: 1rem;
-  margin: 0.25rem;
-}
+
 
 .nav-menu li {
   margin-top: 0.5rem;
@@ -315,13 +310,25 @@ h4 {
     background-image: linear-gradient(-20deg, #616161 0%, #9bc5c3 100%);
   }
 }
-
+.blog-layout {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1rem;
+  margin: 0.25rem;
+}
 /* media queries */
 @media (min-width: 768px) {
   .blog-layout {
     margin: 1rem;
   }
 }
+@media (min-width: 1024px) {
+  .blog-layout {
+    grid-template-columns: 1fr min-content;
+    margin: 3rem;
+  }
+}
+
 @media screen and (min-width: 864px) {
   .counter-area {
     min-height: 130px;
@@ -363,9 +370,3 @@ h4 {
   }
 }
 
-@media (min-width: 1024px) {
-  .blog-layout {
-    grid-template-columns: 1fr min-content;
-    margin: 3rem;
-  }
-}

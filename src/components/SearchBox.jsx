@@ -40,7 +40,7 @@ const SearchBox = ({ searchedText, searchedType, searchedCategory }) => {
         setIsClient(true)
     }, [])
     if (isClient) return (
-        <form onSubmit={handleSubmit} className="my-4 relative flex text-black items-center justify-center gap-2">
+        <form onSubmit={handleSubmit} className="my-4 relative flex flex-wrap text-black items-center justify-center gap-2">
             <Select
                 value={type}
                 onChange={setType}
