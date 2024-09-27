@@ -18,17 +18,23 @@ body {
   --secondary-color: #836b83;
   /* --primary-color: ; */
 }
-[data-theme="dark"] {
+/* [data-theme="dark"] {
   @apply bg-[#121212] text-[#e3ebdb];
-}
-[data-theme="light"] {
+} */
+/* [data-theme="light"] {
   @apply bg-[#bfcfb4] text-black;
+} */
+@media (prefers-color-scheme: dark) {
+  html {
+    background-color: #121212; 
+    color: #e3ebdb;
+  }
 }
+
 @media (prefers-color-scheme: light) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+  html {
+    background-color: #bfcfb4;
+color: black;
   }
 }
 .ql-editor img {
