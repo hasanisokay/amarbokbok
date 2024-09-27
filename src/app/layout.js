@@ -92,8 +92,8 @@ export async function generateMetadata() {
 
 export const viewport = {
   width: "device-width",
-  themeColor: [
-    { media: "(prefers-color-scheme: dark)", color: "#121212" },
-    { media: "(prefers-color-scheme: light)", color: "#bfcfb4" },
-  ],
+  // themeColor: [
+  //   { media: "(prefers-color-scheme: dark)", color: "#121212" },
+  //   { media: "(prefers-color-scheme: light)", color: "#bfcfb4" },
+  // ],
 };
