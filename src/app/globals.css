@@ -214,7 +214,8 @@ h4 {
     color: black;
   }
   [data-theme="light"] & {
-    background-color: #d5dce2;
+    background-color: #4e5358;
+    color: white;
   }
 }
 .btn-green {
@@ -312,13 +313,12 @@ h4 {
 }
 .blog-layout {
   display: grid;
-  grid-template-columns: 1fr auto;
+  grid-template-columns: repeat(auto auto);
   gap: 1rem;
   margin: 0.25rem;
-  max-width: 100%;
 }
 /* media queries */
-@media (min-width: 768px) {
+ @media (min-width: 768px) {
   .blog-layout {
     margin: 1rem;
   }

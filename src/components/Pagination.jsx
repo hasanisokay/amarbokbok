@@ -11,11 +11,17 @@ const Pagination = ({ total, currentPage, limit }) => {
   };
 
   const getPageNumbers = () => {
+    let width = window.innerWidth;
+    let endValue 
+    if(width > 786){
+      endValue = 4
+    }else{
+      endValue = 2
+    }
     let startPage = Math.max(1, currentPage - 2);
-    let endPage = Math.min(totalPages, startPage + 4);
-
-    if (endPage - startPage < 4) {
-      startPage = Math.max(1, endPage - 4);
+    let endPage = Math.min(totalPages, startPage + endValue);
+    if (endPage - startPage < endValue) {
+      startPage = Math.max(1, endPage - endValue);
     }
 
     const pageNumbers = [];
@@ -31,11 +37,11 @@ const Pagination = ({ total, currentPage, limit }) => {
     return pageNumbers;
   };
 
-  return (
-    <div className="flex justify-center space-x-2 my-4">
+  return ( 
+    <div className="flex justify-center gap-2 text-xs md:text-sm my-4">
       <button
         onClick={() => handlePageChange(currentPage - 1)}
-        className={`rounded-btn lg:hover:text-blue-500 duration-300 lg:hover:scale-105 active:scale-105 scale-100 active:text-blue-500 border ${currentPage === 1 ? 'invisible' : 'visible'}`}
+        className={`rounded-btn lg:hover:text-blue-500 duration-300 lg:hover:scale-105 active:scale-105 scale-100 active:text-blue-500 border ${currentPage === 1 ? 'md:invisible hidden' : 'visible'}`}
       >
         Previous
       </button>
@@ -44,7 +50,7 @@ const Pagination = ({ total, currentPage, limit }) => {
           <button
             key={index}
             onClick={() => handlePageChange(page)}
-            className={`rounded-btn duration-300 lg:hover:text-white active:text-white lg:hover:bg-blue-500 lg:hover:scale-105 active:scale-105 scale-100 ${
+            className={`rounded-btn  duration-300 lg:hover:text-white active:text-white lg:hover:bg-blue-500 lg:hover:scale-105 active:scale-105 scale-100 ${
               currentPage === page ? 'rounded-btn-active' : 'rounded-btn-inactive'
             }`}
           >
@@ -58,7 +64,7 @@ const Pagination = ({ total, currentPage, limit }) => {
       )}
       <button
         onClick={() => handlePageChange(currentPage + 1)}
-        className={`rounded-btn border duration-300 lg:hover:scale-105 active:scale-105 scale-100 hover-blue ${currentPage === totalPages ? 'invisible' : 'visible'}`}
+        className={`rounded-btn border duration-300 lg:hover:scale-105 active:scale-105 scale-100 hover-blue ${currentPage === totalPages ? 'md:invisible hidden' : 'visible'}`}
       >
         Next
       </button>

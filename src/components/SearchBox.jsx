@@ -52,7 +52,7 @@ const SearchBox = ({ searchedText, searchedType, searchedCategory }) => {
                 value={category}
                 onChange={setCategory}
                 options={categories}
-                className="w-32"
+                className="w-32 min-w-fit"
                 placeholder="Category"
             />}
             <div className="relative">

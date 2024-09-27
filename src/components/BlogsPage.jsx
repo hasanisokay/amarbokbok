@@ -31,7 +31,7 @@ const BlogsPage = ({ blogs, sort, limit, page }) => {
                             />
                         )}
                     </section>
-                    <Sidebar />
+                    {/* <Sidebar /> */}
                 </div>
             </Suspense>
         );
