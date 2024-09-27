@@ -6,18 +6,24 @@ import { hostname } from "@/constants/hostname.mjs";
 import { homeMetaImage, websiteName } from "@/constants/constants.mjs";
 import Footer from "@/components/Footer";
 import dynamic from "next/dynamic";
-import getThemeCookie from "@/utils/getThemeCookie.mjs"; 
+import getThemeCookie from "@/utils/getThemeCookie.mjs";
 // const kalpurush = localFont({
 //   src: '@/../../../public/font/kalpurush.ttf',
 //   display: 'swap',
 // })
 
-const UserTracker = dynamic(() =>import("@/components/UserTracker"), { ssr: false });
+const UserTracker = dynamic(() => import("@/components/UserTracker"), {
+  ssr: false,
+});
 
 export default async function RootLayout({ children }) {
   let storedTheme = await getThemeCookie();
+  const themeColor = storedTheme === "dark" ? "#121212" : "#bfcfb4";
   return (
-    <html lang="en"  data-theme={storedTheme || "light"}>
+    <html lang="en" data-theme={storedTheme || "light"}>
+      <head>
+        <meta name="theme-color" content={themeColor} />
+      </head>
       <body className="transition-colors">
         <Providers initialTheme={storedTheme}>
           <header className="min-h-[60px]">
@@ -37,7 +43,8 @@ export async function generateMetadata() {
   const host = await hostname();
   return {
     title: `${websiteName} - Home`,
-    description: "আহম্মাদ রবিনের ব্যক্তিগত ওয়েবসাইটে আপনাকে স্বাগতম। ব্লগগুলি অন্বেষণ করুন, নির্বাচিত বিষয়বস্তু খুঁজে নিন এবং আহম্মাদ রবিনের সর্বশেষ আপডেটের সাথে থাকুন।",
+    description:
+      "আহম্মাদ রবিনের ব্যক্তিগত ওয়েবসাইটে আপনাকে স্বাগতম। ব্লগগুলি অন্বেষণ করুন, নির্বাচিত বিষয়বস্তু খুঁজে নিন এবং আহম্মাদ রবিনের সর্বশেষ আপডেটের সাথে থাকুন।",
     publisher: "Ahmmad Robin",
     authors: [
       { name: "Ahmmad Robin", url: `${host}` },
@@ -46,36 +53,41 @@ export async function generateMetadata() {
         url: "https://web.facebook.com/bonjuiofficial",
       },
     ],
-    keywords: ["আহমাদ রবিনের বকবক", "ব্লগ", "ঝাড়ফুঁক", "আমার বকবক", "আহমাদ রবিন"],
+    keywords: [
+      "আহমাদ রবিনের বকবক",
+      "ব্লগ",
+      "ঝাড়ফুঁক",
+      "আমার বকবক",
+      "আহমাদ রবিন",
+    ],
     other: {
       "color-scheme": ["dark", "light"],
       "twitter:image": homeMetaImage,
       "twitter:card": "summary_large_image",
-     "twitter:description": "আহমাদ রবিনের ব্যক্তিগত ওয়েবসাইট আমার বকবক এ ব্লগ, নির্বাচিত বিষয়বস্তু এবং আরও অনেক কিছু আবিষ্কার করুন।",
+      "twitter:description":
+        "আহমাদ রবিনের ব্যক্তিগত ওয়েবসাইট আমার বকবক এ ব্লগ, নির্বাচিত বিষয়বস্তু এবং আরও অনেক কিছু আবিষ্কার করুন।",
       "og:title": `Home - ${websiteName}`,
       "og:url": `${host}`,
       "og:image": homeMetaImage,
-      "og:description": "আহমাদ রবিনের ব্যক্তিগত ওয়েবসাইট আমার বকবক এ ব্লগ, নির্বাচিত বিষয়বস্তু এবং সর্বশেষ আপডেটগুলি পান।",
+      "og:description":
+        "আহমাদ রবিনের ব্যক্তিগত ওয়েবসাইট আমার বকবক এ ব্লগ, নির্বাচিত বিষয়বস্তু এবং সর্বশেষ আপডেটগুলি পান।",
       "og:type": "website",
       "og:site_name": websiteName,
       "og:locale": "bn_BD",
     },
     image: homeMetaImage,
-    canonical: `${host}`, 
+    canonical: `${host}`,
     url: `${host}`,
     charset: "UTF-8",
     robots: "index, follow",
-    themeColor: [
-      { media: "(prefers-color-scheme: dark)", color: "#121212" }, // Dark mode color
-      { media: "(prefers-color-scheme: light)", color: "#bfcfb4" }, // Light mode color
-    ],
+
     httpEquiv: {
-      "Content-Security-Policy": "default-src 'self'; img-src https: data:; script-src 'self'; style-src 'self' 'unsafe-inline';"
+      "Content-Security-Policy":
+        "default-src 'self'; img-src https: data:; script-src 'self'; style-src 'self' 'unsafe-inline';",
     },
     // Favicon and Apple touch icon
   };
 }
-
 
 export const viewport = {
   width: "device-width",
