@@ -315,6 +315,7 @@ h4 {
   grid-template-columns: 1fr auto;
   gap: 1rem;
   margin: 0.25rem;
+  max-width: 100%;
 }
 /* media queries */
 @media (min-width: 768px) {
