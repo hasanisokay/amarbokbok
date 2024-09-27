@@ -20,9 +20,10 @@ export default async function RootLayout({ children }) {
   let storedTheme = await getThemeCookie();
   const themeColor = storedTheme === "dark" ? "#121212" : "#bfcfb4";
   return (
-    <html lang="en" data-theme={storedTheme || "light"}>
+    <html lang="bn" data-theme={storedTheme || "light"}>
       <head>
         <meta name="theme-color" content={themeColor} />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </head>
       <body className="transition-colors">
         <Providers initialTheme={storedTheme}>
@@ -89,10 +90,10 @@ export async function generateMetadata() {
   };
 }
 
-export const viewport = {
-  width: "device-width",
-  // themeColor: [
-  //   { media: "(prefers-color-scheme: dark)", color: "#121212" },
-  //   { media: "(prefers-color-scheme: light)", color: "#bfcfb4" },
-  // ],
-};
+// export const viewport = {
+//   width: "device-width",
+//   // themeColor: [
+//   //   { media: "(prefers-color-scheme: dark)", color: "#121212" },
+//   //   { media: "(prefers-color-scheme: light)", color: "#bfcfb4" },
+//   // ],
+// };
