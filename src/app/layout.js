@@ -6,8 +6,7 @@ import { hostname } from "@/constants/hostname.mjs";
 import { homeMetaImage, websiteName } from "@/constants/constants.mjs";
 import Footer from "@/components/Footer";
 import dynamic from "next/dynamic";
-import getThemeCookie from "@/utils/getThemeCookie.mjs";
-
+import getThemeCookie from "@/utils/getThemeCookie.mjs"; 
 // const kalpurush = localFont({
 //   src: '@/../../../public/font/kalpurush.ttf',
 //   display: 'swap',
@@ -18,7 +17,7 @@ const UserTracker = dynamic(() =>import("@/components/UserTracker"), { ssr: fals
 export default async function RootLayout({ children }) {
   let storedTheme = await getThemeCookie();
   return (
-    <html lang="en"  data-theme={storedTheme || "light"} >
+    <html lang="en"  data-theme={storedTheme || "light"}>
       <body className="transition-colors">
         <Providers initialTheme={storedTheme}>
           <header className="min-h-[60px]">
@@ -64,6 +63,16 @@ export async function generateMetadata() {
     image: homeMetaImage,
     canonical: `${host}`, 
     url: `${host}`,
+    charset: "UTF-8",
+    robots: "index, follow",
+    themeColor: [
+      { media: "(prefers-color-scheme: dark)", color: "#121212" }, // Dark mode color
+      { media: "(prefers-color-scheme: light)", color: "#bfcfb4" }, // Light mode color
+    ],
+    httpEquiv: {
+      "Content-Security-Policy": "default-src 'self'; img-src https: data:; script-src 'self'; style-src 'self' 'unsafe-inline';"
+    },
+    // Favicon and Apple touch icon
   };
 }
 
