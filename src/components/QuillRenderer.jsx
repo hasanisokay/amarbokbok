@@ -39,7 +39,7 @@ const QuillRenderer = ({ content }) => {
     });
   }, [quill, content]);
 
-  return <div ref={containerRef}></div>;
+  return <div ref={containerRef} className='px-1'></div>;
 };
 
 export default QuillRenderer;
