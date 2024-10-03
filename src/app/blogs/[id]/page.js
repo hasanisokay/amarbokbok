@@ -60,7 +60,7 @@ export async function generateMetadata({ params }) {
 
 
 export default async function page({ params }) {
-  
+
   const blogId = params?.id;
   let blog;
   try {

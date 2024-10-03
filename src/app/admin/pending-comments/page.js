@@ -12,9 +12,9 @@ const PendingCommentsHead = dynamic(() => import("@/components/PendingCommentsHe
 const page = async ({ searchParams }) => {
   const sort = searchParams?.sort || "newest";
   const page = parseInt(searchParams?.page) || 1
-  const limit = searchParams.limit || 10000;
-  const type = searchParams.type || "pendingOnly";
-  const keyword = decodeURIComponent(searchParams.keyword.trim()) || "";
+  const limit = searchParams?.limit || 10000;
+  const type = searchParams?.type || "pendingOnly";
+  const keyword = decodeURIComponent(searchParams?.keyword?.trim()) || "";
   let approvedOnly = "";
   let pendingOnly = "";
   let all = "";

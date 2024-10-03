@@ -13,7 +13,9 @@ const MarqueTexts = dynamic(() => import("@/components/MarqueTexts"));
 export default async function Home() {
   return (
     <section>
-      <MarqueTexts />
+     <div className="min-h-[50px]">
+     <MarqueTexts />      
+      </div> 
       <div className="flex items-center justify-center relative mt-10">
         <div className="w-[100px] h-[100px] absolute top-1">
           <CustomSVG width={100} height={100} />
