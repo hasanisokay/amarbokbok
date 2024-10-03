@@ -16,14 +16,13 @@ const page = async ({ searchParams }) => {
   const page = parseInt(searchParams?.page) || 1
   const limit = searchParams?.limit || 10000;
   const type = searchParams?.type || "pendingOnly";
-  const keyword = decodeURIComponent(searchParams.keyword?.trim()) || "";
+  const keyword = searchParams?.keyword?.trim() || "";
   let approvedOnly = "";
   let pendingOnly = "";
   let all = "";
   if (type === "pendingOnly") pendingOnly = true;
   else if (type === "approvedOnly") approvedOnly = true;
   else if (type === "all") all = true;
-  console.log(searchParams);
   // (page, limit, sort, blog_id, approvedOnly, pendingOnly, all, keyword="")
   const comments = await getComments(
     page,

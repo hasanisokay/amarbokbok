@@ -13,7 +13,7 @@ const PendingCommentsHead = ({ sort, page, commentType, limit, keyword, opinion 
             commentType.endsWith("y") ? commentType.split("O")[0].charAt(0).toUpperCase() + commentType.split("O")[0].slice(1) + " Only"
                 : "All"
     })
-    const [search, setSearch] = useState(keyword || '');
+    const [search, setSearch] = useState(keyword);
 
     const sortOptions = [
         { value: 'newest', label: 'Newest' },
