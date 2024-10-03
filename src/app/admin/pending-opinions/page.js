@@ -1,6 +1,6 @@
 "use server"
-import OpinionTable from "@/components/OpinionTable";
-import Pagination from "@/components/Pagination";
+// import OpinionTable from "@/components/OpinionTable";
+// import Pagination from ;
 import SuspenseFallback from "@/components/SuspenseFallback";
 import { websiteName } from "@/constants/constants.mjs";
 import getOpinions from "@/utils/getOpinions.mjs";
@@ -8,13 +8,15 @@ import dynamic from "next/dynamic";
 import { Suspense } from "react";
 
 const PendingCommentsHead = dynamic(() => import("@/components/PendingCommentsHead"), { ssr: false}); 
+const OpinionTable = dynamic(() => import("@/components/OpinionTable"), { ssr: false}); 
+const Pagination = dynamic(() => import("@/components/Pagination"), { ssr: false}); 
 
 const page = async ({ searchParams }) => {
   const sort = searchParams?.sort || "newest";
   const page = parseInt(searchParams?.page) || 1
   const limit = searchParams.limit || 10000;
   const type = searchParams.type || "pendingOnly";
-  const keyword = decodeURIComponent(searchParams.keyword.trim()) || "";
+  const keyword = decodeURIComponent(searchParams?.keyword?.trim()) || "";
   let approvedOnly = "";
   let pendingOnly = "";
   let all = "";
