@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@next/third-parties": "^14.2.14",
     "axios": "^1.7.2",
     "bcrypt": "^5.1.1",
     "jose": "^5.4.0",

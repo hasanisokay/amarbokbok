@@ -1,5 +1,6 @@
 import "./globals.css";
 import Providers from "@/providers/Providers";
+import { GoogleAnalytics } from '@next/third-parties/google'
 import Navbar from "@/components/Navbar";
 import Toaster from "@/components/Toaster";
 import { hostname } from "@/constants/hostname.mjs";
@@ -36,6 +37,7 @@ export default async function RootLayout({ children }) {
         </Providers>
         <Toaster />
       </body>
+      <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />
     </html>
   );
 }
