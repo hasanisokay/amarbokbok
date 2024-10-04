@@ -143,8 +143,6 @@ h4 {
   @apply lg:hover:text-blue-500 active:text-blue-500;
 }
 
-
-
 .nav-menu li {
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
@@ -230,7 +228,18 @@ h4 {
   display: block;
   margin: 0 auto;
 }
-
+.ql-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background-color: gainsboro;
+}
+#ql-editor-container {
+  position: relative;
+}
+.ql-toolbar + .ql-container {
+  padding: 20px;
+}
 .ql-align-right img {
   display: block;
   margin: 0 0 0 auto;
@@ -318,7 +327,7 @@ h4 {
   margin: 0.25rem;
 }
 /* media queries */
- @media (min-width: 768px) {
+@media (min-width: 768px) {
   .blog-layout {
     margin: 1rem;
   }
@@ -370,4 +379,3 @@ h4 {
     min-height: 227px;
   }
 }
-

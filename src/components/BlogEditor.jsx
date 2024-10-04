@@ -29,6 +29,26 @@ const BlogEditor = ({ postId }) => {
   const [uploadPercentage, setUploadPercentage] = useState(0);
   const [date, setDate] = useState(new Date());
   const [updatedOn, setUpdatedOn] = useState(new Date())
+
+//   const [lastScrollY, setLastScrollY] = useState(0);
+//   const [visible, setVisible] = useState(true);
+//   const handleScroll = () => {
+//     if (window.scrollY > lastScrollY) {
+//         setVisible(false);
+//     } else {
+//         setVisible(true);
+//     }
+//     setLastScrollY(window.scrollY);
+// };
+//   useEffect(() => {
+//     window.addEventListener('scroll', handleScroll);
+//     return () => {
+//         window.removeEventListener('scroll', handleScroll);
+//     };
+//     // eslint-disable-next-line react-hooks/exhaustive-deps
+// }, [lastScrollY]);
+
+
   useEffect(() => {
     setUpdatedOn(new Date(date));
   }, [date])

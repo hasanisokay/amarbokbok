@@ -148,7 +148,7 @@ const Editor = forwardRef(
       };
     }, [ref, defaultValue]);
 
-    return <div ref={containerRef}></div>;
+    return <div ref={containerRef} id='ql-editor-container'></div>;
   },
 );
 
