@@ -6,6 +6,7 @@ import SearchComment from "./SearchComment";
 
 const PendingCommentsHead = ({ sort, page, commentType, limit, keyword, opinion }) => {
     const router = useRouter();
+    const [hasMounted, setHasMounted] = useState(false)
     const [selectedSort, setSelectedSort] = useState({ value: sort, label: sort === 'newest' ? 'Newest' : 'Oldest' });
     const [selectedLimit, setSelectedLimit] = useState({ value: limit, label: `${limit} items per page` });
     const [type, setType] = useState({
@@ -31,41 +32,47 @@ const PendingCommentsHead = ({ sort, page, commentType, limit, keyword, opinion 
         { value: 10000, label: '10000 items per page' },
     ];
     useEffect(() => {
-        const query = new URLSearchParams(window.location.search);
-        query.set('limit', limit);
-        query.set('sort', selectedSort.value);
-        query.set('limit', selectedLimit.value);
-        query.set('type', type.value);
-        query.set('keyword', search);
-        query.set('page', page);
+        if (hasMounted) {
+            const query = new URLSearchParams(window.location.search);
+            query.set('limit', limit);
+            query.set('sort', selectedSort.value);
+            query.set('limit', selectedLimit.value);
+            query.set('type', type.value);
+            query.set('keyword', search);
+            query.set('page', page);
 
-        router.replace(`${window.location.pathname}?${query.toString()}`, undefined, { shallow: selectedSort.value === sort });
+            router.replace(`${window.location.pathname}?${query.toString()}`, undefined, { shallow: selectedSort.value === sort });
+
+        } else {
+            setHasMounted(true);
+        }
+
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [type, selectedSort, selectedLimit, search]);
 
 
     return (
-<>
-<div className="flex gap-4 flex-wrap items-center justify-center my-4">
-            <CustomSelect
-                defaultValue={selectedSort}
-                options={sortOptions}
-                onChange={setSelectedSort}
-            />
-            <CustomSelect
-                defaultValue={selectedLimit}
-                options={limitOptions}
-                onChange={setSelectedLimit}
-            />
-            <CustomSelect
-                defaultValue={type}
-                options={typeOptions}
-                onChange={setType}
-                classes={'min-w-[150px]'}
-            />
-        </div>
-        <SearchComment type={opinion ? "Opinion" :"Comment"} searchText={search} onChange={setSearch} />
-</>
+        <>
+            <div className="flex gap-4 flex-wrap items-center justify-center my-4">
+                <CustomSelect
+                    defaultValue={selectedSort}
+                    options={sortOptions}
+                    onChange={setSelectedSort}
+                />
+                <CustomSelect
+                    defaultValue={selectedLimit}
+                    options={limitOptions}
+                    onChange={setSelectedLimit}
+                />
+                <CustomSelect
+                    defaultValue={type}
+                    options={typeOptions}
+                    onChange={setType}
+                    classes={'min-w-[150px]'}
+                />
+            </div>
+            <SearchComment type={opinion ? "Opinion" : "Comment"} searchText={search} onChange={setSearch} />
+        </>
     );
 };
 
