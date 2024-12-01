@@ -43,7 +43,7 @@ export default async function RootLayout({ children }) {
         </Providers>
         <Toaster />
       </body>
-      <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />
+      {/* <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} /> */}
     </html>
   );
 }
