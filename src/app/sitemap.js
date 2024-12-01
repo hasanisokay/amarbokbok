@@ -83,7 +83,7 @@ export default async function sitemap() {
     },
     ...blogIds?.map((item) => ({
       url: `${host}/blogs/${item.blog_id}`,
-      lastModified: item?.addedOn,
+      lastModified: new Date(item?.addedOn).toISOString(),
       // lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 0.7,
