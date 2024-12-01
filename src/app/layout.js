@@ -23,7 +23,7 @@ export default async function RootLayout({ children }) {
   return (
     <html lang="en" data-theme={storedTheme || "light"}>
       <head>
-        <meta name="google-site-verification" content="naRgs-xUsIrgmDol9gH9xvyWI0tZATa8dpbRi1fNMuc" />
+
         <meta name="theme-color" content={themeColor} />
         <link rel="apple-touch-icon" sizes="180x180" href="./../../public/apple-touch-icon.png" />
         <link rel="icon" type="image/png" sizes="512x512" href="./../../public/android-chrome-512x512.png" />
