@@ -62,6 +62,9 @@ export async function generateMetadata() {
         url: "https://web.facebook.com/bonjuiofficial",
       },
     ],
+    verification: {
+      google: "naRgs-xUsIrgmDol9gH9xvyWI0tZATa8dpbRi1fNMuc",
+    },
     keywords: [
       "আহমাদ রবিনের বকবক",
       "ব্লগ",
